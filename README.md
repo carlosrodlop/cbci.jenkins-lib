@@ -2,7 +2,7 @@
 
 [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets)
 
-[![Baywatch](img/baywatch/Jenkins_Support_Baywatch_flags.png)](resources/img/baywatch/)
+[![Baywatch](img/baywatch/Jenkins_Support_Baywatch_flags.png)](img/baywatch/)
 
 CloudBees CI admin repository that is compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
 
