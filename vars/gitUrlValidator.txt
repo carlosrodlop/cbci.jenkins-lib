@@ -1,0 +1,26 @@
+<h2>gitUrlValidator</h2>
+<h3>Configuration</h3>
+<dl>
+	<dt>paramName</dt>
+	<dd>Name of the parameter to validate</dd>
+</dl>
+<dl>
+	<dt>paramValue</dt>
+	<dd>Value of the parameter to validate</dd>
+</dl>
+<dl>
+	<dt>org</dt>
+	<dd>GitHub Organization</dd>
+</dl>
+<dl>
+	<dt>apiUri</dt>
+	<dd>GitHub Endpoint</dd>
+</dl>
+
+<h3>Example:</h3>
+<pre>
+	gitUrlValidator("GitHub Repository Name",
+              "repo-example",
+              "team-example",
+              "https://github.company-example.com")
+</pre>

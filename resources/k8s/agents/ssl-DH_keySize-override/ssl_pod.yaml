@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    override-jnlp: true
+spec:
+  containers:
+  - name: maven
+    image: maven
+    command:
+    - cat
+    tty: true
+  - name: jnlp
+    image: cloudbees/cloudbees-core-agent
+    tty: true
+    volumeMounts:
+    - mountPath: /etc/crypto-policies/back-ends/java.config
+      subPath: java.config
+      name: override-java-security
+  volumes:
+  - name: override-java-security
+    configMap:
+      name: override-java-security

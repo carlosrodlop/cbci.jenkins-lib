@@ -1,0 +1,51 @@
+<com.cloudbees.hudson.plugins.folder.Folder plugin="cloudbees-folder@6.12">
+<description/>
+<properties>
+<com.cloudbees.jenkins.plugins.foldersplus.SecurityGrantsFolderProperty plugin="cloudbees-folders-plus@3.9">
+<securityGrants/>
+</com.cloudbees.jenkins.plugins.foldersplus.SecurityGrantsFolderProperty>
+<org.jenkinsci.plugins.docker.workflow.declarative.FolderConfig plugin="docker-workflow@1.23">
+<dockerLabel/>
+<registry plugin="docker-commons@1.16"/>
+</org.jenkinsci.plugins.docker.workflow.declarative.FolderConfig>
+<com.cloudbees.hudson.plugins.folder.properties.EnvVarsFolderProperty plugin="cloudbees-folders-plus@3.9">
+<properties/>
+</com.cloudbees.hudson.plugins.folder.properties.EnvVarsFolderProperty>
+<org.csanchez.jenkins.plugins.kubernetes.KubernetesFolderProperty plugin="kubernetes@1.25.4">
+<permittedClouds/>
+</org.csanchez.jenkins.plugins.kubernetes.KubernetesFolderProperty>
+<org.jenkinsci.plugins.pipeline.maven.MavenConfigFolderOverrideProperty plugin="pipeline-maven@3.8.2">
+<settings class="jenkins.mvn.DefaultSettingsProvider"/>
+<globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+<override>false</override>
+</org.jenkinsci.plugins.pipeline.maven.MavenConfigFolderOverrideProperty>
+<com.cloudbees.hudson.plugins.folder.properties.SubItemFilterProperty plugin="cloudbees-folders-plus@3.9"/>
+</properties>
+<folderViews class="com.cloudbees.hudson.plugins.folder.views.DefaultFolderViewHolder">
+<views>
+<hudson.model.AllView>
+<owner class="com.cloudbees.hudson.plugins.folder.Folder" reference="../../../.."/>
+<name>All</name>
+<filterExecutors>false</filterExecutors>
+<filterQueue>false</filterQueue>
+<properties class="hudson.model.View$PropertyList"/>
+</hudson.model.AllView>
+</views>
+<tabBar class="hudson.views.DefaultViewsTabBar"/>
+</folderViews>
+<healthMetrics>
+<com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric>
+<nonRecursive>false</nonRecursive>
+</com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric>
+<com.cloudbees.hudson.plugins.folder.health.AverageChildHealthMetric plugin="cloudbees-folders-plus@3.9"/>
+<com.cloudbees.hudson.plugins.folder.health.JobStatusHealthMetric plugin="cloudbees-folders-plus@3.9">
+<success>true</success>
+<failure>true</failure>
+<unstable>true</unstable>
+<unbuilt>true</unbuilt>
+<countVirginJobs>false</countVirginJobs>
+</com.cloudbees.hudson.plugins.folder.health.JobStatusHealthMetric>
+<com.cloudbees.hudson.plugins.folder.health.ProjectEnabledHealthMetric plugin="cloudbees-folders-plus@3.9"/>
+</healthMetrics>
+<icon class="com.cloudbees.hudson.plugins.folder.icons.StockFolderIcon"/>
+</com.cloudbees.hudson.plugins.folder.Folder>

@@ -1,0 +1,15 @@
+<h2>strNoSpacesValidator</h2>
+<h3>Configuration</h3>
+<dl>
+	<dt>paramName</dt>
+	<dd>Name of the parameter to validate</dd>
+</dl>
+<dl>
+	<dt>paramValue</dt>
+	<dd>Value of the parameter to validate</dd>
+</dl>
+
+<h3>Example:</h3>
+<pre>
+	strNoSpacesValidator("GitHub Repository Name", "My Repo Example ")
+</pre>

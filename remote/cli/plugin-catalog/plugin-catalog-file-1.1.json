@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "description": "Jenkins Plugins for testing plugin catalogs. For core 2.235.+ version 1.1",
+      "includePlugins": {
+        "cloudbees-cloudfoundry-cli": {
+          "url": "https://jenkins-updates.cloudbees.com/download/plugins/cloudbees-cloudfoundry-cli/2.1.6/cloudbees-cloudfoundry-cli.hpi"
+        }
+      },
+      "prerequisites": {
+        "productVersion": "2.235.2.3"
+      }
+    }
+  ],
+  "displayName": "Test plugin catalog 1.1",
+  "name": "additional-plugins-1-1",
+  "type": "plugin-catalog",
+  "version": "1"
+}

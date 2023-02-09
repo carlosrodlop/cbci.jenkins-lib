@@ -1,0 +1,22 @@
+kind: StatefulSet
+spec:
+  template:
+    metadata:
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: 'false'
+    spec:
+      containers:
+      - name: jenkins
+        volumeMounts:
+        - mountPath: /etc/crypto-policies/back-ends/java.config
+          subPath: java.config
+          name: override-java-security
+      volumes:
+      - name: override-java-security
+        configMap:
+          name: override-java-security
+      tolerations:
+      - key: dedicated
+        operator: Equal
+        value: core-masters
+        effect: NoSchedule

@@ -1,0 +1,35 @@
+kind: Pod
+metadata:
+  name: git, maven and kaniko. maven cache pvc
+spec:
+  containers:
+  - name: maven
+    image: maven:3.6.3-jdk-8
+    command:
+    - bash
+    tty: true
+    volumeMounts:
+    - mountPath: /root/.m2/repository
+      name: maven-pv-storage
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug
+    imagePullPolicy: Always
+    command:
+    - /busybox/cat
+    tty: true
+    volumeMounts:
+    - name: jenkins-docker-cfg
+      mountPath: /kaniko/.docker
+  volumes:
+  - name: jenkins-docker-cfg
+    projected:
+      sources:
+      - secret:
+          name: supportbeescloud   # existing kubernetes secret for login into the Docker Registry
+          items:
+          - key: .dockerconfigjson
+            path: config.json
+  - name: maven-pv-storage
+    persistentVolumeClaim:
+      claimName: maven-pv-claim   # this pvc (pvc/maven_cache_pvc.yaml) needs to be created before running the agent
+      readOnly: false

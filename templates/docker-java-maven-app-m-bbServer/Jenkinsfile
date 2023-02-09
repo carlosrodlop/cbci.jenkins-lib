@@ -1,0 +1,21 @@
+// Loading Shared Libraries
+library identifier: 'my-shared-libraries@demo', retriever: modernSCM(
+  [$class: 'GitSCMSource',
+   remote: 'https://github.com/carlosrodlop/my-jenkins-demos.git')
+
+// Template Form Validation
+strNoSpacesValidator("Bitbucket Repository Name", "${bbs_repo}")
+strNoSpacesValidator("Docker Registry", "${d_registry}")
+
+// Building the data object
+def configYaml = """---
+k8_agent_yaml : '${k8_agent_yaml}'
+bbs_cred : '${bbs_cred}'
+bbs_repo : '${bbs_repo}'
+d_path : '${d_path}'
+d_latest : ${d_latest}
+d_registry : '${d_registry}'
+"""
+
+// Calling the CI Pipeline
+mavenK8Project(configYaml)

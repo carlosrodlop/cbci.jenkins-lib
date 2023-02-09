@@ -1,0 +1,50 @@
+version: 1
+type: pipeline-template
+templateType: MULTIBRANCH
+name: Multibranch after 3.6 with traits - Github
+description: Continuos Integration pipeline multibranch to model Maven Docker Apps projects using a Kaniko agent Filter
+parameters:
+- name: k8_agent_yaml
+  displayName: Kubernetes Agent yaml
+  allowedValues: [maven_kaniko_pod_cache, maven_kaniko_pod]
+  type: string
+- name: gh_cred
+  displayName: GitHub Credential
+  type: credentials
+- name: gh_repo
+  displayName: GitHub Repository Name
+  type: string
+- name: gh_watched_branches
+  type: string
+  displayName: Watched Branch selection pattern (Space-separated list)
+  defaultValue: master develop
+- name: d_path
+  type: string
+  displayName: Dockerfile build path
+- name: d_latest
+  type: boolean
+  displayName: Tag as latest?
+  defaultValue: false
+- name: d_registry
+  type: string
+  displayName: Docker Registry
+  defaultValue: supportbeescloud
+multibranch:
+  branchSource:
+    github:
+      repoOwner: carlosrodlop
+      repository: ${gh_repo}
+      credentialsId: ${gh_cred}
+      traits:
+      - headWildcardFilter:
+          includes: ${gh_watched_branches}
+      - gitHubBranchDiscovery:
+          strategyId: '1'
+      - gitHubPullRequestDiscovery:
+          strategyId: '1'
+      - gitHubTagDiscovery
+    strategy:
+      $class: DefaultBranchPropertyStrategy # All branches get the same properties
+      props:
+      - $class: NoTriggerBranchProperty   # Suppress automatic SCM triggering
+  scanRepositoryInterval: 2 hours

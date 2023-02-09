@@ -1,0 +1,11 @@
+<h2>mavenK8Project step</h2>
+<h3>Configuration</h3>
+<dl>
+	<dt>configYaml</dt>
+	<dd>Yaml Object containing the configuration a Maven Docker Apps in Kubernetes</dd>
+</dl>
+
+<h3>Example:</h3>
+<pre>
+	mavenK8Project(configYaml)
+</pre>

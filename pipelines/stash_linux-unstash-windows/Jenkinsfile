@@ -1,0 +1,44 @@
+pipeline {
+    agent {
+        label 'default-java'
+    }
+    stages {
+        stage('Stash') {
+            steps {
+                sh 'dd if=/dev/urandom of=ostechnix.txt bs=5MB count=1'
+                stash includes: '**/*', name: 'built-workspace', useDefaultExcludes: false
+            }
+        }
+        stage('Integration tests and Sonar') {
+            parallel {
+                stage('Sonar') {
+                   agent {
+                        label 'default-java'
+                    }
+                    steps {
+                        script {
+                            unstash 'built-workspace'
+                            sh 'ls'
+                            sh 'cat ostechnix.txt'
+                            }
+                        }
+                }
+                stage('Run UI tests') {
+                    agent {
+                        label 'windows'
+                    }
+                    steps {
+                        script {
+                            timeout(time: 1, unit: 'HOURS') {
+                                deleteDir()
+                                unstash 'built-workspace'
+                                bat 'dir'
+                                bat 'type ostechnix.txt'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    }
+}

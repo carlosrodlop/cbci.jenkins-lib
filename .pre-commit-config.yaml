@@ -1,0 +1,40 @@
+# https://pre-commit.com/#new-hooks
+# https://engineeringfordatascience.com/posts/pre_commit_yaml/
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: trailing-whitespace
+  - id: mixed-line-ending
+  - id: check-added-large-files
+    args: [--maxkb=1000000]
+  - id: end-of-file-fixer
+  - id: requirements-txt-fixer
+  - id: check-yaml
+  - id: check-json
+  - id: check-xml
+  - id: pretty-format-json
+    args: [--autofix]
+  - id: check-merge-conflict
+  - id: check-case-conflict
+  - id: check-docstring-first
+  - id: check-executables-have-shebangs
+  - id: check-shebang-scripts-are-executable
+  - id: detect-aws-credentials
+  - id: detect-private-key
+- repo: https://github.com/zricethezav/gitleaks
+  rev: v8.15.1
+  hooks:
+  - id: gitleaks
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.6.0
+  hooks:
+  - id: pretty-format-java
+    args: [--autofix]
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']
+- repo: https://github.com/comkieffer/pre-commit-xmllint.git
+  rev: 1.0.0
+  hooks:
+  - id: xmllint
