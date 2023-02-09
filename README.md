@@ -2,23 +2,20 @@
 
 [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets)
 
-[![Baywatch](resources/img/baywatch/Jenkins_Support_Baywatch_flags.png)](resources/img/baywatch/)
+[![Baywatch](img/baywatch/Jenkins_Support_Baywatch_flags.png)](resources/img/baywatch/)
 
+CloudBees CI admin repository that is compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
+
+- [Jenkinsfile](pipelines)
 - [Jenkins Shared Libraries](vars)
   - [K8](resources/k8s)
   - [Docker](resources/docker)
-- [Groovy src](src)
-- [CloudBees Pipeline Templates](templates)
-- [Jenkinsfile](pipelines)
-- Operate Remotely with CloudBeesCI/Jenkins
-  - [Jenkins CLI](resources/cli)
-  - [Jenkins API-REST](resources/rest-api)
+- [Groovy automation](src)
+- [CloudBees Pipeline Templates Catalog](templates)
+- [Operate Remotely with CloudBeesCI](remote)
+  - [Jenkins CLI](remote/cli)
+  - [Jenkins API-REST](remote/rest-api)
 
-## Structure
-
-It creates a unique repository compatible to be imported to CloudBees CI as `Jenkins Shared Libraries` and/or `CloudBees Pipeline Template Catalog`.
-
-The rest of the elements are saved within the `resource` folder and it could be [loaded](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources) into a `Jenkinsfile` if it was required.
 
 ## References
 
