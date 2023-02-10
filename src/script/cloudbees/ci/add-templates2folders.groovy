@@ -1,5 +1,7 @@
 ﻿package script.cloudbees.ci
 
+import jenkins.model.*
+import hudson.model.*
 import com.cloudbees.hudson.plugins.modeling.Model
 import com.cloudbees.hudson.plugins.folder.Folder
 import com.cloudbees.hudson.plugins.folder.properties.SubItemFilterProperty

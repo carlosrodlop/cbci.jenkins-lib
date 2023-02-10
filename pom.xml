@@ -1,343 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>carlosrodlop.com</groupId>
-    <artifactId>my-jenkins-demo</artifactId>
-    <version>2.289.1.2_RELEASE</version>
-    <!-- Unified Release: -->
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!-- May be overridden to be, e.g., 2.99-SNAPSHOT if you have `mvn deploy`ed an unreleased version of core: -->
-        <jenkins.version>2.289.1-cb-5</jenkins.version>
-        <!-- May be overridden to be, e.g., 2.99-20171231.120000-1 (here you pick the precise jenkins-core.jar version you deployed): -->
-        <jenkins-core.version>${jenkins.version}</jenkins-core.version>
-        <!-- May be overridden to be, e.g., 2.99-20171231.120115-1 (for jenkins.war; unfortunately Maven does not pick consistent timestamps in a multimodule reactor): -->
-        <jenkins-war.version>${jenkins.version}</jenkins-war.version>
-        <blueocean.version>1.24.6</blueocean.version>
-        <bluesteel.version>1.2.40</bluesteel.version>
-        <jenkins-ha.version>4.29</jenkins-ha.version>
-        <pipeline-model-definition.version>1.8.4</pipeline-model-definition.version>
-        <master-provisioning.version>2.5.31</master-provisioning.version>
-        <declarative-pipeline-migration-assistant.version>1.5.1</declarative-pipeline-migration-assistant.version>
-        <pipeline-stage-view.version>2.19</pipeline-stage-view.version>
-        <download.sources.phase>compile</download.sources.phase>
-        <copy.licenses.phase>process-resources</copy.licenses.phase>
-        <parse.license.phase>process-resources</parse.license.phase>
-        <read.properties.phase>process-resources</read.properties.phase>
-        <namaste.executable.command>bash</namaste.executable.command>
-        <namaste.executable.command.option>-c</namaste.executable.command.option>
-        <namaste.executable>namaste</namaste.executable>
-        <!--Operation Center Server-->
-        <cloudbees.operations-center.server.version>2.263.0.1</cloudbees.operations-center.server.version>
-    </properties>
-    <!--
-    Version (select tag) - Parent. Eg: https://github.com/cloudbees/unified-release/blob/unified-release-2.263.2.3/pom.xml
-    Artifacts per product (select tag) - Product. Eg: oc-traditional: https://github.com/cloudbees/unified-release/blob/unified-release-2.263.2.3/products/core-oc-traditional/pom.xml
-    -->
-    <dependencies>
-        <dependency>
-            <groupId>org.jenkins-ci.main</groupId>
-            <artifactId>jenkins-parent</artifactId>
-            <version>${jenkins-war.version}</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.main</groupId>
-            <artifactId>jenkins-core</artifactId>
-            <version>${jenkins-core.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>1.7.24.3</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>support-core</artifactId>
-            <version>2.73</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-analytics</artifactId>
-            <version>1.30</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-assurance</artifactId>
-            <version>2.276.0.6</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-support</artifactId>
-            <version>3.28</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-uc-data-api</artifactId>
-            <version>4.44</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
+<!--
+1- Go to https://github.com/cloudbees/unified-release
+2- Select the product version via tags (e.g 2.375.3.4)
+3.-Copy here the parent and dependencies (e.g https://github.com/cloudbees/unified-release/blob/unified-release-2.375.3.4/products/core-mm/pom.xml)
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-        <!-- Licensing plugins, sort by groupId then artifactId -->
-        <dependency>
-            <groupId>com.cloudbees.nectar.plugins</groupId>
-            <artifactId>cloudbees-license</artifactId>
-            <version>9.54</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.nectar.plugins</groupId>
-            <artifactId>nectar-license</artifactId>
-            <version>8.31</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Admin monitors is in all our wars -->
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-administrative-monitors</artifactId>
-            <version>1.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Used only in CJE and CJOC -->
-        <dependency>
-            <groupId>com.cloudbees.jenkins.ha</groupId>
-            <artifactId>jenkins-ha-warhead</artifactId>
-            <version>${jenkins-ha.version}</version>
-        </dependency>
+    <!-- POM Relationships -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cloudbees.ci.unified-release</groupId>
+        <artifactId>products</artifactId>
+        <version>2.375.3.4</version>
+    </parent>
+
+    <groupId>com.cloudbees.core.cloud</groupId>
+    <artifactId>managed-master</artifactId>
+
+    <dependencies>
 
         <dependency>
             <groupId>com.cloudbees.jenkins.infradna-backup</groupId>
             <artifactId>infradna-backup-warhead</artifactId>
-            <version>1.3.2</version>
         </dependency>
 
         <!-- OSS plugins, sort by groupId then artifactId -->
         <dependency>
             <groupId>com.coravy.hudson.plugins.github</groupId>
             <artifactId>github</artifactId>
-            <version>1.33.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
-            <artifactId>okhttp-api</artifactId>
-            <version>3.14.9</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.main</groupId>
-            <artifactId>maven-plugin</artifactId>
-            <version>3.10</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>active-directory</artifactId>
-            <version>2.24</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>apache-httpcomponents-client-4-api</artifactId>
-            <version>4.5.13-1.0</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>ant</artifactId>
-            <version>1.11</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>antisamy-markup-formatter</artifactId>
-            <version>2.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>authentication-tokens</artifactId>
-            <version>1.4</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
-            <artifactId>artifact-manager-s3</artifactId>
-            <version>1.15</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>aws-credentials</artifactId>
-            <version>1.29</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>aws-java-sdk</artifactId>
-            <version>1.11.995</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
-            <artifactId>aws-global-configuration</artifactId>
-            <version>1.6</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
-            <artifactId>caffeine-api</artifactId>
-            <version>2.9.1-23.v51c4e2c879c8</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
-            <artifactId>jaxb</artifactId>
-            <version>2.3.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.11.2-5.143e44951c52</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
-            <artifactId>snakeyaml-api</artifactId>
-            <version>1.27.0</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>azure-publishersettings-credentials</artifactId>
-            <version>1.5</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>bouncycastle-api</artifactId>
-            <version>2.20</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>branch-api</artifactId>
-            <version>2.6.3</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>build-timeout</artifactId>
-            <version>1.20</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-            <version>2.9.8</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>cloudbees-folder</artifactId>
-            <version>6.15</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>command-launcher</artifactId>
-            <version>1.6</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>conditional-buildstep</artifactId>
-            <version>1.4.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>config-file-provider</artifactId>
-            <version>3.7.2</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins</groupId>
             <artifactId>configuration-as-code</artifactId>
-            <version>1.50</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>ionicons-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>okhttp-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>snakeyaml-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+            <artifactId>mina-sshd-api-common</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+            <artifactId>mina-sshd-api-core</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+            <artifactId>mina-sshd-api-scp</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+            <artifactId>mina-sshd-api-sftp</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.csanchez.jenkins.plugins</groupId>
+            <artifactId>kubernetes</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.main</groupId>
+            <artifactId>maven-plugin</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>active-directory</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>ant</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>antisamy-markup-formatter</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jenkins-ci.plugins</groupId>
+          <artifactId>apache-httpcomponents-client-4-api</artifactId>
+          <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>artifact-manager-s3</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>caffeine-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>jakarta-activation-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>jakarta-mail-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>javax-activation-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>javax-mail-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>jaxb</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>authentication-tokens</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>aws-credentials</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+            <artifactId>aws-java-sdk-ec2</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+            <artifactId>aws-java-sdk-elasticbeanstalk</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+            <artifactId>aws-java-sdk-minimal</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>aws-global-configuration</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>bouncycastle-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>branch-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>cloudbees-folder</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>command-launcher</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>config-file-provider</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>credentials</artifactId>
-            <version>2.4.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>credentials-binding</artifactId>
-            <version>1.24</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>copyartifact</artifactId>
-            <version>1.46</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>dashboard-view</artifactId>
-            <version>2.16</version>
             <type>hpi</type>
             <scope>provided</scope>
             <exclusions>
@@ -349,477 +262,325 @@
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>deployer-framework</artifactId>
-            <version>1.3</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>deployed-on-column</artifactId>
-            <version>1.8</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>display-url-api</artifactId>
-            <version>2.3.4</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>docker-build-publish</artifactId>
-            <version>1.3.3</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>docker-commons</artifactId>
-            <version>1.17</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>docker-workflow</artifactId>
-            <version>1.26</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>dockerhub-notification</artifactId>
-            <version>2.5.2</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>durable-task</artifactId>
-            <version>1.35</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>ec2</artifactId>
-            <version>1.59</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>email-ext</artifactId>
-            <version>2.82</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>external-monitor-job</artifactId>
-            <version>1.7</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>git</artifactId>
-            <version>4.7.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>git-client</artifactId>
-            <version>3.7.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>git-server</artifactId>
-            <version>1.9</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>github-api</artifactId>
-            <version>1.123</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>github-branch-source</artifactId>
-            <version>2.10.4</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>google-compute-engine</artifactId>
-            <version>4.3.8</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>google-kubernetes-engine</artifactId>
-            <version>0.8.6</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>google-metadata-plugin</artifactId>
-            <version>0.3.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>google-oauth-plugin</artifactId>
-            <version>1.0.5</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>google-storage-plugin</artifactId>
-            <version>1.5.4</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>gradle</artifactId>
-            <version>1.36</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>handy-uri-templates-2-api</artifactId>
-            <version>2.1.8-1.0</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.modules</groupId>
+            <artifactId>instance-identity</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>jackson2-api</artifactId>
-            <version>2.12.3</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>jacoco</artifactId>
-            <version>3.2.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>javadoc</artifactId>
-            <version>1.6</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>jdk-tool</artifactId>
-            <version>1.5</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>jsch</artifactId>
-            <version>0.1.55.2</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>junit</artifactId>
-            <version>1.49</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.csanchez.jenkins.plugins</groupId>
-            <artifactId>kubernetes</artifactId>
-            <version>1.29.4</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>kubernetes-client-api</artifactId>
-            <version>4.13.2-1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkinsci.plugins</groupId>
-            <artifactId>kubernetes-credentials</artifactId>
-            <version>0.8.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>ldap</artifactId>
-            <version>2.6</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>mailer</artifactId>
-            <version>1.34</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>mapdb-api</artifactId>
-            <version>1.0.9.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>matrix-auth</artifactId>
-            <version>2.6.6</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>matrix-project</artifactId>
-            <version>1.18</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>mercurial</artifactId>
-            <version>2.14</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>metrics</artifactId>
-            <version>4.0.2.7</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>msbuild</artifactId>
-            <version>1.30</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>mstestrunner</artifactId>
-            <version>1.3.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>nodejs</artifactId>
-            <version>1.4.0</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>node-iterator-api</artifactId>
-            <version>1.5.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>oauth-credentials</artifactId>
-            <version>0.4</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>pam-auth</artifactId>
-            <version>1.6</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>parameterized-trigger</artifactId>
-            <version>2.40</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>plain-credentials</artifactId>
-            <version>1.7</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>promoted-builds</artifactId>
-            <version>3.9.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>run-condition</artifactId>
-            <version>1.5</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>s3</artifactId>
-            <version>0.11.7</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>saml</artifactId>
-            <version>2.0.3</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>scm-api</artifactId>
-            <version>2.6.4</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>script-security</artifactId>
-            <version>1.76</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>secure-requester-whitelist</artifactId>
-            <version>1.6</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>ssh-agent</artifactId>
-            <version>1.22</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>ssh-credentials</artifactId>
-            <version>1.18.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.modules</groupId>
-            <artifactId>sshd</artifactId>
-            <version>3.0.3</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>ssh-slaves</artifactId>
-            <version>1.31.5</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>structs</artifactId>
-            <version>1.23</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>trilead-api</artifactId>
-            <version>1.0.13</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>token-macro</artifactId>
-            <version>2.15</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>unique-id</artifactId>
-            <version>2.2.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>variant</artifactId>
-            <version>1.4</version>
+            <artifactId>node-iterator-api</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>view-job-filters</artifactId>
-            <version>2.3</version>
+            <artifactId>plain-credentials</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>windows-slaves</artifactId>
-            <version>1.8</version>
+            <artifactId>s3</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>saml</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>scm-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>script-security</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>secure-requester-whitelist</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>ssh-agent</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>ssh-credentials</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>ssh-slaves</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.modules</groupId>
+            <artifactId>sshd</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>structs</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>suppress-stack-trace</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>token-macro</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.ui</groupId>
             <artifactId>ace-editor</artifactId>
-            <version>1.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jenkins-ci.ui</groupId>
-            <artifactId>handlebars</artifactId>
-            <version>3.0.8</version>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>variant</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jenkins-ci.ui</groupId>
-            <artifactId>momentjs</artifactId>
-            <version>1.1.1</version>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>kubernetes-client-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkinsci.plugins</groupId>
+            <artifactId>kubernetes-credentials</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -827,150 +588,109 @@
         <!-- Pipeline Suite, sort by groupId then artifactId -->
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>pipeline-graph-analysis</artifactId>
-            <version>1.10</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>pipeline-build-step</artifactId>
-            <version>2.13</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>pipeline-github-lib</artifactId>
-            <version>1.0</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>pipeline-graph-analysis</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>pipeline-input-step</artifactId>
-            <version>2.12</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>pipeline-milestone-step</artifactId>
-            <version>1.3.2</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>pipeline-stage-step</artifactId>
-            <version>2.5</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-aggregator</artifactId>
-            <version>2.5</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-api</artifactId>
-            <version>2.42</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-basic-steps</artifactId>
-            <version>2.23</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-cps</artifactId>
-            <version>2.92</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-cps-global-lib</artifactId>
-            <version>2.19</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-durable-task-step</artifactId>
-            <version>2.39</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-job</artifactId>
-            <version>2.40</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-multibranch</artifactId>
-            <version>2.24</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-scm-step</artifactId>
-            <version>2.12</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-step-api</artifactId>
-            <version>2.23</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-support</artifactId>
-            <version>3.8</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.pipeline-stage-view</groupId>
             <artifactId>pipeline-rest-api</artifactId>
-            <version>${pipeline-stage-view.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.pipeline-stage-view</groupId>
             <artifactId>pipeline-stage-view</artifactId>
-            <version>${pipeline-stage-view.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- declarative migration plugin -->
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.to-declarative</groupId>
-            <artifactId>declarative-pipeline-migration-assistant</artifactId>
-            <version>${declarative-pipeline-migration-assistant.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jenkins-ci.plugins.to-declarative</groupId>
-            <artifactId>declarative-pipeline-migration-assistant-api</artifactId>
-            <version>${declarative-pipeline-migration-assistant.version}</version>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-aggregator</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-basic-steps</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-cps</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-durable-task-step</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-job</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-multibranch</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-scm-step</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-step-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-support</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -979,28 +699,38 @@
         <dependency>
             <groupId>org.jenkinsci.plugins</groupId>
             <artifactId>pipeline-model-api</artifactId>
-            <version>${pipeline-model-definition.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkinsci.plugins</groupId>
             <artifactId>pipeline-model-definition</artifactId>
-            <version>${pipeline-model-definition.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkinsci.plugins</groupId>
             <artifactId>pipeline-model-extensions</artifactId>
-            <version>${pipeline-model-definition.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkinsci.plugins</groupId>
             <artifactId>pipeline-stage-tags-metadata</artifactId>
-            <version>${pipeline-model-definition.version}</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- declarative migration plugin -->
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.to-declarative</groupId>
+            <artifactId>declarative-pipeline-migration-assistant</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.to-declarative</groupId>
+            <artifactId>declarative-pipeline-migration-assistant-api</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -1009,140 +739,114 @@
         <dependency>
             <groupId>io.jenkins.blueocean</groupId>
             <artifactId>blueocean</artifactId>
-            <version>${blueocean.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.blueocean</groupId>
             <artifactId>blueocean-bitbucket-pipeline</artifactId>
-            <version>${blueocean.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.blueocean</groupId>
             <artifactId>blueocean-commons</artifactId>
-            <version>${blueocean.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.blueocean</groupId>
             <artifactId>blueocean-config</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-dashboard</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-events</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-git-pipeline</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-github-pipeline</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-i18n</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-jira</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-jwt</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-personalization</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-pipeline-api-impl</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-pipeline-editor</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-pipeline-scm-api</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-rest</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-rest-impl</artifactId>
-            <version>${blueocean.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.blueocean</groupId>
-            <artifactId>blueocean-web</artifactId>
-            <version>${blueocean.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.blueocean</groupId>
             <artifactId>blueocean-core-js</artifactId>
-            <version>${blueocean.version}</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-dashboard</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-events</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-git-pipeline</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-github-pipeline</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-i18n</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-jwt</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-personalization</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-pipeline-api-impl</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-pipeline-editor</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-pipeline-scm-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-rest</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-rest-impl</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-web</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.blueocean</groupId>
             <artifactId>jenkins-design-language</artifactId>
-            <version>${blueocean.version}</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -1150,57 +854,37 @@
         <!-- Needed directly by Blue Ocean, sort by groupId then artifactId -->
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>blueocean-autofavorite</artifactId>
-            <version>1.2.4</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>blueocean-display-url</artifactId>
-            <version>2.4.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jvnet.hudson.plugins</groupId>
             <artifactId>favorite</artifactId>
-            <version>2.3.3</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>htmlpublisher</artifactId>
-            <version>1.25</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>jira</artifactId>
-            <version>3.3</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>pubsub-light</artifactId>
-            <version>1.13</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>sse-gateway</artifactId>
-            <version>1.24</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>timestamper</artifactId>
-            <version>1.12</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -1208,77 +892,78 @@
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>warnings-ng</artifactId>
-            <version>9.0.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>analysis-model-api</artifactId>
-            <version>10.0.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>bootstrap4-api</artifactId>
-            <version>4.6.0-3</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>bootstrap5-api</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>checks-api</artifactId>
-            <version>1.7.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>data-tables-api</artifactId>
-            <version>1.10.23-3</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>echarts-api</artifactId>
-            <version>5.0.2-1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>font-awesome-api</artifactId>
-            <version>5.15.2-2</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>forensics-api</artifactId>
-            <version>1.0.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>jquery3-api</artifactId>
-            <version>3.6.0-1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>plugin-util-api</artifactId>
-            <version>2.1.0</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>popper-api</artifactId>
-            <version>1.16.1-2</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>popper2-api</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -1287,350 +972,266 @@
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-aborted-builds</artifactId>
-            <version>1.14</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-aws-cli</artifactId>
-            <version>1.5.15</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-aws-deployer</artifactId>
-            <version>1.18</version>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>cloudbees-bitbucket-branch-source</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-blueocean-default-theme</artifactId>
-            <version>0.8</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-casc-api</artifactId>
-            <version>1.4</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-casc-server</artifactId>
-            <version>1.8</version>
+            <artifactId>cloudbees-casc-client</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-casc-items-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-casc-items-commons</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-casc-items-controller</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-cyberark-credentials</artifactId>
-            <version>1.0.9</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-folders-plus</artifactId>
-            <version>3.13</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-github-reporting</artifactId>
-            <version>1.22</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-groovy-view</artifactId>
-            <version>1.13</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-ha</artifactId>
-            <version>${jenkins-ha.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-jsync-archiver</artifactId>
-            <version>5.15</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-long-running-build</artifactId>
-            <version>1.16</version>
+            <artifactId>cloudbees-inactive-items</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-monitoring</artifactId>
-            <version>2.11</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>cloudbees-nodes-plus</artifactId>
-            <version>1.22</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-plugin-usage</artifactId>
-            <version>2.10</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-quiet-start</artifactId>
-            <version>1.7</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-platform-common</artifactId>
-            <version>1.11</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-unified-ui</artifactId>
-            <version>1.9</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-servicenow-jenkins-plugin</artifactId>
-            <version>1.2.14</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-slack</artifactId>
-            <version>1.16</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-ssh-slaves</artifactId>
-            <version>2.9</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-update-center-plugin</artifactId>
-            <version>4.59</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>cloudbees-view-creation-filter</artifactId>
-            <version>1.6</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>git-validated-merge</artifactId>
-            <version>3.30</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>github-pull-request-build</artifactId>
-            <version>1.13</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>kube-agent-management</artifactId>
-            <version>1.1.47</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>managed-master-hibernation</artifactId>
-            <version>1.5</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>openshift-cli</artifactId>
-            <version>1.9</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins</groupId>
-            <artifactId>user-activity-monitoring</artifactId>
-            <version>1.1.7</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins.data</groupId>
-            <artifactId>cloudbees-platform-data</artifactId>
-            <version>1.20</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins.notification</groupId>
-            <artifactId>external-notification</artifactId>
-            <version>1.5</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins.notification</groupId>
-            <artifactId>notification-api</artifactId>
-            <version>1.5</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins.notification</groupId>
-            <artifactId>operations-center-notification</artifactId>
-            <version>1.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins.notification</groupId>
-            <artifactId>pipeline-event-step</artifactId>
-            <version>1.8</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins.pipeline</groupId>
             <artifactId>cloudbees-pipeline-policies</artifactId>
-            <version>1.7</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-plugin-usage</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-quiet-start</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-platform-common</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-unified-ui</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-servicenow-jenkins-plugin</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-slack</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-ssh-slaves</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-view-creation-filter</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>kube-agent-management</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>managed-master-hibernation</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>openshift-cli</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>user-activity-monitoring</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins.data</groupId>
+            <artifactId>cloudbees-platform-data</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins.workflow</groupId>
             <artifactId>workflow-cps-checkpoint</artifactId>
-            <version>2.10</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins.workflow</groupId>
             <artifactId>cloudbees-workflow-ui</artifactId>
-            <version>2.6</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins.workflow</groupId>
             <artifactId>cloudbees-workflow-template</artifactId>
-            <version>3.12</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.nectar</groupId>
             <artifactId>nectar-rbac</artifactId>
-            <version>5.58</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.nectar.plugins</groupId>
-            <artifactId>cloudbees-even-scheduler</artifactId>
-            <version>3.10</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.nectar.plugins</groupId>
-            <artifactId>cloudbees-label-throttling-plugin</artifactId>
-            <version>3.8</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.nectar.plugins</groupId>
             <artifactId>cloudbees-template</artifactId>
-            <version>4.49</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.nectar.plugins</groupId>
             <artifactId>skip-plugin</artifactId>
-            <version>4.10</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.nectar.plugins</groupId>
-            <artifactId>wikitext</artifactId>
-            <version>3.13</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.tiger.plugins</groupId>
-            <artifactId>master-provisioning-core</artifactId>
-            <version>${master-provisioning.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.tiger.plugins</groupId>
-            <artifactId>master-provisioning-kubernetes</artifactId>
-            <version>${master-provisioning.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.infradna.hudson.plugins</groupId>
-            <artifactId>infradna-backup</artifactId>
-            <version>3.38.35</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>cloudbees-jenkins-advisor</artifactId>
-            <version>3.2.5</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins</groupId>
             <artifactId>trigger-restrictions</artifactId>
-            <version>1.6</version>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>trilead-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.infradna.hudson.plugins</groupId>
+            <artifactId>infradna-backup</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins</groupId>
+            <artifactId>cloudbees-restricted-credentials</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>cloudbees-jenkins-advisor</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Cross Team Collaboration -->
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins.notification</groupId>
+            <artifactId>notification-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins.notification</groupId>
+            <artifactId>operations-center-notification</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudbees.jenkins.plugins.notification</groupId>
+            <artifactId>pipeline-event-step</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -1639,105 +1240,24 @@
         <dependency>
             <groupId>com.cloudbees.operations-center.client</groupId>
             <artifactId>operations-center-client</artifactId>
-            <version>2.289.0.3</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.operations-center.client</groupId>
             <artifactId>operations-center-cloud</artifactId>
-            <version>2.289.0.2</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.operations-center.common</groupId>
             <artifactId>operations-center-agent</artifactId>
-            <version>2.289.0.2</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.operations-center.common</groupId>
             <artifactId>operations-center-context</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-elasticsearch-provider</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-clusterops</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-ec2-cloud</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-kubernetes-cloud</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-jnlp-controller</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-license</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-monitoring</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-rbac</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-server</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-sso</artifactId>
-            <version>2.289.0.2</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-updatecenter</artifactId>
-            <version>2.289.0.2</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -1745,59 +1265,7 @@
         <!-- Blue Steel, sort by groupId then artifactId -->
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins.bluesteel</groupId>
-            <artifactId>bluesteel-cjoc</artifactId>
-            <version>${bluesteel.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.jenkins.plugins.bluesteel</groupId>
             <artifactId>bluesteel-master</artifactId>
-            <version>${bluesteel.version}</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Operations Center Analytics - EOL July 2020 -->
-        <dependency>
-            <groupId>com.cloudbees.operations-center.client</groupId>
-            <artifactId>operations-center-analytics-reporter</artifactId>
-            <version>2.222.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.common</groupId>
-            <artifactId>operations-center-analytics-config</artifactId>
-            <version>2.222.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-analytics</artifactId>
-            <version>2.222.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-analytics-dashboards</artifactId>
-            <version>2.222.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-analytics-viewer</artifactId>
-            <version>2.222.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-analytics-feeder</artifactId>
-            <version>2.222.0.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
@@ -1806,75 +1274,59 @@
         <dependency>
             <groupId>com.cloudbees.esr</groupId>
             <artifactId>esr-config</artifactId>
-            <version>2.263.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.esr</groupId>
-            <artifactId>esr-feeder</artifactId>
-            <version>2.263.0.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.esr</groupId>
             <artifactId>esr-reporter</artifactId>
-            <version>2.263.0.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.cloudbees.esr</groupId>
-            <artifactId>esr</artifactId>
-            <version>2.263.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-
 
         <!-- Tombstone plugins, sort by groupId then artifactId -->
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins.workflow</groupId>
             <artifactId>cloudbees-workflow-aggregator</artifactId>
-            <version>1.9.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.cloudbees.jenkins.plugins.workflow</groupId>
             <artifactId>cloudbees-workflow-rest-api</artifactId>
-            <version>1.9.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudbees.operations-center.server</groupId>
-            <artifactId>operations-center-embedded-elasticsearch</artifactId>
-            <version>2.73.0.1</version>
-            <type>hpi</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkinsci.plugins</groupId>
-            <artifactId>pipeline-model-declarative-agent</artifactId>
-            <version>1.1.1</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>electricflow</artifactId>
-            <version>1.1.23</version>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>suppress-stack-trace</artifactId>
-            <version>1.6</version>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>prism-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>pipeline-groovy-lib</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>commons-lang3-api</artifactId>
+            <type>hpi</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>commons-text-api</artifactId>
             <type>hpi</type>
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
 </project>
