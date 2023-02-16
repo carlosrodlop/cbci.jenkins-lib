@@ -7,11 +7,11 @@ library identifier: 'my-shared-libraries@demo', retriever: modernSCM(
 def configYaml = """---
 k8_agent_yaml : 'maven_kaniko_pod_cache'
 g_cred : '3750b7e0-1f59-465a-a9c2-1f8fdd742f00'
-g_repo : 'https://github.beescloud.com/support-team/simple-app-git.git'
+g_repo : 'https://github.acme.com/team-example/simple-app-git.git'
 g_branch : 'develop'
 d_path : 'src/main/docker/Dockerfile'
 d_latest : false
-d_registry : 'supportbeescloud'
+d_registry : 'acme-docker-registry.acme.com'
 """
 
 // Runing the CI Pipeline
