@@ -16,7 +16,6 @@ CloudBees CI admin repository that is compatible with `Jenkins Shared Libraries`
   - [Jenkins CLI](remote/cli)
   - [Jenkins API-REST](remote/rest-api)
 
-
 ## References
 
 - [CloudBees CI Workshops](https://cloudbees-ci.labs.cb-sa.io/)
