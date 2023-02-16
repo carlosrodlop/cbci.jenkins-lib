@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-1- Go to https://github.com/cloudbees/unified-release
-2- Select the product version via tags (e.g 2.375.3.4)
-3.-Copy here the parent and dependencies (e.g https://github.com/cloudbees/unified-release/blob/unified-release-2.375.3.4/products/core-mm/pom.xml)
--->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!-- POM Relationships -->
