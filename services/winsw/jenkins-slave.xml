@@ -41,7 +41,7 @@ THE SOFTWARE.
     The following value assumes that you have java in your PATH.
   -->
   <executable>C:\Program Files\Java\jre1.8.0_281\bin\java</executable>
-  <arguments>-Xrs -jar "%BASE%\agent.jar" -jnlpUrl https://example.support.beescloud.com/example-team/computer/GCP_Inbound/slave-agent.jnlp -secret 6c8c6c93bd27d1eea92e32ff3d7db95e8da8e87a6e8a153552ac5c5c4cedd2ee -workDir "C:\Users\crodriguezlopez\inbound-agent"</arguments>
+  <arguments>-Xrs -jar "%BASE%\agent.jar" -jnlpUrl https://example.com/example-team/computer/GCP_Inbound/slave-agent.jnlp -secret SECRETEXAMPLE -workDir "C:\Users\example-user\inbound-agent"</arguments>
   <!--
     interactive flag causes the empty black Java window to be displayed.
     I'm still debugging this.
