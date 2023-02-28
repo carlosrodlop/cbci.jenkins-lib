@@ -9,24 +9,12 @@ import com.google.common.base.Function
 final CloudBeesAssurance cap = CloudBeesAssurance.get()
 final Beekeeper beekeeper = cap.getBeekeeper()
 
-//enable
-
 if (beekeeper.isCap()) {
-    cap.configure(new Function<Config, Config>() {
+    def configure = cap.configure(new Function<Config, Config>() {
         @Override
         public Config apply(Config config) {
             return config.setCap(false)
         }
     })
-}
-
-//disable
-
-if (!beekeeper.isCap()) {
-    cap.configure(new Function<Config, Config>() {
-        @Override
-        public Config apply(Config config) {
-            return config.setCap(true)
-        }
-    })
+    configure
 }

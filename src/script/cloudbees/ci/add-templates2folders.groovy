@@ -16,7 +16,7 @@ processingFlag = false
 
 // A - Getting items from the jenkins instance
 
-jenkins = Jenkins.instance
+jenkins = Jenkins.instanceOrNull
 jenkinsTemplates = jenkins.getAllItems(Model)
 jenkinsFolders = jenkins.getAllItems(Folder)
 
@@ -25,7 +25,7 @@ jenkinsFolders = jenkins.getAllItems(Folder)
 if (jenkinsTemplates.size() > 0) {
     jenkinsTemplates.each{ template ->
         // println "[DEBUG]: "+template.id
-        // Each job Teampletes is consider by jenkins as 1 type of jobs
+        // Each job Templetes is consider by jenkins as 1 type of jobs
         allowedTypes.add(template.id)
     }
 } else {
