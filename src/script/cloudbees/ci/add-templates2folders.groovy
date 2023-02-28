@@ -1,4 +1,5 @@
-﻿package script.cloudbees.ci
+﻿/* groovylint-disable CompileStatic, CouldBeElvis, DuplicateNumberLiteral, ExplicitCallToEqualsMethod, ExplicitTreeSetInstantiation, LineLength, SpaceAroundClosureArrow, UnnecessaryGetter */
+package script.cloudbees.ci
 
 import jenkins.model.*
 import hudson.model.*
@@ -8,17 +9,16 @@ import com.cloudbees.hudson.plugins.folder.properties.SubItemFilterProperty
 
 // PARAMETER
 // Note the structure of the Folder item in terms of file system
-def pFolders = "job/TemplateFolder/job/templateFolder/job/OutputFolder3/"
+pFolders = 'job/TemplateFolder/job/templateFolder/job/OutputFolder3/'
 
 Set<String> allowedTypes = new TreeSet <String>()
-def processingFlag = false
-
+processingFlag = false
 
 // A - Getting items from the jenkins instance
 
-def jenkins = Jenkins.instance
-def jenkinsTemplates = jenkins.getAllItems(Model.class)
-def jenkinsFolders = jenkins.getAllItems(Folder.class)
+jenkins = Jenkins.instance
+jenkinsTemplates = jenkins.getAllItems(Model)
+jenkinsFolders = jenkins.getAllItems(Folder)
 
 // B - Preparing templates element for assignating them to pFolder
 
@@ -29,7 +29,7 @@ if (jenkinsTemplates.size() > 0) {
         allowedTypes.add(template.id)
     }
 } else {
-    println "[ERROR]: There are not job templates available in this instance"
+    println '[ERROR]: There are not job templates available in this instance'
 }
 
 //c - Assigning templates  to pFolder
@@ -37,23 +37,25 @@ if (jenkinsTemplates.size() > 0) {
 if (jenkinsFolders.size() > 0) {
     //if the instance contains template
     if (allowedTypes.size() > 0) {
-        jenkinsFolders.each{ folder->
+        jenkinsFolders.each { folder->
             //filter example
-            if ((folder.url).equals(pFolders)){
+            if ((folder.url).equals(pFolders)) {
                 // println "[DEBUG]: "+folder.url
-                def filterProp = new SubItemFilterProperty(allowedTypes)
+                filterProp = new SubItemFilterProperty(allowedTypes)
                 folder.getProperties().add(filterProp)
                 jenkins.save()
-                if (!processingFlag) processingFlag = true
+                if (!processingFlag) {
+                    processingFlag = true
+                }
                 println "[INFO]: This instance's Templates has been added as Item Filter property for pFolders: '$pFolders'"
-                println "Note: Just has been added those templates at the same node level of pFolder or highest level in terms of tree depth"
+                println 'Note: Just has been added those templates at the same node level of pFolder or highest level in terms of tree depth'
             }
         }
     }
 } else {
-    println "[ERROR]: There are not folders available in this instance"
+    println '[ERROR]: There are not folders available in this instance'
 }
 
-if (!processingFlag){
-    println "[ERROR]: The folder url '$pFolders' is not available in this instance"
+if (!processingFlag) {
+    println '[ERROR]: The folder url [$pFolders] is not available in this instance'
 }

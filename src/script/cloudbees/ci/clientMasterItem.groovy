@@ -1,4 +1,5 @@
-﻿package script.cloudbees.ci
+﻿/* groovylint-disable CompileStatic, UnnecessarySetter */
+package script.cloudbees.ci
 
 // Imports
 import com.cloudbees.opscenter.server.model.ClientMaster
@@ -8,9 +9,9 @@ import com.cloudbees.opscenter.server.properties.ConnectedMasterLicenseServerPro
 import com.cloudbees.opscenter.server.config.ConnectedMasterWebSocketProperty
 
 // Input parameters
-def clientMasterName = "my-client-master_demo"
-def clientMasterId = 5
-def clientMasterGrantId = "fjs2ktwfgd"
+clientMasterName = 'my-client-master_demo'
+clientMasterId = 5
+clientMasterGrantId = 'fjs2ktwfgd'
 
 // Create Client Master Declaration
 ClientMaster cm = OperationsCenter.instance.createClientMaster(clientMasterName)
@@ -27,12 +28,12 @@ cm.properties.replace(new ConnectedMasterLicenseServerProperty(null))
 cm.properties.push(new  ConnectedMasterWebSocketProperty(true))
 cm.save()
 
-if (OperationsCenter.instance.getConnectedMasterByName(cm.idName)!=null){
+if (OperationsCenter.instance.getConnectedMasterByName(cm.idName) != null) {
     println "Created ClientMaster '${cm.name}' known as '${cm.idName}'"
     println "-DMASTER_INDEX=${cm.id}'"
     println "-DMASTER_NAME=${cm.name}'"
     println "-DMASTER_GRANT_ID=${cm.grantId}'"
 } else {
-    println "[ERROR:]" + clientMasterName + "has not been created in CJOC"
+    println '[ERROR:] $clientMasterName has not been created in CJOC'
 }
 return
