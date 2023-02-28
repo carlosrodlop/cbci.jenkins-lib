@@ -4,17 +4,13 @@
 
 [![Baywatch](img/baywatch/Jenkins_Support_Baywatch_flags.png)](img/baywatch/)
 
-CloudBees CI admin repository that is compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
+CloudBees CI admin library is separated into 2 branches:
 
-- [Jenkinsfile](pipelines)
-- [Jenkins Shared Libraries](vars)
-  - [K8](resources/k8s)
-  - [Docker](resources/docker)
-- [Groovy automation](src)
-- [CloudBees Pipeline Templates Catalog](templates)
-- [Operate Remotely with CloudBeesCI](remote)
-  - [Jenkins CLI](remote/cli)
-  - [Jenkins API-REST](remote/rest-api)
+- [pipelines](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/pipelines): Compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
+- [main](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/main): Admin resources beyond the pipeline scope.
+  - [Operate Remotely with CloudBeesCI](remote)
+    - [Jenkins CLI](remote/cli)
+    - [Jenkins API-REST](remote/rest-api)
 
 ## References
 
