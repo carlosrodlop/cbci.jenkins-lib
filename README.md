@@ -7,14 +7,11 @@
 CloudBees CI admin library is separated into 2 branches:
 
 - [main](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/main): Admin resources beyond the Pipeline scope.
+  - [Operate Remotely with CloudBeesCI](remote)
+    - [Jenkins CLI](remote/cli)
+    - [Jenkins API-REST](remote/rest-api)
+  - [Groovy scripts automation](src/script)
 - [pipelines](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/pipelines): Compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
-
-## main
-
-- [Operate Remotely with CloudBeesCI](remote)
-  - [Jenkins CLI](remote/cli)
-  - [Jenkins API-REST](remote/rest-api)
-- [Groovy scripts automation](src/script)
 
 ## References
 
