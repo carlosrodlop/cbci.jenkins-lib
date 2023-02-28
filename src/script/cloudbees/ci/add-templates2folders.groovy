@@ -1,4 +1,4 @@
-﻿/* groovylint-disable CompileStatic, CouldBeElvis, DuplicateNumberLiteral, ExplicitCallToEqualsMethod, ExplicitTreeSetInstantiation, LineLength, SpaceAroundClosureArrow, UnnecessaryGetter */
+﻿/* groovylint-disable CompileStatic, CouldBeElvis, DuplicateNumberLiteral, ExplicitCallToEqualsMethod, ExplicitTreeSetInstantiation, LineLength, SpaceAroundClosureArrow, UnnecessaryGetter, UnnecessarySetter */
 package script.cloudbees.ci
 
 import jenkins.model.*

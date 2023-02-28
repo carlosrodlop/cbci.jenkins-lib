@@ -8,3 +8,4 @@ message = 'foo'
 Jenkins jenkins = Jenkins.instanceOrNull
 jenkins.setSystemMessage(message)
 jenkins.save()
+null

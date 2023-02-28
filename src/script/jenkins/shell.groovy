@@ -19,3 +19,4 @@ println 'OUTPUT:\n' +
         "$soutf\n" +
         'ERROR:\n' +
         "$serrf\n"
+null

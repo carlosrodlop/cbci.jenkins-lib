@@ -1,4 +1,4 @@
-/* groovylint-disable CompileStatic */
+/* groovylint-disable CompileStatic, NoWildcardImports */
 package script.jenkins
 
 import javax.xml.transform.stream.*
@@ -7,7 +7,6 @@ import java.nio.charset.StandardCharsets
 paramName = '<oldTag>oldValue</oldTag>'
 newParamName = '<newTag>newValue</newTag>'
 paramJobName = 'job2update'
-
 
 Jenkins.instance.getAllItems(Job).each { j ->
     if (j.name == paramJobName) {
@@ -19,3 +18,4 @@ Jenkins.instance.getAllItems(Job).each { j ->
         j.updateByXml(new StreamSource(stream))
     }
 }
+null

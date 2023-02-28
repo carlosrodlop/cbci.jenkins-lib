@@ -1,4 +1,4 @@
-/* groovylint-disable CompileStatic, NestedForLoop, UnnecessaryGetter */
+/* groovylint-disable CompileStatic, DuplicateNumberLiteral, NestedForLoop, NoWildcardImports, UnnecessaryGetter */
 package script.jenkins.remoting
 
 import jenkins.model.*
@@ -17,3 +17,4 @@ for (agent in jenkins.getNodes()) {
         }
     }
 }
+null
