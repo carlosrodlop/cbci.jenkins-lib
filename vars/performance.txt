@@ -1,0 +1,12 @@
+<h2>performance</h2>
+<h3>Configuration</h3>
+<dl>
+	<dt>mode</dt>
+	<dd>Different types of collecting data</dd>
+</dl>
+
+<h3>Example:</h3>
+<pre>
+	performance(1) for cpu
+	performance(2) for memory
+</pre>
