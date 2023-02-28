@@ -1,3 +1,4 @@
+/* groovylint-disable CompileStatic, DuplicateStringLiteral, NestedBlockDepth */
 pipeline {
     agent {
         label 'default-java'
@@ -12,7 +13,7 @@ pipeline {
         stage('Integration tests and Sonar') {
             parallel {
                 stage('Sonar') {
-                   agent {
+                    agent {
                         label 'default-java'
                     }
                     steps {
@@ -20,8 +21,8 @@ pipeline {
                             unstash 'built-workspace'
                             sh 'ls'
                             sh 'cat ostechnix.txt'
-                            }
                         }
+                    }
                 }
                 stage('Run UI tests') {
                     agent {
@@ -34,11 +35,11 @@ pipeline {
                                 unstash 'built-workspace'
                                 bat 'dir'
                                 bat 'type ostechnix.txt'
-                                }
                             }
                         }
                     }
                 }
             }
+        }
     }
 }

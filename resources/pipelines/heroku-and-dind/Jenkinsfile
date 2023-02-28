@@ -1,7 +1,8 @@
+/* groovylint-disable CompileStatic */
 pipeline {
-  agent {
-    kubernetes {
-      yaml """
+    agent {
+        kubernetes {
+            yaml '''
 apiVersion: v1
 kind: Pod
 metadata:
@@ -12,7 +13,7 @@ spec:
   - image: "docker:18.06.1-ce-dind"
     name: "dind"
     securityContext:
-     privileged: true
+      privileged: true
     tty: true
     volumeMounts:
     - mountPath: "/home/jenkins/agent"
@@ -35,19 +36,19 @@ spec:
       name: "workspace-volume"
       readOnly: false
     workingDir: "/home/jenkins/agent"
-"""
-    }
-  }
-  stages {
-    stage('Hello World') {
-      steps {
-        container('heroku') {
-           sh 'heroku --version'
+'''
         }
-        container('dind') {
-          sh 'docker info'
-        }
-      }
     }
-  }
+    stages {
+        stage('Hello World') {
+            steps {
+                container('heroku') {
+                    sh 'heroku --version'
+                }
+                container('dind') {
+                    sh 'docker info'
+                }
+            }
+        }
+    }
 }
