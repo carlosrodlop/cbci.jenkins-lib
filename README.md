@@ -15,3 +15,14 @@ CloudBees CI admin library is separated into 2 branches:
       - [Bash scripts](resources/bash)
   - [CloudBees Pipeline Templates Catalog](templates)
 - [main](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/main): Admin resources beyond the pipeline scope.
+
+## References
+
+- [darinpope - jenkinsfile-library](https://github.com/darinpope/jenkinsfile-library)
+- [darinpope - jenkinsfile-example-*](https://github.com/darinpope?language=&page=2&q=jenkins-example&sort=&tab=repositories)
+- [vfarcic - jenkins-shared-libraries](https://github.com/vfarcic/jenkins-shared-libraries)
+
+## Blog post
+
+- [Template Catalog: Welcome to the Pipeline as Code Family](https://www.cloudbees.com/blog/pipeline-as-code)
+- [Troubleshooting Jenkins Performance: Kubernetes Edition - Part 2](https://www.cloudbees.com/blog/application-performance-monitoring-tools)

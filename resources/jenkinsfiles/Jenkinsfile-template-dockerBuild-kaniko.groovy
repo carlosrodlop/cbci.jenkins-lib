@@ -1,8 +1,8 @@
 /* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength, NestedBlockDepth */
 // Loading Shared Libraries
 library identifier: 'my-shared-libraries@demo', retriever: modernSCM(
-  [$class: 'GitSCMSource',
-   remote: 'https://github.com/carlosrodlop/my-jenkins-demos.git'])
+    [$class: 'GitSCMSource',
+    remote: 'https://github.com/carlosrodlop/my-jenkins-demos.git'])
 
 // Building the data object
 configYaml = """---
@@ -59,7 +59,7 @@ pipeline {
                     if (DOCKER_IMAGE_LATEST == 'false') {
                         echo 'Tagging image with commit'
                         git_commit = sh(script: "git rev-parse --short=5 ${GIT_COMMIT}", returnStdout: true).trim()
-          } else {
+                    } else {
                         echo 'Tagging image as latest'
                         git_commit = 'latest'
                     }

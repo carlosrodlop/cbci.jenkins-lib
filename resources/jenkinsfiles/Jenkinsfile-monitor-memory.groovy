@@ -1,4 +1,4 @@
-/* groovylint-disable DuplicateStringLiteral, LineLength, UnnecessaryGetter */
+/* groovylint-disable DuplicateStringLiteral, LineLength, NestedBlockDepth, UnnecessaryGetter */
 // ====================================================================================
 // Pre-requisites:
 // 1) Create an Alert in CloudBees Monitoring - Memory above 90%
