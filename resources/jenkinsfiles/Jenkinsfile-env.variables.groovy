@@ -18,7 +18,7 @@ pipeline {
                     //$JenkinsURL/pipeline-syntax/globals
                     GO_PIPELINE_NAME = env.JOB_BASE_NAME
                     // https://stackoverflow.com/a/43609466/2684377
-                    GO_TRIGGER_USER = currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
+                    GO_TRIGGER_USER = currentBuild.rawBuild.getCause(Cause.UserIdCause).userId
                     // https://github.com/jenkinsci/git-plugin#commit-variables
                     GO_REVISION = sh(script: "git rev-parse --short=5 ${GIT_COMMIT}", returnStdout: true).trim()
                 }
@@ -31,5 +31,4 @@ pipeline {
                 echo "GO_REVISION: ${GO_REVISION}"
             }
         }
-    }
 }
