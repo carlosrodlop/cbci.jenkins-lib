@@ -21,6 +21,7 @@ CloudBees CI admin library is separated into 2 branches:
 - [darinpope - jenkinsfile-library](https://github.com/darinpope/jenkinsfile-library)
 - [darinpope - jenkinsfile-example-*](https://github.com/darinpope?language=&page=2&q=jenkins-example&sort=&tab=repositories)
 - [vfarcic - jenkins-shared-libraries](https://github.com/vfarcic/jenkins-shared-libraries)
+- [cloudbees/intro-to-declarative-pipeline: A gentle introduction to developing Declarative Pipelines for Jenkins.](https://github.com/cloudbees/intro-to-declarative-pipeline)
 
 ## Blog post
 
