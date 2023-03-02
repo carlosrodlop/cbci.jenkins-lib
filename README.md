@@ -18,6 +18,10 @@ CloudBees CI admin library is separated into 2 branches:
 
 ## References
 
+- [CloudBees CI Workshops](https://cloudbees-ci.labs.cb-sa.io/)
+- [CloudBees CI Pipeline Workshop](https://cloudbees-ci-pipeline.labs.cb-sa.io/getting-started/)
+- [CloudBees Solutions Architecture Pipeline Examples](https://github.com/beedemo)
+- [Jenkins Demonstrations](https://github.com/jenkins-demo)
 - [darinpope - jenkinsfile-library](https://github.com/darinpope/jenkinsfile-library)
 - [darinpope - jenkinsfile-example-*](https://github.com/darinpope?language=&page=2&q=jenkins-example&sort=&tab=repositories)
 - [vfarcic - jenkins-shared-libraries](https://github.com/vfarcic/jenkins-shared-libraries)
