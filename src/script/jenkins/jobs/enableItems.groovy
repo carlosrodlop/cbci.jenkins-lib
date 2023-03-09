@@ -4,7 +4,6 @@
  */
 package script.jenkins.jobs
 
-import jenkins.model.*
 import com.cloudbees.hudson.plugins.folder.AbstractFolder
 
 ArrayList folders = ['folder-test']

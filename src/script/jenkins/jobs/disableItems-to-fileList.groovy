@@ -5,7 +5,6 @@
  */
 package script.jenkins.jobs
 
-import jenkins.model.*
 import com.cloudbees.hudson.plugins.folder.AbstractFolder
 
 pathToExistingDisabledItems = '/tmp/disabledItemsv3.txt'

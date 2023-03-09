@@ -1,8 +1,6 @@
 /* groovylint-disable CompileStatic, NestedForLoop, SimpleDateFormatMissingLocale, UnnecessaryGetter */
 package script.jenkins.remoting
 
-import jenkins.model.*
-import hudson.model.*
 import java.text.SimpleDateFormat
 
 date = new Date()

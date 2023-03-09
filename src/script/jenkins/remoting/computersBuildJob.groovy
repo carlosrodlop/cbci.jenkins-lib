@@ -1,9 +1,6 @@
 /* groovylint-disable CompileStatic, DuplicateNumberLiteral, NestedForLoop, NoWildcardImports, UnnecessaryGetter */
 package script.jenkins.remoting
 
-import jenkins.model.*
-import hudson.model.*
-
 jenkins = Jenkins.instanceOrNull
 for (agent in jenkins.getNodes()) {
     Computer computer = agent.computer
