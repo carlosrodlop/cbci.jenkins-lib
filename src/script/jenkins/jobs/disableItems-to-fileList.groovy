@@ -7,7 +7,7 @@ package script.jenkins.jobs
 
 import com.cloudbees.hudson.plugins.folder.AbstractFolder
 
-pathToExistingDisabledItems = '/tmp/disabledItemsv3.txt'
+pathToExistingDisabledItems = '/tmp/disabledItems.txt'
 jenkins = Jenkins.instanceOrNull
 file = new File(pathToExistingDisabledItems)
 disabledItems = new StringBuilder()
