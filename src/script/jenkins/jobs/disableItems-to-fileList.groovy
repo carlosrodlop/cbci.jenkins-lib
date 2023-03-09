@@ -1,5 +1,6 @@
 /* groovylint-disable CompileStatic, ImplicitClosureParameter, Instanceof, UnnecessaryGetter */
 /*
+ * It saves existing disabled items in a txt file passed as parameter (pathToExistingDisabledItems)
  * Tested on CloudBees CI Managed Controller 2.375.2.3
  */
 package script.jenkins.jobs
