@@ -1,6 +1,6 @@
 /* groovylint-disable CompileStatic, Instanceof, UnnecessaryGetter */
 /*
- * Tested on CloudBees CI Managed Controller 2.375.2.3-rolling
+ * Tested on CloudBees CI Managed Controller 2.375.2.3
  */
 package script.jenkins.jobs
 
