@@ -15,7 +15,9 @@ CloudBees CI admin library is separated into 2 branches:
 
 ## References
 
+- [Jenkins Javadoc](https://javadoc.jenkins.io/)
 - [Script Console](https://www.jenkins.io/doc/book/managing/script-console/)
+- [Script Console - Example of groovy scripts](https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts)
 - [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html)
 - [cloudbees: jenkins-scripts](https://github.com/cloudbees/jenkins-scripts)
 - [jenkinsci: jenkins-scripts](https://github.com/jenkinsci/jenkins-scripts/tree/master/scriptler)
