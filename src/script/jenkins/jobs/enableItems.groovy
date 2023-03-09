@@ -20,9 +20,9 @@ for (String folder : folders) {
         targetFolder.getAllItems().findAll{ it instanceof ParameterizedJobMixIn.ParameterizedJob || it instanceof AbstractFolder }.each {
             if (!dryRun) {
                 it.makeDisabled(disable)
-              	println("Item [$it.fullName] has been set Disable to $disable")
+                  println("Item [$it.fullName] has been set Disable to $disable")
             } else {
-              	println("Item [$it.fullName] would be a candidate to set Disable to $disable in case dryRun=false")
+                  println("Item [$it.fullName] would be a candidate to set Disable to $disable in case dryRun=false")
             }
         }
   } else {
