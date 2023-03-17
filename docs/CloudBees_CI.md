@@ -3,9 +3,7 @@
 ## Index
 
 1. [Logs](#logs)
-2. [Jenkins_Debug](#jenkins_debug)
-3. [Traditional_Service_File](#traditional_service_file)
-4. [References](#references)
+2. [Debugging](#jenkins_debug)
 
 ## Logs
 
