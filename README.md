@@ -18,6 +18,11 @@ CloudBees CI admin library is separated into 2 branches:
   - [Groovy scripts automation](src/script)
 - [pipelines](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/pipelines): Compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
 
+For Configuration as Code there are separate repositories:
+
+- [carlosrodlop/cb-casc-oc](https://github.com/carlosrodlop/cb-casc-oc)
+- [carlosrodlop/cb-casc-controllers](https://github.com/carlosrodlop/cb-casc-oc)
+
 ## Awesome
 
 - [Awesome Jenkins / CloudBees CI Repos](https://github.com/stars/carlosrodlop/lists/jenkins-cloudbees-ci)
