@@ -1,8 +1,13 @@
-# CBCI Admins Labs - `main`
+# CBCI Admins Library - `main`
 
-[![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets)
+<p align="center">
+  <img alt="terraform-icon" src="img/baywatch/Jenkins_Support_Baywatch_flags.png" height="160" />
+  <p align="center">Welcome to my CBCI Admins Library, a storage place for my assets related to my journey around Jenkins and CloudBees CI Administration</p>
+</p>
 
-[![Baywatch](img/baywatch/Jenkins_Support_Baywatch_flags.png)](img/baywatch/)
+---
+
+[![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
 
 CloudBees CI admin library is separated into 2 branches:
 
@@ -13,7 +18,7 @@ CloudBees CI admin library is separated into 2 branches:
   - [Groovy scripts automation](src/script)
 - [pipelines](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/pipelines): Compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
 
-## References
+## Awesome
 
 - [Awesome Jenkins / CloudBees CI Repos](https://github.com/stars/carlosrodlop/lists/jenkins-cloudbees-ci)
 - [CloudBees Docs](https://aws.amazon.com/)
