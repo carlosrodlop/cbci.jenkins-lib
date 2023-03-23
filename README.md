@@ -2,7 +2,7 @@
 
 <p align="center">
   <img alt="terraform-icon" src="img/baywatch/Jenkins_Support_Baywatch_flags.png" height="160" />
-  <p align="center">Welcome to my CBCI Admins Library, a storage place for my assets related to my journey around Jenkins and CloudBees CI Administration</p>
+  <p align="center">Welcome to the main section of my CBCI Admins Library, a storage place for my assets related to my journey around Jenkins and CloudBees CI Administration</p>
 </p>
 
 ---
