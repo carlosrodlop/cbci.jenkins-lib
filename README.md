@@ -2,7 +2,7 @@
 
 <p align="center">
   <img alt="pipeline-icon" src="https://www.jenkins.io/images/logos/plumber/plumber.png" height="160" />
-  <p align="center">Welcome to my CloudBees CI Pipelines Library, a storage place for my assets related to my journey around CloudBees CI Pipelines</p>
+  <p align="center">Welcome to the pipeline section of the CloudBees CI Admin Library, a storage place for my assets related to my journey around CloudBees CI Pipelines</p>
 </p>
 
 ---
