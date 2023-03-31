@@ -20,7 +20,7 @@ def call(configYaml) {
                           tty: true
                         '''
                     retries 2
-                    defaultcontainer 'stress'
+                    defaultContainer 'stress'
                     }
                 }
         triggers {
