@@ -1,5 +1,4 @@
 /* groovylint-disable DuplicateStringLiteral, NestedBlockDepth */
-// vars/performance.groovy
 
 import java.lang.management.ManagementFactory
 
