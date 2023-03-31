@@ -23,10 +23,10 @@ def call(configYaml) {
                         spec:
                             containers:
                             - name: maven
-                            image: maven:alpine
-                            command:
-                            - cat
-                            tty: true
+                              image: maven:alpine
+                              command:
+                               - cat
+                              tty: true
                         '''
                     retries 2
                     }
@@ -57,10 +57,10 @@ def call(configYaml) {
                         spec:
                             containers:
                             - name: busybox
-                            image: busybox
-                            command:
-                            - cat
-                            tty: true
+                              image: busybox
+                              command:
+                              - cat
+                              tty: true
                         '''
                     retries 2
                     defaultContainer 'busybox'
