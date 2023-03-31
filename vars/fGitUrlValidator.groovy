@@ -1,4 +1,3 @@
-// vars/gitUrlValidator.groovy
 def call(paramName, paramValue, org, apiUri) {
   if (!org || !apiUri){
     if (! paramValue.startsWith("https") || ! paramValue.endsWith (".git")){
