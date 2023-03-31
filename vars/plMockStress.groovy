@@ -4,7 +4,8 @@ def call(configYaml) {
 
     pipeline {
         environment {
-            SLEEP_SEC = "${config.sleepTime}"
+            TIMEOUT = "${config.timeout}"
+            CPU = "${config.cpu}"
         }
         agent {
             kubernetes {
@@ -31,7 +32,7 @@ def call(configYaml) {
                 steps {
                     sh """
                         uptime
-                        sudo stress --cpu  8 --timeout 20
+                        stress --cpu ${CPU} --timeout ${TIMEOUT}
                         uptime
                     """
                 }
