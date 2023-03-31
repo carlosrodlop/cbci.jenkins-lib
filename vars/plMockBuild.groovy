@@ -13,7 +13,7 @@ def call(configYaml) {
             }
 
             stage('Build') {
-                mockLoad config.downloadTime
+                mockLoad config.buildTime
             }
         }
 
