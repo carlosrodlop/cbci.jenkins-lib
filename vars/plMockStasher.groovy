@@ -60,7 +60,7 @@ def call(configYaml) {
                               image: busybox
                               command:
                               - cat
-                            tty: true
+                              tty: true
                         '''
                     retries 2
                     defaultContainer 'busybox'
