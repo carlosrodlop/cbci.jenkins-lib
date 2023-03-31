@@ -5,7 +5,10 @@ def call(configYaml) {
     pipeline {
         agent none
         environment {
-            SLEEP_SEC = config.sleepTime
+            SLEEP_SEC = "${config.sleepTime}"
+        }
+        triggers {
+            eventTrigger jmespathQuery("eventName=='${config.eventName}'")
         }
         stages {
             stage('Build') {
