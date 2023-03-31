@@ -2,7 +2,7 @@ def call(configYaml) {
 
     Map config = readYaml text: "${configYaml}"
 
-   pipeline {
+    pipeline {
         environment {
             SLEEP_SEC = "${config.sleepTime}"
         }
@@ -34,7 +34,6 @@ def call(configYaml) {
                         sudo stress --cpu  8 --timeout 20
                         uptime
                     """
-                    }
                 }
             }
         }
