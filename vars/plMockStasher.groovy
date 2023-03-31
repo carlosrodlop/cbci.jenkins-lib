@@ -35,7 +35,7 @@ def call(configYaml) {
                     container('maven') {
                         sh """
                             mvn -version
-                            sleep ${SLEEP_SEC}
+                            sleep ${config.sleepTime}
                             dd if=/dev/zero of=mock.${BUILD_NUMBER}.dat  bs=${MOCK_DATA_SIZE}  count=1
                         """
                     stash name: 'stuff', includes: 'mock.*.dat'
@@ -89,7 +89,7 @@ def call(configYaml) {
                         steps {
                             dir ("unstash"){ // To avoid java.nio.file.AccessDeniedException
                                 unstash 'stuff'
-                                sh "sleep ${SLEEP_SEC}"
+                                sh "sleep ${config.sleepTime}"
                                 archiveArtifacts allowEmptyArchive: true, artifacts: 'mock.*.dat'
                             }
                         }
