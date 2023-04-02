@@ -7,7 +7,7 @@
 
 ---
 
-![GitHub Latest Release)](https://img.shields.io/github/v/release/carlosrodlop/cbci.jenkins-lib?logo=github) [GitHub Issues](https://img.shields.io/github/issues/carlosrodlop/cbci.jenkins-lib?logo=github) [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
+![GitHub Latest Release)](https://img.shields.io/github/v/release/carlosrodlop/cbci.jenkins-lib?logo=github) ![GitHub Issues](https://img.shields.io/github/issues/carlosrodlop/cbci.jenkins-lib?logo=github) [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
 
 CloudBees CI admin library is separated into 2 branches:
 
