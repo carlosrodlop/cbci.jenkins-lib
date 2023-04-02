@@ -7,12 +7,12 @@
 
 ---
 
-![GitHub Latest Release)](https://img.shields.io/github/v/release/carlosrodlop/cbci.jenkins-lib?logo=github)
+![GitHub Latest Release)](https://img.shields.io/github/v/release/carlosrodlop/cbci.jenkins-lib?logo=github) [GitHub Issues](https://img.shields.io/github/issues/carlosrodlop/cbci.jenkins-lib?logo=github)
 [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
 
 CloudBees CI admin library is separated into 2 branches:
 
-- [main](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/main): Admin resources beyond the Pipeline scope.
+- [main](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/main) (`YOU ARE HERE!`): Admin resources beyond the Pipeline scope.
   - [Operate Remotely with CloudBeesCI](remote)
     - [Jenkins CLI](remote/cli)
     - [Jenkins API-REST](remote/rest-api)
@@ -32,6 +32,7 @@ For Configuration as Code there are separate repositories:
 - [Old Jenkins Wiki](https://wiki.jenkins-ci.org/)
 - [Jenkins Instance Dogfooding](https://ci.jenkins.io/)
 - [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
+- [Continuous Delivery Landscape](https://landscape.cd.foundation/)
 
 ### Groovy
 
