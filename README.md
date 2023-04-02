@@ -6,13 +6,12 @@
 </p>
 
 ---
-
-![GitHub Latest Release)](https://img.shields.io/github/v/release/carlosrodlop/cbci.jenkins-lib?logo=github) [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
+![GitHub Latest Release)](https://img.shields.io/github/v/release/carlosrodlop/cbci.jenkins-lib?logo=github) ![GitHub Issues](https://img.shields.io/github/issues/carlosrodlop/cbci.jenkins-lib?logo=github) [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
 
 CloudBees CI admin library is separated into 2 branches:
 
 - [main](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/main): Admin resources beyond the pipeline scope.
-- [pipeline](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/pipelines/resources/docker/agents): Compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
+- [pipeline](https://github.com/carlosrodlop/cbci.jenkins-libs/tree/pipelines/resources/docker/agents) (`YOU ARE HERE!`): Compatible with `Jenkins Shared Libraries` and `CloudBees Pipeline Template Catalog` structures.
   - Jenkins Shared Libraries
     - [Global variables](vars)
     - [Source files](src)
@@ -28,7 +27,6 @@ CloudBees CI admin library is separated into 2 branches:
 - [CloudBees CI Workshops](https://cloudbees-ci.labs.cb-sa.io/)
 - [CloudBees CI Pipeline Workshop](https://cloudbees-ci-pipeline.labs.cb-sa.io/getting-started/)
 - [CloudBees Solutions Architecture Pipeline Examples](https://github.com/beedemo)
-- [Jenkins Demonstrations](https://github.com/jenkins-demo)
 - [darinpope - jenkinsfile-library](https://github.com/darinpope/jenkinsfile-library)
 - [darinpope - jenkinsfile-example-*](https://github.com/darinpope?language=&page=2&q=jenkins-example&sort=&tab=repositories)
 - [vfarcic - jenkins-shared-libraries](https://github.com/vfarcic/jenkins-shared-libraries)
