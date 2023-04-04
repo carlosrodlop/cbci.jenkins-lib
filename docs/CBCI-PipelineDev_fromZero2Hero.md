@@ -5,9 +5,11 @@
   <p align="center">Become a CloudBees CI Pipeline Ninja</p>
 </p>
 
+---
+
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition).
 
-## What Jenkins offers
+## Jenkins: The Open Source offering
 
 * Pipeline as Code
   * Pipeline Syntax: Scripted vs Declarative

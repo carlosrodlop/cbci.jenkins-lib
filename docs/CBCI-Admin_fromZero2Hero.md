@@ -5,9 +5,11 @@
   <p align="center">Get CI Superadmin powers</p>
 </p>
 
+---
+
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition).
 
-## Jenkins offering
+## Jenkins: The Open Source offering
 
 * LTS Jenkins Distribution
 * Installation
