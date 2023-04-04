@@ -9,7 +9,7 @@
 
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition).
 
-## Jenkins: The Open Source offering
+## Jenkins: Starting with the Open Source offering
 
 * LTS Jenkins Distribution
 * Installation
