@@ -83,6 +83,7 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * Trigger restrictions (restrict which upstream jobs are allowed to trigger builds of other jobs)
 
 * Developer productivity
+  * Cross Team collaboration
   * GitHub Apps: Receive and act upon granular, actionable build data directly in GitHub
   * Slack: Receive granular, actionable build data directly in Slack
   * Service Now: Create and manage ServiceNow change requests and incident tickets from your Pipeline
