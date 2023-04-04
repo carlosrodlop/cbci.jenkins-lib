@@ -10,7 +10,7 @@ def call(configYaml) {
         stages {
             stage ("Hello") {
                 steps {
-                    echo "Hello from Job ${PERSON_NAME}!"
+                    echo "Hello from Job ${JOB_NAME}!"
                 }
             }
         }
