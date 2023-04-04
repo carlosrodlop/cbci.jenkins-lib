@@ -1,15 +1,9 @@
-<h2>strNoSpacesValidator</h2>
-<h3>Configuration</h3>
-<dl>
-	<dt>paramName</dt>
-	<dd>Name of the parameter to validate</dd>
-</dl>
-<dl>
-	<dt>paramValue</dt>
-	<dd>Value of the parameter to validate</dd>
-</dl>
+It validates that there are no spaces between strings inside a String Buffer
 
-<h3>Example:</h3>
-<pre>
+Parameters:
+- paramName: Name of the parameter to validate</dd>
+- paramValue: Value of the parameter to validate</dd>
+
+Example:
+
 	strNoSpacesValidator("GitHub Repository Name", "My Repo Example ")
-</pre>

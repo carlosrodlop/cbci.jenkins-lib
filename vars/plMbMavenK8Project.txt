@@ -1,11 +1,8 @@
-<h2>mavenK8Project MultiBranch Pipeline</h2>
-<h3>Configuration</h3>
-<dl>
-	<dt>configYaml</dt>
-	<dd>Yaml Object containing the configuration a Maven Docker Apps in Kubernetes</dd>
-</dl>
+It is a CI pipeline for building Maven images on Kubernetes using Kaniko and storing in a Container Registry
 
-<h3>Example:</h3>
-<pre>
+Parameters:
+- configYaml: Yaml Object containing the configuration of a Maven Docker Apps in Kubernetes</dd>
+
+Example:
+
 	mavenK8Project(configYaml)
-</pre>

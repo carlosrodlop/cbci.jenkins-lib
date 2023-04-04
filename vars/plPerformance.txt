@@ -1,12 +1,10 @@
-<h2>performance</h2>
-<h3>Configuration</h3>
-<dl>
-	<dt>mode</dt>
-	<dd>Different types of collecting data</dd>
-</dl>
+It is a CI pipeline to collect jstack or heap data for Troubleshooting CPU or Memory respectively
 
-<h3>Example:</h3>
-<pre>
+Parameters
+
+- mode: Different types of collecting data. (1) for cpu and (2) for memory.
+
+Example:
+
 	performance(1) for cpu
 	performance(2) for memory
-</pre>
