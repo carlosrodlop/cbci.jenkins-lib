@@ -1,8 +1,8 @@
-# Pipeline Hero
+# CloudBees CI Pipeline Ninja
 
 <p align="center">
   <img alt="terraform-icon" src="https://wiki.jenkins-ci.org/JENKINS/attachments/2916393/75071688.svg" height="160" />
-  <p align="center">Become a CloudBees CI Pipeline Ninja</p>
+  <p align="center">This track is orientated to the CI Developer rol</p>
 </p>
 
 ---

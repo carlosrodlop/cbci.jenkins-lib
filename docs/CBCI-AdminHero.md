@@ -1,8 +1,8 @@
-# CI Admin Hero
+# CloudBees CI Admin Hero
 
 <p align="center">
   <img alt="terraform-icon" src="https://www.jenkins.io/images/logos/jenkins-is-the-way/jenkins-is-the-way.png" height="160" />
-  <p align="center">Get CI Superadmin powers</p>
+  <p align="center">This track is orientated to the CI Admin rol</p>
 </p>
 
 ---
