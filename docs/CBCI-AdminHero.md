@@ -49,7 +49,7 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
 
 ## CloudBees CI: Make Jenkins Administration more scalable and reliable 🚀
 
-* From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) that answers your questions, including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
+* From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Global Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) willing to answers your questions and helping your processes including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
   * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/) 🏥
   * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to collect data
 * Install CloudBees CI on:
