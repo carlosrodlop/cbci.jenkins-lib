@@ -7,7 +7,7 @@
 
 ---
 
-This is a story inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition). Technology integration choices cover the most common use cases based on the [Jenkins Stats](https://stats.jenkins.io/) and my experience working with customers but you can extend to your technology stack thanks to the 1800+ community-contributed Jenkins plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/).
+This is a story inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition). Technology integration choices cover the most common use cases based on the [Jenkins Stats](https://stats.jenkins.io/) and my experience working with customers but you can extend to your technology stack thanks to the 1800+ community-contributed Jenkins plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/)).
 
 ## Jenkins CI: Starting with the Open Source offering
 
