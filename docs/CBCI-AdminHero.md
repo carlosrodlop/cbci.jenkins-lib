@@ -43,7 +43,7 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html)
   * [Learn by examples](https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts)
 * Did you find any problem or issue until this point?
-  * Find your answers within the [community](https://community.jenkins.io/).
+  * Find your answers within the [community](https://community.jenkins.io/) in different channels like [Stack Overflow](https://stackoverflow.com/questions/tagged/jenkins)
   * If you are stuck, report your request or bug in the [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
 
 ## CloudBees CI: Make Jenkins Administration more scalable and reliable
