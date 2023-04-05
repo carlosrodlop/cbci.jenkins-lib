@@ -7,7 +7,7 @@
 
 ---
 
-This is a story inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition).
+This is a story inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition). Technology integration choices cover the most common use cases based on the [Jenkins Stats](https://stats.jenkins.io/) and my experience working with customers but you can extend to your technology stack thanks to the 1800+ community-contributed Jenkins plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/).
 
 ## Jenkins CI: Starting with the Open Source offering
 
@@ -21,21 +21,19 @@ This is a story inspired by [CloudBees CI feature comparison](https://docs.cloud
     * Review [LTS Changelog](https://www.jenkins.io/changelog-stable/) to understand the new features and bug fixes.
   * [Install Jenkins](https://www.jenkins.io/doc/book/installing/) in your desired platform following Best practices as explained in [Prepare Jenkins for Support](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/prepare-jenkins-for-support)
   * Additional [Jenkins Features are controlled with System Properties](https://www.jenkins.io/doc/book/managing/system-properties/).
-  * ℹ️ Note that Jenkins comes with a series of required plugins but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/).
-    * Use [Jenkins Plugins Index](https://plugins.jenkins.io/) to discover the 1800+ community contributed Jenkins plugins
+  * ℹ️ Note that Jenkins comes with a series of bundle plugins but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/).
 * Configure Jenkins
   * Explore how to configure Jenkins in a Declarative way using [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
   * Prepare the instance to onboard developers
-    * 🔑 Add [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store and [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes). ℹ️ Note that you can also integrate it with external vaults
-    * 🔒 Define the [Access Control](https://www.jenkins.io/doc/book/security/managing-security/#access-control) mechanisms and know the most common authentication systems:
-      * [Active Directory](https://plugins.jenkins.io/active-directory/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ad-configuration-to-work) and [tunning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ad-plugin-is-very-slow))
-      * [LDAP](https://plugins.jenkins.io/ldap/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ldap-configuration-to-work) and [tunning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ldap-plugin-is-very-slow))
-      * [SAML](https://plugins.jenkins.io/saml/) ([troubleshooting](https://github.com/jenkinsci/saml-plugin/blob/main/doc/TROUBLESHOOTING.md))
-    * :octocat: Integrate with SCM [GitHub](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/github-webhook-configuration) via WebHook and check additional [SCM Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/scm-best-practices)
+    * 🔑 Add [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store and [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes).
+    * 🔒 Define the [Access Control](https://www.jenkins.io/doc/book/security/managing-security/#access-control), which consists of:
+      * Security Realm: [LDAP](https://plugins.jenkins.io/ldap/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ldap-configuration-to-work) and [tuning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ldap-plugin-is-very-slow)).
+      * Authorization: [Matrix Authorization Strategy](https://plugins.jenkins.io/matrix-auth/)
+    * :octocat: Integrate with a SCM: [GitHub](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/github-webhook-configuration) via WebHook and check additional [SCM Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/scm-best-practices)
     * 💻 [Configure Agents](https://www.jenkins.io/doc/book/managing/nodes/#managing-nodes) to perform your builds (Avoid using Jenkins built-in node)
       * [Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents). Use [winsw](https://github.com/winsw/winsw) for Window inbound-agents.
       * Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-kubernetes-cloud))
-        * Windows container support on AKS, EKS, and GKE
+        * ℹ️ Support to [Windows containers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_setting_up_a_kubernetes_cluster_with_linux_and_windows_node_pools)
 * Operate remotely with Jenkins
   * [Jenkins CLI](https://www.jenkins.io/doc/book/managing/cli/)
   * [REST API](https://www.jenkins.io/doc/book/using/remote-access-api/)
@@ -49,17 +47,22 @@ This is a story inspired by [CloudBees CI feature comparison](https://docs.cloud
 
 ## CloudBees CI: Make Jenkins administration more scalable and reliable 🚀
 
-* From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Global Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) willing to answers your questions and helping your processes including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
-  * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/) 🏥
-  * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to collect data
+* From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Global Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) willing to answer your questions and help your processes including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
+  * Additionally, we include:
+    * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/) 🏥 to make sure your instance is not impacted by Known issues and meets with Best Practices
+    * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to help you with data collection per topic.
 * Install CloudBees CI on:
   * [Traditional platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-trad) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/cloudbees-ci-traditional-arch.574b6fc.svg))
+    * Make your CI builds **more reliable** by adding [High Availability](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/high-availability) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/_images/ha-network-diagram.e8469d2.png))
   * [Modern platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-cloud) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/k8s-ci-architecture.31527cd.svg))
-
+    * Make your CI build **more elastic** thanks to:
+      * Configure autoscaling (for [example in EKS](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/eks-auto-scaling-nodes))
+      * Configure [Hibernation on Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers#_hibernation_in_managed_masters) to save computing cost
+      * Enable Hybrid Cloud workload (among different public clouds and on-premises)
+        * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/provisioning-in-multiple-clusters)
+        * [Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/deploying-agents-separate-cluster)  
 * Migrate your configuration and transit data (builds) from Jenkins to CloudBees CI
-
 * Configuration
-
   * Extend your Declarative configuration from JCasc to Casc.
     * Traditional Platform: Operation Center and Controllers
     * Modern Platform: Operation Center and Controllers
@@ -82,12 +85,7 @@ This is a story inspired by [CloudBees CI feature comparison](https://docs.cloud
     * Signed Helm Charts
     * CyberArk plugin
     * Trigger restrictions (restrict which upstream jobs are allowed to trigger builds of other jobs)
-  * Make the most of the Cloud
-    * Configure autoscaling for EKS and GKE for elastic demands
-    * Configure Hibernation to save computing cost
-    * Hybrid Cloud workload (among different public clouds and on-premises)
-      * Controllers
-      * Agents
+ 
 * Folder plus:
   * Define environment variables that are passed to the builds of all jobs within a folder
   * Display selected jobs from subfolders in a higher-level view
