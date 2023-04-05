@@ -49,10 +49,9 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
 
 ## CloudBees CI: Make Jenkins Administration more scalable and reliable 🚀
 
-* From day zero you are not alone in this journey, CloudBees Support counts on certified Jenkins experts that are willing to help
-  * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/)
+* From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) that answers your questions, including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
+  * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/) 🏥
   * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to collect data
-  * [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
 * Install CloudBees CI on:
   * [Traditional platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-trad) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/cloudbees-ci-traditional-arch.574b6fc.svg))
   * [Modern platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-cloud) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/k8s-ci-architecture.31527cd.svg))
