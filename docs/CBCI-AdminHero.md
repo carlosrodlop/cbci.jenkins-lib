@@ -7,7 +7,7 @@
 
 ---
 
-Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition).
+This is a story inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition).
 
 ## Jenkins CI: Starting with the Open Source offering
 
@@ -21,12 +21,12 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
     * Review [LTS Changelog](https://www.jenkins.io/changelog-stable/) to understand the new features and bug fixes.
   * [Install Jenkins](https://www.jenkins.io/doc/book/installing/) in your desired platform following Best practices as explained in [Prepare Jenkins for Support](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/prepare-jenkins-for-support)
   * Additional [Jenkins Features are controlled with System Properties](https://www.jenkins.io/doc/book/managing/system-properties/).
-  * Note that Jenkins comes with a series of required plugins but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/).
+  * ℹ️ Note that Jenkins comes with a series of required plugins but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/).
     * Use [Jenkins Plugins Index](https://plugins.jenkins.io/) to discover the 1800+ community contributed Jenkins plugins
 * Configure Jenkins
   * Explore how to configure Jenkins in a Declarative way using [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
   * Prepare the instance to onboard developers
-    * 🔑 Add [Global Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store and [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes).
+    * 🔑 Add [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store and [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes). ℹ️ Note that you can also integrate it with external vaults
     * 🔒 Define the [Access Control](https://www.jenkins.io/doc/book/security/managing-security/#access-control) mechanisms and know the most common authentication systems:
       * [Active Directory](https://plugins.jenkins.io/active-directory/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ad-configuration-to-work) and [tunning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ad-plugin-is-very-slow))
       * [LDAP](https://plugins.jenkins.io/ldap/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ldap-configuration-to-work) and [tunning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ldap-plugin-is-very-slow))
@@ -47,7 +47,7 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * Find your answers within the [community](https://community.jenkins.io/) in different channels like [Stack Overflow](https://stackoverflow.com/questions/tagged/jenkins)
   * If you are stuck, report your request or bug in the [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
 
-## CloudBees CI: Make Jenkins Administration more scalable and reliable 🚀
+## CloudBees CI: Make Jenkins administration more scalable and reliable 🚀
 
 * From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Global Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) willing to answers your questions and helping your processes including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
   * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/) 🏥
@@ -65,7 +65,8 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
     * Modern Platform: Operation Center and Controllers
   * `Enable Beekeeper` to guarantee plugin compatibility with the Jenkins core thanks to the [CloudBees Assurance Program](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/).
   * Configure the Operation Center to share context within the CloudBees CI platform
-    * Client/Managed Controllers
+    * Client/Managed Controllers.
+      * Slipt Monolithic Controllers to a group of connected Controllers per Development Team
     * Controllers Casc Bundle Repository
     * Cluster Operations
     * Shared Agent Configuration
