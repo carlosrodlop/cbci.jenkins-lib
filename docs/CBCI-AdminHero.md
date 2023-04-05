@@ -21,23 +21,24 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
     * Review [LTS Changelog](https://www.jenkins.io/changelog-stable/) to understand the new features and bug fixes.
   * [Install Jenkins](https://www.jenkins.io/doc/book/installing/) in your desired platform following Best practices as explained in [Prepare Jenkins for Support](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/prepare-jenkins-for-support)
   * Additional [Jenkins Features are controlled with System Properties](https://www.jenkins.io/doc/book/managing/system-properties/).
-* Jenkins comes with a series of required plugins but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/).
-* Explore how to configure Jenkins in a Declarative way using [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
-* Configure the instance to onboard developers
-  * Add [Global Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store and [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes).
-  * Define the [Access Control](https://www.jenkins.io/doc/book/security/managing-security/#access-control) mechanisms and know the most common authentication systems:
-    * [Active Directory](https://plugins.jenkins.io/active-directory/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ad-configuration-to-work) and [tunning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ad-plugin-is-very-slow))
-    * [LDAP](https://plugins.jenkins.io/ldap/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ldap-configuration-to-work) and [tunning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ldap-plugin-is-very-slow))
-    * [SAML](https://plugins.jenkins.io/saml/) ([troubleshooting](https://github.com/jenkinsci/saml-plugin/blob/main/doc/TROUBLESHOOTING.md))
-  * Integrate with SCM [GitHub](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/github-webhook-configuration) via WebHook and check additional [SCM Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/scm-best-practices)
-  * [Configure Agents](https://www.jenkins.io/doc/book/managing/nodes/#managing-nodes) to perform your builds (Avoid using Jenkins built-in node)
-    * [Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents). Use [winsw](https://github.com/winsw/winsw) for Window inbound-agents.
-    * Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-kubernetes-cloud))
-      * Windows container support on AKS, EKS, and GKE
+  * Note that Jenkins comes with a series of required plugins but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/).
+* Configure Jenkins
+  * Explore how to configure Jenkins in a Declarative way using [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
+  * Prepare the instance to onboard developers
+    * Add [Global Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store and [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes).
+    * Define the [Access Control](https://www.jenkins.io/doc/book/security/managing-security/#access-control) mechanisms and know the most common authentication systems:
+      * [Active Directory](https://plugins.jenkins.io/active-directory/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ad-configuration-to-work) and [tunning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ad-plugin-is-very-slow))
+      * [LDAP](https://plugins.jenkins.io/ldap/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/cannot-make-my-ldap-configuration-to-work) and [tunning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ldap-plugin-is-very-slow))
+      * [SAML](https://plugins.jenkins.io/saml/) ([troubleshooting](https://github.com/jenkinsci/saml-plugin/blob/main/doc/TROUBLESHOOTING.md))
+    * Integrate with SCM [GitHub](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/github-webhook-configuration) via WebHook and check additional [SCM Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/scm-best-practices)
+    * [Configure Agents](https://www.jenkins.io/doc/book/managing/nodes/#managing-nodes) to perform your builds (Avoid using Jenkins built-in node)
+      * [Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents). Use [winsw](https://github.com/winsw/winsw) for Window inbound-agents.
+      * Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/) ([troubleshooting](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-kubernetes-cloud))
+        * Windows container support on AKS, EKS, and GKE
 * Operate remotely with Jenkins
   * [Jenkins CLI](https://www.jenkins.io/doc/book/managing/cli/)
   * [REST API](https://www.jenkins.io/doc/book/using/remote-access-api/)
-* Automate Management via Groovy code running into the [Script Console](https://www.jenkins.io/doc/book/managing/script-console/)
+* Automate management via Groovy code running into the [Script Console](https://www.jenkins.io/doc/book/managing/script-console/)
   * [Jenkins Core and Plugins Javadoc](https://javadoc.jenkins.io/)
   * [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html)
   * [Learn by examples](https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts)
