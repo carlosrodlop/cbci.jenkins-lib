@@ -42,9 +42,16 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * [Jenkins Core and Plugins Javadoc](https://javadoc.jenkins.io/)
   * [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html)
   * [Learn by examples](https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts)
+* Did you find any problem or issue until this point?
+  * Find your answers within the [community](https://community.jenkins.io/).
+  * If you are stuck, report your request or bug in the [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
 
 ## CloudBees CI: Make Jenkins Administration more scalable and reliable
 
+* From day zero you are not alone in this journey, CloudBees Support counts on certified Jenkins experts that are willing to help
+  * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/)
+  * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to collect data
+  * [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
 * Install CloudBees CI on:
   * [Traditional platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-trad) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/cloudbees-ci-traditional-arch.574b6fc.svg))
   * [Modern platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-cloud) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/k8s-ci-architecture.31527cd.svg))
@@ -99,7 +106,3 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
 * Monitoring
 * Auditing
 
-* Get Support from the Jenkins experts
-  * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/)
-  * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to collect data
-  * [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
