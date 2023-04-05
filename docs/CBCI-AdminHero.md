@@ -49,28 +49,37 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * [Traditional platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-trad) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/cloudbees-ci-traditional-arch.574b6fc.svg))
   * [Modern platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-cloud) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/k8s-ci-architecture.31527cd.svg))
 
-* `Enable Beekeeper` to guarantee plugin compatibility with the Jenkins core thanks to the [CloudBees Assurance Program](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/).
+* Migrate your configuration and transit data (builds) from Jenkins to CloudBees CI
 
-* Extend your Declarative configuration from JCasc to Casc.
-  * Traditional Platform: Operation Center and Controllers
-  * Modern Platform: Operation Center and Controllers
+* Configuration
 
-* Configure the Operation Center to share context within the CloudBees CI platform,
-  * Client/Managed Controllers
-  * Controllers Casc Bundle Repository
-  * Cluster Operations
-  * Shared Agent Configuration
-    * Shared Agent
-    * Kubernetes Shared Cloud
-  * Centrally managing security for controllers SSO
-
-* Make the most of the Cloud
-  * Configure autoscaling for EKS and GKE for elastic demands
-  * Configure Hibernation to save computing cost
-  * Hybrid Cloud workload (among different public clouds and on-premises)
-    * Controllers
-    * Agents
-
+  * Extend your Declarative configuration from JCasc to Casc.
+    * Traditional Platform: Operation Center and Controllers
+    * Modern Platform: Operation Center and Controllers
+  * `Enable Beekeeper` to guarantee plugin compatibility with the Jenkins core thanks to the [CloudBees Assurance Program](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/).
+  * Configure the Operation Center to share context within the CloudBees CI platform
+    * Client/Managed Controllers
+    * Controllers Casc Bundle Repository
+    * Cluster Operations
+    * Shared Agent Configuration
+      * Shared Agent
+      * Kubernetes Shared Cloud
+    * Centrally managing security for controllers SSO
+  * No Monolithic Jenkins
+    * Security
+    * RBAC
+    * Credentials Management
+    * Restricted Credentials
+    * Signed Docker images
+    * Signed Helm Charts
+    * CyberArk plugin
+    * Trigger restrictions (restrict which upstream jobs are allowed to trigger builds of other jobs)
+  * Make the most of the Cloud
+    * Configure autoscaling for EKS and GKE for elastic demands
+    * Configure Hibernation to save computing cost
+    * Hybrid Cloud workload (among different public clouds and on-premises)
+      * Controllers
+      * Agents
 * Folder plus:
   * Define environment variables that are passed to the builds of all jobs within a folder
   * Display selected jobs from subfolders in a higher-level view
@@ -78,14 +87,7 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
 
 * Move Copy Promote
 
-* Security
-  * RBAC
-  * Credentials Management
-  * Restricted Credentials
-  * Signed Docker images
-  * Signed Helm Charts
-  * CyberArk plugin
-  * Trigger restrictions (restrict which upstream jobs are allowed to trigger builds of other jobs)
+
 
 * Developer productivity
   * Cross Team Collaboration
