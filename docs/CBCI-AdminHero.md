@@ -48,6 +48,7 @@ This is a story inspired by [CloudBees CI feature comparison](https://docs.cloud
 ## CloudBees CI: Make Jenkins administration more scalable and reliable 🚀
 
 * From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Global Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) willing to answer your questions and help your processes including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
+  * CloudBees will support Tier 1 and Tier 2 plugins according to the [CloudBees plugin support policies](https://docs.cloudbees.com/docs/cloudbees-common/latest/plugin-support-policies)
   * Additionally, we include:
     * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/) 🏥 to make sure your instance is not impacted by Known issues and meets with Best Practices
     * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to help you with data collection per topic.
