@@ -34,25 +34,25 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
   * [Configure Agents](https://www.jenkins.io/doc/book/managing/nodes/#managing-nodes) to perform your builds (Avoid using Jenkins built-in node)
     * Jenkins supports different types of OS (Windows, Linux and MacOS) and deployments ([Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents) vs Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/))
       * ℹ️ Include support for [Windows containers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_setting_up_a_kubernetes_cluster_with_linux_and_windows_node_pools)
-  * Integrate with an Artifact Registry like [Artifactory | Jenkins plugin](https://plugins.jenkins.io/artifactory/) to store artifacts (build outcome) for Continuos Delivery or Release Orchestration
-    * For intermediate artifacts [archiveArtifacts](https://www.jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts) to be used by others builds inside Jenkins, do not use `$JENKINS_HOME` but S3 compatible storage like [Artifact Manager on S3 | Jenkins plugin](https://plugins.jenkins.io/artifact-manager-s3/)
+  * Integrate with an Artifact Registry like [Artifactory](https://plugins.jenkins.io/artifactory/) to store artifacts (build outcome) for Continuos Delivery or Release Orchestration
+    * For intermediate artifacts to be used by others Jenkins builds (e.g. [archiveArtifacts](https://www.jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts)), do not use `$JENKINS_HOME` but S3 compatible storage like [Artifact Manager on S3](https://plugins.jenkins.io/artifact-manager-s3/)
 
 ### Jenkins CI: Management
 
-* Integrate Jenkins with an external Monitoring solution like [Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored).
+* 📈 Integrate Jenkins with an external Monitoring solution like [Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (⚠️ Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored inside Jenkins).
   * By default, the [Metrics](https://plugins.jenkins.io/metrics/) plugin exposes a set of metrics including  System and Java Virtual Machine metrics, Web UI metrics and Jenkins-specific metrics. Other plugins might add additional metrics like the [CloudBees Disk Usage Simple](https://plugins.jenkins.io/cloudbees-disk-usage-simple/).
   * Recommended resources to watch for performance: memory usage percentage, CPU usage percentage, JENKINS_HOME disk usage percentage, JENKINS_HOME IOPS, operations center and managed controller response time, Remaining build nodes capacity, Remaining master nodes capacity and Build/master nodes instances usage
-* Audit Jenkins
+* 🔬 Audit Jenkins
   * [Audit Trail Plugin](https://plugins.jenkins.io/audit-trail/) adds an “Audit Trail” section in your Jenkins main configuration page, where it is possible to define where to save logs on who performed particular operations on Jenkins. (more info at [How does Audit Trail plugin work](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-does-audit-trail-plugin-work).
   * [Job Config History Plugin](https://plugins.jenkins.io/jobConfigHistory/) stores all the changes made to jobs (history), saving the config.xml of each job. For each change, it is possible to see the record of the change, compare the difference between the new and the old version and restore a previous version. It is also possible to keep track of the changes made to the system configuration. IMPORTANT: This plugin can become a performance killer if you do not follow the recommendations provided in [JobConfigHistory Plugin Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/jobconfighistory-best-practices)
 * Backup: [manual](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-manually). (Community plugins are not well maintained)
 * Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution)
 * Operate remotely with Jenkins
   * [Jenkins CLI](https://www.jenkins.io/doc/book/managing/cli/) (If you use the Jenkins CLI tool regularly, [configure an alias](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/config-alias) to avoid having to type the entire command each time.)
-  * [REST API](https://www.jenkins.io/doc/book/using/remote-access-api/). Be aware of the [best practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/best-practice-for-using-jenkins-rest-api)
+  * [REST API](https://www.jenkins.io/doc/book/using/remote-access-api/) (Jenkins REST API should [never be used without the tree parameter](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/best-practice-for-using-jenkins-rest-api)).
 * Automate management via Groovy code running into the [Script Console](https://www.jenkins.io/doc/book/managing/script-console/)
-  * [Jenkins Core and Plugins Javadoc](https://javadoc.jenkins.io/)
-  * [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html)
+  * Check API on [Jenkins Core and Plugins Javadoc](https://javadoc.jenkins.io/)
+  * Benefit from [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html)
   * [Learn by examples](https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts)
 
 ### Jenkins CI: Support
@@ -108,14 +108,14 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
   * [Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) improves collaboration by connecting Pipelines on the same controller or different one. It allows a Pipeline to create a notification event that will be consumed by other Pipelines waiting on it to trigger a job.
   * [GitHub Apps](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/github-app-auth): Receive and act upon granular, actionable build data directly in GitHub. [Unthrottling GitHub API usage](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/github-app-auth#_unthrottling_github_api_usage)
   * [CloudBees SCM Reporting](https://docs.cloudbees.com/docs/cloudbees-ci/latest/scm-integration/enabling-scm-reporting): Provides rich information beyond the standard GitHub or Bitbucket pass/fail status, Displays check for code coverage and test results directly in GitHub or Bitbucket, and Delivers detailed error and warning summaries.
-  * [Slack](https://docs.cloudbees.com/docs/cloudbees-ci/latest/slack-integration/slack-integration-intro): Receive granular, actionable build data directly in Slack
+  * 🔔 [Slack](https://docs.cloudbees.com/docs/cloudbees-ci/latest/slack-integration/slack-integration-intro): Receive granular, actionable build data directly in Slack
   * [Service Now](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/servicenow) Create and manage ServiceNow change requests and incident tickets from your Pipeline
   * New UI replacement for [Blue Ocean](https://www.jenkins.io/doc/book/blueocean/getting-started/): [CloudBees Pipeline Explorer Plugin](https://docs.cloudbees.com/docs/release-notes/latest/plugins/cloudbees-pipeline-explorer-plugin/).
 
 ### CloudBees CI: Management
 
-* Monitoring, adds the [CloudBees Prometheus Metrics plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/monitoring/prometheus-plugin) which exposes metrics securely for Operation Center. In
-* Auditing, adds the [User Activity Monitoring plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/user-activity-monitoring) which provides you with a summary of user activity.
+* 📈 Monitoring, adds the [CloudBees Prometheus Metrics plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/monitoring/prometheus-plugin) which exposes metrics securely for Operation Center. In
+* 🔬 Auditing, adds the [User Activity Monitoring plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/user-activity-monitoring) which provides you with a summary of user activity.
 * Backup, adds the [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
   * It allows you to separate Configuration from Build Data (Interesting from a Casc point of view)
   * It can be integrated with Cluster Operation to take a back for every controller
