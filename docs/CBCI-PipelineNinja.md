@@ -1,7 +1,7 @@
 # CloudBees CI Pipeline Ninja
 
 <p align="center">
-  <img alt="terraform-icon" src="https://wiki.jenkins-ci.org/JENKINS/attachments/2916393/75071688.svg" height="160" />
+  <img alt="pipeline-ninja-icon" src="https://www.jenkins.io/images/logos/ninja/ninja.png" height="160" />
   <p align="center">This track is orientated to the CI <strong>Developer</strong> rol</p>
 </p>
 
@@ -9,20 +9,31 @@
 
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition).
 
-## Jenkins: Starting with the Open Source offering
+## Jenkins CI: Starting with a solid Open Source core
 
-* Pipeline as Code
+* Pipeline as Code [ssbostan/jenkins-tutorial: The completest Jenkins tutorial, reference, awesome, examples](https://github.com/ssbostan/jenkins-tutorial)
   * Pipeline Syntax: Scripted vs Declarative
   * Pipelines vs Multibranch Pipelines
     * Markerfile
   * Pipeline Development
-* Shared Library
-  * Encapsule steps and pipelines
-  * Resource folder
-
-https://marketplace.visualstudio.com/items?itemName=tabeyti.jenkins-jack
-https://marketplace.visualstudio.com/items?itemName=DontShaveTheYak.jenkins-extension-pack
-https://marketplace.visualstudio.com/items?itemName=janjoerke.jenkins-pipeline-linter-connector
+    * [Pipeline Steps Reference](https://www.jenkins.io/doc/pipeline/steps/)
+    * [Built-in Documentation](https://www.jenkins.io/doc/book/pipeline/getting-started/#built-in-documentation): Snippet Generator, Global Variable Reference, Declarative Directive Generator
+    * IDEs plugins
+      * VisualStudio Code
+        * [Jenkins Jack - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=tabeyti.jenkins-jack)
+        * [Jenkins Extension Pack - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=DontShaveTheYak.jenkins-extension-pack)
+        * [Jenkins Pipeline Linter Connector - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=janjoerke.jenkins-pipeline-linter-connector)
+      * Eclipse: [Jenkins Editor | Eclipse Plugins, Bundles and Products - Eclipse Marketplace](https://marketplace.eclipse.org/content/jenkins-editor)
+      * IntellJ
+        * [Jenkins Pipeline Linter - IntelliJ IDEs Plugin | Marketplace](https://plugins.jetbrains.com/plugin/15699-jenkins-pipeline-linter)
+        * [Working with Jenkinsfile in Intellij IDEA](http://vgaidarji.me/blog/2018/07/30/working-with-jenkinsfile-in-intellij-idea/)
+* [Shared Library](https://www.jenkins.io/doc/book/pipeline/shared-libraries/)
+  * [Prototype steps and pipelines using Global vars](https://github.com/aimtheory/jenkins-pipeline-best-practices)
+  * [Resource folder](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources) to load agent configuration and script
+    * Do not use groovy
+    * sh and bat are executed on the agent
+* Use Kaniko for building docker images
+* Add cache for your dependencies
 
 ## CloudBees CI: Make Jenkins Pipelines more scalable and reliable
 
