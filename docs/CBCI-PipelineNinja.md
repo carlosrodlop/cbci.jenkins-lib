@@ -15,6 +15,7 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * Pipeline Syntax: Scripted vs Declarative
   * Pipelines vs Multibranch Pipelines
     * Markerfile
+  * Review [Pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices)
   * Pipeline Development
     * [Pipeline Steps Reference](https://www.jenkins.io/doc/pipeline/steps/)
     * [Built-in Documentation](https://www.jenkins.io/doc/book/pipeline/getting-started/#built-in-documentation): Snippet Generator, Global Variable Reference, Declarative Directive Generator
@@ -27,13 +28,14 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
       * IntellJ
         * [Jenkins Pipeline Linter - IntelliJ IDEs Plugin | Marketplace](https://plugins.jetbrains.com/plugin/15699-jenkins-pipeline-linter)
         * [Working with Jenkinsfile in Intellij IDEA](http://vgaidarji.me/blog/2018/07/30/working-with-jenkinsfile-in-intellij-idea/)
+* Use Kaniko for building docker images
+* Add cache for your dependencies 
 * [Shared Library](https://www.jenkins.io/doc/book/pipeline/shared-libraries/)
   * [Prototype steps and pipelines using Global vars](https://github.com/aimtheory/jenkins-pipeline-best-practices)
   * [Resource folder](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources) to load agent configuration and script
     * Do not use groovy
     * sh and bat are executed on the agent
-* Use Kaniko for building docker images
-* Add cache for your dependencies
+      * Script https://www.youtube.com/watch?v=mbeQWBNaNKQ
 
 ## CloudBees CI: Make Jenkins Pipelines more scalable and reliable
 
