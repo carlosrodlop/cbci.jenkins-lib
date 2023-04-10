@@ -27,21 +27,20 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * Explore configure as code using [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
 * Prepare the instance to onboard developers:
   * 🔑 Add [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store to connect to your third-party systems (Security Realm, SCM, Artifactory Registry). Check out that you [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes).
-    * Credentials can be restricted by [using folders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/ssh-credentials-management-with-jenkins#_architecture_with_credential_management_in_folders)
   * 🔒 Define Jenkins [Access Control](https://www.jenkins.io/doc/book/security/managing-security/#access-control). Among the different options, the most common setup would be:  
     * Configuring [LDAP](https://plugins.jenkins.io/ldap/) plugin for `Security Realm` (ensure [tuning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ldap-plugin-is-very-slow) is enabled)
     * Configuring [Matrix Authorization Strategy](https://plugins.jenkins.io/matrix-auth/) plugin as `Authorization Strategy` for your projects.
   * :octocat: Integrate with [GitHub](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/github-webhook-configuration) as SCM via WebHook (review additional [Best Practices for SCM](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/scm-best-practices))
   * [Configure Agents](https://www.jenkins.io/doc/book/managing/nodes/#managing-nodes) to perform your builds (Avoid using Jenkins built-in node)
     * Jenkins supports different types of OS (Windows, Linux and MacOS) and deployments ([Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents) vs Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/))
-      * ℹ️ Support to [Windows containers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_setting_up_a_kubernetes_cluster_with_linux_and_windows_node_pools)
+      * ℹ️ Include support for [Windows containers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_setting_up_a_kubernetes_cluster_with_linux_and_windows_node_pools)
   * Integrate with an Artifact Registry like [Artifactory | Jenkins plugin](https://plugins.jenkins.io/artifactory/) to store artifacts (build outcome) for Continuos Delivery or Release Orchestration
     * For intermediate artifacts [archiveArtifacts](https://www.jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts) to be used by others builds inside Jenkins, do not use `$JENKINS_HOME` but S3 compatible storage like [Artifact Manager on S3 | Jenkins plugin](https://plugins.jenkins.io/artifact-manager-s3/)
 
 ### Jenkins CI: Management
 
-* Integrate Jenkins with an external Monitoring solution like [Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (Do not use [Monitoring](https://plugins.jenkins.io/monitoring/) for the production environment, monitoring Jenkins inside Jenkins is not a good approach).
-  * By default, the [Metrics](https://plugins.jenkins.io/metrics/) plugin exposes a set of metrics including  System and Java Virtual Machine metrics, Web UI metrics and Jenkins-specific metrics. Other plugins might add additional metrics like the [Metrics Disk Usage plugin](https://plugins.jenkins.io/metrics-diskusage/).
+* Integrate Jenkins with an external Monitoring solution like [Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored).
+  * By default, the [Metrics](https://plugins.jenkins.io/metrics/) plugin exposes a set of metrics including  System and Java Virtual Machine metrics, Web UI metrics and Jenkins-specific metrics. Other plugins might add additional metrics like the [CloudBees Disk Usage Simple](https://plugins.jenkins.io/cloudbees-disk-usage-simple/).
   * Recommended resources to watch for performance: memory usage percentage, CPU usage percentage, JENKINS_HOME disk usage percentage, JENKINS_HOME IOPS, operations center and managed controller response time, Remaining build nodes capacity, Remaining master nodes capacity and Build/master nodes instances usage
 * Audit Jenkins
   * [Audit Trail Plugin](https://plugins.jenkins.io/audit-trail/) adds an “Audit Trail” section in your Jenkins main configuration page, where it is possible to define where to save logs on who performed particular operations on Jenkins. (more info at [How does Audit Trail plugin work](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-does-audit-trail-plugin-work).
@@ -66,7 +65,8 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 ### CloudBees CI: Installation and Platforms
 
 * [Traditional platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-trad) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/cloudbees-ci-traditional-arch.574b6fc.svg))
-  * Make your CI builds **more resilient** by adding [High Availability](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/high-availability) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/_images/ha-network-diagram.e8469d2.png))
+  * Make your CI builds **more resilient** by adding [High Availability](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/high-availability) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/_images/ha-network-diagram.e8469d2.png)). 
+    * Ensure to meet the requirements from [NFS Guide](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/nfs-guide)
 * [Modern platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-cloud) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/k8s-ci-architecture.31527cd.svg))
   * CloudBees CI on Kubernetes additionally benefits from the robust container management of the Kubernetes control plane. Aside from the operations center and managed controllers running as `StatefulSets`, controllers use the Jenkins Kubernetes plugin to schedule builds on disposable agent pods, eliminating the need to explicitly manage worker infrastructure.
   * Make your CI build **more elastic** thanks to:
@@ -93,9 +93,11 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
     * [Shared Cloud](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/pushed-clouds), including Kubernetes ([Globally editing pod templates in operations center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_globally_editing_pod_templates_in_operations_center))
   * [Centrally managing security for controllers SSO](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/using-sso).
 * `Enable Beekeeper` to guarantee plugin compatibility with the Jenkins core thanks to the [CloudBees Assurance Program](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/).
-* Increase your Security with
+* Increase your Security
   * Adding roles to your authorization strategy using [RBAC](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/rbac)
-  * [Restricted Credentials](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/restricted-credentials) lets you define restricted credentials with built-in access control using the full item names define in allowlists and denylists.
+  * Credentials restriction via:
+    * [Folders and RBAC](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/ssh-credentials-management-with-jenkins#_architecture_with_credential_management_in_folders)
+    * [Restricted Credentials](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/restricted-credentials) lets you define restricted credentials with built-in access control using the full item names define in allowlists and denylists.
   * Support for [Self-signed certificates in Kubernetes](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/kubernetes-self-signed-certificates)
   * [Signed Docker images](https://docs.cloudbees.com/docs/cloudbees-ci/latest/kubernetes-install-guide/verifying-cloud-docker-images)
   * [Signed Helm Charts](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/helm-verification)
