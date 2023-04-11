@@ -19,6 +19,9 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * Learn by examples in [ssbostan/jenkins-tutorial](https://github.com/ssbostan/jenkins-tutorial)
   * 🍬 For the migration of existing Freestyles projects to Declarative Pipelines the [Declarative Pipeline Migration Assistant](https://plugins.jenkins.io/declarative-pipeline-migration-assistant/) can be useful as an initial step.
 * [Multibranch Pipelines](https://www.jenkins.io/doc/book/pipeline/multibranch/) build on the `Jenkinsfile` foundation checked into source control and they enable the implementation of different `Jenkinsfile`s for different branches of the same project.
+* Reduce building times
+  * Add cache for your project dependencies (examples for [gradle](https://www.cloudbees.com/videos/speeding-up-jenkins-and-maven-build-cache) or [maven](https://sneha-wadhwa.medium.com/speeding-up-ci-pipelines-on-jenkins-63efff817d1d)) to speed up the build times.
+  * Use [Parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel)
 * Pipeline Development
     * [Built-in Documentation](https://www.jenkins.io/doc/book/pipeline/getting-started/#built-in-documentation): Snippet Generator, Global Variable Reference, Declarative Directive Generator
     * API REST
@@ -32,7 +35,7 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
         * [Jenkins Pipeline Linter - IntelliJ IDEs Plugin | Marketplace](https://plugins.jetbrains.com/plugin/15699-jenkins-pipeline-linter)
         * [Working with Jenkinsfile in Intellij IDEA](http://vgaidarji.me/blog/2018/07/30/working-with-jenkinsfile-in-intellij-idea/)
 * In Kubernetes, use [Kaniko for building docker images]
-* Add cache for your project dependencies (examples for [gradle](https://www.cloudbees.com/videos/speeding-up-jenkins-and-maven-build-cache) or [maven](https://sneha-wadhwa.medium.com/speeding-up-ci-pipelines-on-jenkins-63efff817d1d)) to speed up the build times.
+* 
 * [Shared Library](https://www.jenkins.io/doc/book/pipeline/shared-libraries/)
   * [Prototype steps and pipelines using Global vars](https://github.com/aimtheory/jenkins-pipeline-best-practices)
   * [Resource folder](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources) to load agent configuration and script
