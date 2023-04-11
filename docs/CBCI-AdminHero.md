@@ -23,7 +23,8 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 
 ### Jenkins CI: Configuration
 
-* Jenkins comes with a series of bundle plugins (required) but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/). Generally, do not use [Advanced installation](https://www.jenkins.io/doc/book/managing/plugins/#advanced-installation) because it does manage transitive dependencies requirements.
+* Jenkins comes with a series of bundle plugins (required) but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/). There are more than 1800+ community-contributed plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/)).
+  * ⚠️ Note that [Advanced installation](https://www.jenkins.io/doc/book/managing/plugins/#advanced-installation) does manage transitive dependencies requirements.
 * Explore configure as code using [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
 * Prepare the instance to onboard developers:
   * 🔑 Add [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store to connect to your third-party systems (Security Realm, SCM, Artifactory Registry). Check out that you [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes).
@@ -80,19 +81,23 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 ### CloudBees CI: Configuration
 
 * If you come from Jenkins Open source, [Migrate](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/migrating-jenkins-instances) your configuration and transit data (builds) to CloudBees CI.
+  * For this types of scenarios [CloudBees Quiet Start](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/quiet-start) like other types of maintenance, this plugin can help to not run all your builds immediately after restart.
 * Extend your Declarative configuration from JCasc to Casc.
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
   * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
 * Welcome to the `Operation Center` for central governance for your CloudBees CI Controllers with a Shared Context.
   * Client/Managed Controllers.
     * [Slipt Monolithic Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/) to a group of connected Controllers per Development Teams (check this video [From Big and Slow to Small and Agile: Splitting Monolithic Jenkins Controllers for Increased Performance](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance))
-  * [Move/Copy/Promote](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/move-copy-promote)
-  * [Cluster Operations](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cluster-operations)
+  * Use [Move/Copy/Promote](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/move-copy-promote) to disribute items across your Plataform.
+  * [Cluster Operations](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cluster-operations) perform maintenance operations on various items in operations center, such as Client/Managed Controllers.
   * Shared Agent Configuration
     * [Shared Agent](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/shared-agents) for static agents.
     * [Shared Cloud](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/pushed-clouds), including Kubernetes ([Globally editing pod templates in operations center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_globally_editing_pod_templates_in_operations_center))
   * [Centrally managing security for controllers SSO](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/using-sso).
-* `Enable Beekeeper` to guarantee plugin compatibility with the Jenkins core thanks to the [CloudBees Assurance Program](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/).
+* Enterprise Grade Plugin Management, enable [Beekeeper Upgrade Assistant](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-upgrade-assistant) to guarantee plugin compatibility with the Jenkins core version thanks to the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/)
+  * [Plugins in the CAP are categorized into three tiers](https://docs.cloudbees.com/search?type=ci-plugins&search=show), adding to Jenkins comunity plugin a set of Propietary plugins, when you are trying to determine if you should install a particular plugin, [choosing plugins that are part of CAP](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/find-support-tier) (Tier 1 and Tier 2) provides the assurance of greater stability and security.
+  * Have flexibility to override CAP on a plugin-by-plugin basis with [Beekeeper plugin exceptions](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-exceptions)
+  * Extend Beekeeper with plugins outside CAP (e.g. custom plugins) with the [Plugin Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs)
 * Increase your Security
   * Adding roles to your authorization strategy using [RBAC](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/rbac)
   * Credentials restriction via:
