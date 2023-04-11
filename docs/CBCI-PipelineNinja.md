@@ -11,12 +11,14 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
 
 ## Jenkins CI: Starting with a solid Open Source core
 
-* Pipeline as Code [ssbostan/jenkins-tutorial: The completest Jenkins tutorial, reference, awesome, examples](https://github.com/ssbostan/jenkins-tutorial)
-  * Pipeline Syntax: Scripted vs Declarative
-  * Pipelines vs Multibranch Pipelines
-    * Markerfile
-  * Review [Pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices)
-  * Pipeline Development
+* Know the difference between [Scripted vs Declarative](https://dsstream.com/declarative-vs-scripted-pipeline-key-differences/) syntax.
+  * Declarative syntax uses a simpler and more strict way of creating a Jenkins Pipeline. The declarative character of this solution puts limitations on what developers can do and forces them to work within predefined structures.
+  * Groovy code can still be used but inside the [script](https://www.jenkins.io/doc/book/pipeline/syntax/#script) block of declarative.
+* [ssbostan/jenkins-tutorial: The completest Jenkins tutorial, reference, awesome, examples](https://github.com/ssbostan/jenkins-tutorial)
+* Pipelines vs Multibranch Pipelines
+  * Markerfile
+* Review [Pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices)
+* Pipeline Development
     * [Pipeline Steps Reference](https://www.jenkins.io/doc/pipeline/steps/)
     * [Built-in Documentation](https://www.jenkins.io/doc/book/pipeline/getting-started/#built-in-documentation): Snippet Generator, Global Variable Reference, Declarative Directive Generator
     * IDEs plugins
@@ -36,6 +38,8 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
     * Do not use groovy
     * sh and bat are executed on the agent
       * Script https://www.youtube.com/watch?v=mbeQWBNaNKQ
+
+[Declarative Pipeline Migration Assistant | Jenkins plugin](https://plugins.jenkins.io/declarative-pipeline-migration-assistant/)
 
 ## CloudBees CI: Make Jenkins Pipelines more scalable and reliable
 
