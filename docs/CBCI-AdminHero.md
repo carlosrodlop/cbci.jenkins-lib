@@ -7,7 +7,7 @@
 
 ---
 
-This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition). Technology integration choices here cover the most common use cases based on the [Jenkins Stats](https://stats.jenkins.io/) but more integrations are available via plugins, there are more than 1800+ community-contributed plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/)).
+This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition). Technology integration choices here cover the most common use cases based on the [Jenkins Stats](https://stats.jenkins.io/) but more integrations are available via plugins.
 
 ## Jenkins CI: Starting with a solid Open Source core
 
@@ -46,7 +46,7 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * 🔬 Audit Jenkins
   * [Audit Trail Plugin](https://plugins.jenkins.io/audit-trail/) adds an “Audit Trail” section in your Jenkins main configuration page, where it is possible to define where to save logs on who performed particular operations on Jenkins. (more info at [How does Audit Trail plugin work](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-does-audit-trail-plugin-work).
   * [Job Config History Plugin](https://plugins.jenkins.io/jobConfigHistory/) stores all the changes made to jobs (history), saving the config.xml of each job. For each change, it is possible to see the record of the change, compare the difference between the new and the old version and restore a previous version. It is also possible to keep track of the changes made to the system configuration. (⚠️ This plugin can become a performance killer if you do not follow the recommendations provided in [JobConfigHistory Plugin Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/jobconfighistory-best-practices))
-* Backup: [manual](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-manually). (Community plugins are not well maintained)
+* 💾 Backup: [manual](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-manually). (Community plugins are not well maintained)
 * Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution)
 * Operate remotely with Jenkins
   * [Jenkins CLI](https://www.jenkins.io/doc/book/managing/cli/) (If you use the Jenkins CLI tool regularly, [configure an alias](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/config-alias) to avoid having to type the entire command each time.)
@@ -56,7 +56,7 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
   * Benefit from [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html)
   * [Learn by examples](https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts)
 
-### Jenkins CI: Support
+### Jenkins CI: Support 🏥
 
 * Find your answers within the [community](https://community.jenkins.io/) in different channels like [Stack Overflow](https://stackoverflow.com/questions/tagged/jenkins)
 * If you are stuck, report your request or bug in the [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
@@ -121,7 +121,7 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 
 * 📈 Monitoring, adds the [CloudBees Prometheus Metrics plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/monitoring/prometheus-plugin) which exposes metrics securely for Operation Center. In
 * 🔬 Auditing, adds the [User Activity Monitoring plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/user-activity-monitoring) which provides you with a summary of user activity.
-* Backup, adds the [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
+* 💾 Backup, adds the [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
   * It allows you to separate Configuration from Build Data (Interesting from a Casc point of view)
   * It can be integrated with Cluster Operation to take a back for every controller
 * Housekeeping
@@ -130,10 +130,10 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * Operate remotely with Jenkins
   * The [CloudBees Request Filter Plugin](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-do-i-use-the-cloudbees-request-filter-plugin) can block any specifict API endpoint request that has been detected as harmful for the performance or security instance.
 
-### CloudBees CI: Support
+### CloudBees CI: Support 🏥
 
 * From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Global Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) willing to answer your questions and help your processes including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
   * [CloudBees plugin support policies](https://docs.cloudbees.com/docs/cloudbees-common/latest/plugin-support-policies) will cover Tier 1 and Tier 2 plugins.
   * Additionally, we include:
-    * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/) 🏥 to make sure your instance is not impacted by Known issues and meets with Best Practices
+    * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/)  to make sure your instance is not impacted by Known issues and meets with Best Practices
     * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to help you with data collection per topic.
