@@ -29,12 +29,11 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * Prepare the instance to onboard developers:
   * 🔑 Add [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to the Jenkins Internal Store to connect to your third-party systems (Security Realm, SCM, Artifactory Registry). Check out that you [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes).
   * 🔒 Define Jenkins [Access Control](https://www.jenkins.io/doc/book/security/managing-security/#access-control). Among the different options, the most common setup would be:  
-    * Configuring [LDAP](https://plugins.jenkins.io/ldap/) plugin for `Security Realm` (ensure [tuning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ldap-plugin-is-very-slow) is enabled)
+    * Configuring [LDAP](https://plugins.jenkins.io/ldap/) plugin for `Security Realm` ( 🍬 ensure [tuning](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/the-log-in-with-ldap-plugin-is-very-slow) is enabled)
     * Configuring [Matrix Authorization Strategy](https://plugins.jenkins.io/matrix-auth/) plugin as `Authorization Strategy` for your projects.
-  * :octocat: Integrate with [GitHub](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/github-webhook-configuration) as SCM via WebHook (review additional [Best Practices for SCM](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/scm-best-practices))
-  * [Configure Agents](https://www.jenkins.io/doc/book/managing/nodes/#managing-nodes) to perform your builds (Avoid using Jenkins built-in node)
-    * Jenkins supports different types of OS (Windows, Linux and MacOS) and deployments ([Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents) vs Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/))
-      * ℹ️ Include support for [Windows containers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_setting_up_a_kubernetes_cluster_with_linux_and_windows_node_pools)
+  * :octocat: Integrate with [GitHub](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/github-webhook-configuration) as SCM via WebHook ( 🍬 review additional [Best Practices for SCM](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/scm-best-practices))
+  * [Configure Agents](https://www.jenkins.io/doc/book/managing/nodes/#managing-nodes) to perform your builds (🍬 check [best practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/remoting-best-practices)
+    * Jenkins supports different types of OS (Windows, Linux and MacOS) and deployments [Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents) vs Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/)), including support for [Windows containers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_setting_up_a_kubernetes_cluster_with_linux_and_windows_node_pools).
   * Integrate with an Artifact Registry like [Artifactory](https://plugins.jenkins.io/artifactory/) to store artifacts (build outcome) for Continuos Delivery or Release Orchestration
     * For intermediate artifacts to be used by others Jenkins builds (e.g. [archiveArtifacts](https://www.jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts)), do not use `$JENKINS_HOME` but S3 compatible storage like [Artifact Manager on S3](https://plugins.jenkins.io/artifact-manager-s3/)
 
@@ -46,14 +45,15 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * 🔬 Audit Jenkins
   * [Audit Trail Plugin](https://plugins.jenkins.io/audit-trail/) adds an “Audit Trail” section in your Jenkins main configuration page, where it is possible to define where to save logs on who performed particular operations on Jenkins. (more info at [How does Audit Trail plugin work](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-does-audit-trail-plugin-work).
   * [Job Config History Plugin](https://plugins.jenkins.io/jobConfigHistory/) stores all the changes made to jobs (history), saving the config.xml of each job. For each change, it is possible to see the record of the change, compare the difference between the new and the old version and restore a previous version. It is also possible to keep track of the changes made to the system configuration. (⚠️ This plugin can become a performance killer if you do not follow the recommendations provided in [JobConfigHistory Plugin Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/jobconfighistory-best-practices))
-* 💾 Backup: [manual](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-manually). (Community plugins are not well maintained)
+* 💾 Backup: [manual](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-manually). ( ⚠️ Backup community plugins are not well maintained)
 * Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution)
 * Operate remotely with Jenkins
-  * [Jenkins CLI](https://www.jenkins.io/doc/book/managing/cli/) (If you use the Jenkins CLI tool regularly, [configure an alias](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/config-alias) to avoid having to type the entire command each time.)
+  * [Jenkins CLI](https://www.jenkins.io/doc/book/managing/cli/) (🍬 If you use the Jenkins CLI tool regularly, [configure an alias](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/config-alias) to avoid having to type the entire command each time).
+    * `$JENKINS_URL/cli` contains up-to-date docs about remoting cli commands.
   * [REST API](https://www.jenkins.io/doc/book/using/remote-access-api/) (⚠️ Jenkins REST API should [never be used without the tree parameter](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/best-practice-for-using-jenkins-rest-api)).
-* Automate management via Groovy code running into the [Script Console](https://www.jenkins.io/doc/book/managing/script-console/)
+    * `$JENKINS_URL/api/` contains up-to-date docs about remoting API REST.
+* Automate management via Groovy code running into the [Script Console](https://www.jenkins.io/doc/book/managing/script-console/) (🍬 [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html))
   * Check API on [Jenkins Core and Plugins Javadoc](https://javadoc.jenkins.io/)
-  * Benefit from [Write Groovy scripts for Jenkins with code completion](https://www.mdoninger.de/2011/11/07/write-groovy-scripts-for-jenkins-with-code-completion.html)
   * [Learn by examples](https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts)
 
 ### Jenkins CI: Support 🏥
@@ -81,13 +81,13 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 ### CloudBees CI: Configuration
 
 * If you come from Jenkins Open source, [Migrate](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/migrating-jenkins-instances) your configuration and transit data (builds) to CloudBees CI.
-  * For this types of scenarios [CloudBees Quiet Start](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/quiet-start) like other types of maintenance, this plugin can help to not run all your builds immediately after restart.
+  * For this types of scenarios or any type of service maintenance, [CloudBees Quiet Start](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/quiet-start) can help to not run all your builds immediately after restart.
 * Extend your Declarative configuration from JCasc to Casc.
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
   * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
 * Central governance for your CloudBees CI Controllers with a Shared Context: Operation Center
-  * Client/Managed Controllers.
-    * [Slipt Monolithic Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/) to a group of connected Controllers per Development Teams (check this video [From Big and Slow to Small and Agile: Splitting Monolithic Jenkins Controllers for Increased Performance](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance))
+  * [Client Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-setup-guide/connecting-cms) / [Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers).
+    * [Slipt Monolithic Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/) to a group of connected Controllers per Development Teams ( 🍬 check this video [From Big and Slow to Small and Agile: Splitting Monolithic Jenkins Controllers for Increased Performance](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance))
   * Use [Move/Copy/Promote](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/move-copy-promote) to disribute items across your Plataform.
   * [Cluster Operations](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cluster-operations) perform maintenance operations on various items in operations center, such as Client/Managed Controllers.
   * Shared Agent Configuration
@@ -98,7 +98,7 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
   * [Plugins in the CAP are categorized into three tiers](https://docs.cloudbees.com/search?type=ci-plugins&search=show), adding to Jenkins comunity plugin a set of Propietary plugins, when you are trying to determine if you should install a particular plugin, [choosing plugins that are part of CAP](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/find-support-tier) (Tier 1 and Tier 2) provides the assurance of greater stability and security.
   * Have flexibility to override CAP on a plugin-by-plugin basis with [Beekeeper plugin exceptions](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-exceptions)
   * Extend Beekeeper with plugins outside CAP (e.g. custom plugins) with the [Plugin Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs)
-* Increase your Security
+* 🔒 Increase your Security
   * Adding roles to your authorization strategy using [RBAC](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/rbac)
   * Credentials restriction via:
     * [Folders and RBAC](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/ssh-credentials-management-with-jenkins#_architecture_with_credential_management_in_folders)
@@ -108,10 +108,10 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
   * [Signed Helm Charts](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/helm-verification)
   * [CyberArk plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/cyberark)
   * [Trigger restrictions](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/trigger-restrictions) restrict which upstream jobs are allowed to trigger builds of other jobs.
-* [Folder plus](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/folders-plus) add the following feature to the Standard folder plugin: Define environment variables that are passed to the builds of all jobs within a folder, Display selected jobs from subfolders in a higher-level view, and Restrict which agents each team has access to.
-* Developer productivity
+* [Folder plus](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/folders-plus) adds the following features to the Standard folder plugin: Define environment variables that are passed to the builds of all jobs within a folder, Display selected jobs from subfolders in a higher-level view, and Restrict which agents each team has access to.
+* Developer productivity:
   * [Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) improves collaboration by connecting Pipelines on the same controller or different one. It allows a Pipeline to create a notification event that will be consumed by other Pipelines waiting on it to trigger a job.
-  * [GitHub Apps](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/github-app-auth): Receive and act upon granular, actionable build data directly in GitHub. [Unthrottling GitHub API usage](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/github-app-auth#_unthrottling_github_api_usage)
+  * :octocat: [GitHub Apps](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/github-app-auth): Receive and act upon granular, actionable build data directly in GitHub. [Unthrottling GitHub API usage](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/github-app-auth#_unthrottling_github_api_usage)
   * [CloudBees SCM Reporting](https://docs.cloudbees.com/docs/cloudbees-ci/latest/scm-integration/enabling-scm-reporting): Provides rich information beyond the standard GitHub or Bitbucket pass/fail status, Displays check for code coverage and test results directly in GitHub or Bitbucket, and Delivers detailed error and warning summaries.
   * 🔔 [Slack](https://docs.cloudbees.com/docs/cloudbees-ci/latest/slack-integration/slack-integration-intro): Receive granular, actionable build data directly in Slack
   * [Service Now](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/servicenow) Create and manage ServiceNow change requests and incident tickets from your Pipeline
@@ -119,16 +119,18 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 
 ### CloudBees CI: Management
 
-* 📈 Monitoring, adds the [CloudBees Prometheus Metrics plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/monitoring/prometheus-plugin) which exposes metrics securely for Operation Center. In
-* 🔬 Auditing, adds the [User Activity Monitoring plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/user-activity-monitoring) which provides you with a summary of user activity.
-* 💾 Backup, adds the [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
-  * It allows you to separate Configuration from Build Data (Interesting from a Casc point of view)
-  * It can be integrated with Cluster Operation to take a back for every controller
+* 📈 Monitoring, adding the [CloudBees Prometheus Metrics plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/monitoring/prometheus-plugin) which exposes metrics securely for Operation Center. (Additionally, it can be used also with controllers)
+* 🔬 Auditing, adding the [User Activity Monitoring plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/user-activity-monitoring) which provides you with a summary of user activity.
+* 💾 Backup, adding the [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
+  * It can be integrated with [Cluster Operation to take a backup](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-cluster) for every controller connected to the controller
+  * 🍬 Additionally, it allows you to separate Configuration from Build Data (Interesting from a Casc point of view)
 * Housekeeping
   * [CloudBees Inactive Items plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/inactive-items): Identify unused items which are good candidate to be removed from the instance.
   * [CloudBees Usage plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/plugin-usage): Curated list of plugins usage at instance level. It is recommeded to only install plugin the instance required.
 * Operate remotely with Jenkins
-  * The [CloudBees Request Filter Plugin](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-do-i-use-the-cloudbees-request-filter-plugin) can block any specifict API endpoint request that has been detected as harmful for the performance or security instance.
+  * API REST
+    * [CloudBees Request Filter Plugin](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-do-i-use-the-cloudbees-request-filter-plugin) can block any specifict API endpoint request that has been identified like potential damage for the performance or security instance.
+    * New API Endpoints are adding for [Casc](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) and [RBAC](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/rbac-api)
 
 ### CloudBees CI: Support 🏥
 
