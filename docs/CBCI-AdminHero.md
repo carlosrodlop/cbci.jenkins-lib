@@ -85,7 +85,7 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * Extend your Declarative configuration from JCasc to Casc.
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
   * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
-* Welcome to the `Operation Center` for central governance for your CloudBees CI Controllers with a Shared Context.
+* Central governance for your CloudBees CI Controllers with a Shared Context: Operation Center
   * Client/Managed Controllers.
     * [Slipt Monolithic Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/) to a group of connected Controllers per Development Teams (check this video [From Big and Slow to Small and Agile: Splitting Monolithic Jenkins Controllers for Increased Performance](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance))
   * Use [Move/Copy/Promote](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/move-copy-promote) to disribute items across your Plataform.
