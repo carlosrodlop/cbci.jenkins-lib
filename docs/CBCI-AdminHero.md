@@ -129,15 +129,14 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * 🔬 Auditing, adding the [User Activity Monitoring plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/user-activity-monitoring) which provides you with a summary of user activity.
 * 💾 [Backup/Restore](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/)
   * [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
+    * It offers a more solid backup solid which is integrated in CasC and compatible with [multiple Storage types](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin#where-to-back-up) (including [AWS S3](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin#_amazon_s3) or other [Cloud Buckets S3-compatible](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/overriding-aws-s3-endpoint-for-cluster-operation-backups))
     * It can be integrated with [Cluster Operation to take a backup](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-cluster) for every controller connected to the controller.
-    * Backup storage: Multiple, including S3
-    * Integrated with Casc
 * Housekeeping
   * [CloudBees Inactive Items plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/inactive-items): Identify unused items which are good candidate to be removed from the instance.
   * [CloudBees Usage plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/plugin-usage): Curated list of plugins usage at instance level. It is recommeded to only install plugin the instance required.
 * Operate remotely with Jenkins
   * API REST
-    * [CloudBees Request Filter Plugin](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-do-i-use-the-cloudbees-request-filter-plugin) can block any specifict API endpoint request that has been identified like potential damage for the performance or security instance.
+    * 🔒 [CloudBees Request Filter Plugin](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-do-i-use-the-cloudbees-request-filter-plugin) can block any specifict API endpoint request that has been identified like potential damage for the performance or security instance.
     * New API Endpoints are adding for [Casc](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) and [RBAC](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/rbac-api)
 
 ### CloudBees CI: Support 🏥
