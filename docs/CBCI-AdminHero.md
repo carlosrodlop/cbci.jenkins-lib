@@ -36,7 +36,7 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
     * Jenkins supports different types of OS (Windows, Linux and MacOS) and deployments [Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents) vs Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/)), including support for [Windows containers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_setting_up_a_kubernetes_cluster_with_linux_and_windows_node_pools).
   * Integrate with an Artifact Registry like [Artifactory](https://plugins.jenkins.io/artifactory/) to store artifacts (build outcome) for Continuos Delivery or Release Orchestration
     * ⚠️ For intermediate artifacts to be used by others Jenkins builds (e.g. [archiveArtifacts](https://www.jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts)), do not use `$JENKINS_HOME` but S3 compatible storage like [Artifact Manager on S3](https://plugins.jenkins.io/artifact-manager-s3/)
-
+* Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution)
 ### Jenkins CI: Administration
 
 * 📈 Integrate Jenkins with an external Monitoring solution like [Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (⚠️ Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored inside Jenkins).
@@ -50,7 +50,6 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
   * [Thinbackup plugin](https://plugins.jenkins.io/thinBackup/) for process automation.
     * Backup storage: Directory/Mount point accessible from `$JENKINS_HOME`
     * Currently, it is no integrated in JCasc [JENKINS-53442](https://issues.jenkins.io/browse/JENKINS-53442)
-* Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution)
 * Operate remotely with Jenkins
   * [Jenkins CLI](https://www.jenkins.io/doc/book/managing/cli/) (🍬 If you use the Jenkins CLI tool regularly, [configure an alias](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/config-alias) to avoid having to type the entire command each time).
     * `$JENKINS_URL/cli` contains up-to-date docs about remoting cli commands.
@@ -122,6 +121,9 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
   * 🔔 [Slack](https://docs.cloudbees.com/docs/cloudbees-ci/latest/slack-integration/slack-integration-intro): Receive granular, actionable build data directly in Slack
   * [Service Now](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/servicenow) Create and manage ServiceNow change requests and incident tickets from your Pipeline
   * New UI replacement for [Blue Ocean](https://www.jenkins.io/doc/book/blueocean/getting-started/): [CloudBees Pipeline Explorer Plugin](https://docs.cloudbees.com/docs/release-notes/latest/plugins/cloudbees-pipeline-explorer-plugin/).
+* Housekeeping
+  * [CloudBees Inactive Items plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/inactive-items): Identify unused items which are good candidate to be removed from the instance.
+  * [CloudBees Usage plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/plugin-usage): Curated list of plugins usage at instance level. It is recommeded to only install plugin the instance required.
 
 ### CloudBees CI: Administration
 
@@ -131,9 +133,6 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
   * [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
     * It offers a more solid backup solution which is integrated in CasC and compatible with [multiple Storage types](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin#where-to-back-up) (including [AWS S3](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin#_amazon_s3) or other [Cloud Buckets S3-compatible](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/overriding-aws-s3-endpoint-for-cluster-operation-backups))
     * It can be integrated with [Cluster Operation to take a backup](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-cluster) for every controller connected to the controller.
-* Housekeeping
-  * [CloudBees Inactive Items plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/inactive-items): Identify unused items which are good candidate to be removed from the instance.
-  * [CloudBees Usage plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/plugin-usage): Curated list of plugins usage at instance level. It is recommeded to only install plugin the instance required.
 * Operate remotely with Jenkins
   * API REST
     * 🔒 [CloudBees Request Filter Plugin](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-do-i-use-the-cloudbees-request-filter-plugin) can block any specifict API endpoint request that has been identified like potential damage for the performance or security instance.
