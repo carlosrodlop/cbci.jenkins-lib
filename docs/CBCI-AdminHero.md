@@ -49,7 +49,7 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * 💾 [Backup/Restore](https://www.jenkins.io/doc/book/system-administration/backing-up/)
   * [Thinbackup plugin](https://plugins.jenkins.io/thinBackup/) for process automation.
     * Backup storage: Directory/Mount point accessible from `$JENKINS_HOME`
-    * Currently no integrated in JCasc
+    * Currently, it is no integrated in JCasc [JENKINS-53442](https://issues.jenkins.io/browse/JENKINS-53442)
 * Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution)
 * Operate remotely with Jenkins
   * [Jenkins CLI](https://www.jenkins.io/doc/book/managing/cli/) (🍬 If you use the Jenkins CLI tool regularly, [configure an alias](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/config-alias) to avoid having to type the entire command each time).
@@ -129,7 +129,7 @@ This story is inspired by [CloudBees CI feature comparison](https://docs.cloudbe
 * 🔬 Auditing, adding the [User Activity Monitoring plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/user-activity-monitoring) which provides you with a summary of user activity.
 * 💾 [Backup/Restore](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/)
   * [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
-    * It offers a more solid backup solid which is integrated in CasC and compatible with [multiple Storage types](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin#where-to-back-up) (including [AWS S3](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin#_amazon_s3) or other [Cloud Buckets S3-compatible](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/overriding-aws-s3-endpoint-for-cluster-operation-backups))
+    * It offers a more solid backup solution which is integrated in CasC and compatible with [multiple Storage types](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin#where-to-back-up) (including [AWS S3](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin#_amazon_s3) or other [Cloud Buckets S3-compatible](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/overriding-aws-s3-endpoint-for-cluster-operation-backups))
     * It can be integrated with [Cluster Operation to take a backup](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/backup-cluster) for every controller connected to the controller.
 * Housekeeping
   * [CloudBees Inactive Items plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/inactive-items): Identify unused items which are good candidate to be removed from the instance.
