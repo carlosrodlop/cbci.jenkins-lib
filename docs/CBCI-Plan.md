@@ -30,39 +30,50 @@
 * Complete a new installation and configuration of CloudBees CI in the production environment with one (1) Operations Center and NN Client Controllers
 * Demonstrate how to create and attach a Client Controller to the Operations Center
 * Demonstrate how to configure HA
-* Demonstrate configuration and usage of Configuration as Code for Traditional
+* Demonstrate usage of Configuration as Code for Traditional
 * Configure Static Agents
 
 ### Modern
 
 * Complete a new installation and configuration of CloudBees CI in the production environment with one (1) Operations Center and NN Managed Controllers
 * Demonstrate how to create Managed Controller for the Operations Center
-* Demonstrate configuration and usage of Configuration as Code for Modern
+* Demonstrate usage of Configuration as Code for Modern
 * Configure Pod templates in the Operation Center and Shared Libraries
   
 ### Common
 
 * Configuration
-  * CloudBees Health
+  * CloudBees Jenkins Health Advisor
   * Demonstrate and guide on basic Role-Based Access Control
   * Demonstrate integration with support authentication services (such as Active Directory, LDAP, SAML)
+  * Credentials Isolation
+  * Housekeeping
+    * CloudBees Inactive Items plugin
+    * CloudBees Usage plugin
+    * Configure Global Build Discarders
+  * Integration (Optional - Depending on Customer tech stack)
+    * GitHub App
+    * Slack
 * Administration
-  * Demonstrate backup of Operations Center
-  * Demonstrate backup of Client Master using a Cluster Operation
+  * Backup/Restore
+    * Demonstrate backup of Operations Center
+    * Demonstrate backup of Client Master using a Cluster Operation
+  * Auditing
+    * Audit Trail Plugin
+    * User Activity Monitoring plugin
 * Pipelines
   * Demonstrate Pipeline, Multibranch, and Organization Folder project types
   * Demonstrate how to use Shared Libraries
   * Demonstrate configuration and usage of Pipeline Policies
   * Demonstrate configuration and usage of Cross Team Collaboration
-  * Demonstrate configuration and usage of External HTTP endpoints
   * Demonstrate configuration and usage of Pipeline Template Catalog
 
-## Performance
+## CI Performance
 
 * CI Performance via [Dora Metrics](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance) [summary](https://storage.googleapis.com/gweb-cloudblog-publish/original_images/Calculating_the_metrics_frOhcbp.jpg)
   * What is your Job Build Frequency (ex: 100 builds per day)?
 
-## Backup/Disaster Recovery
+## CI Backup/Disaster Recovery
 
 * Where is your Backup Storage (e.g: s3, FTP server)
 * Are you using Configuration as Code?
