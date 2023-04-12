@@ -7,7 +7,7 @@
 
 ---
 
-Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition).
+Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition) and completed with my experience in the field and awesome content (from awesome people) public on the Internet.
 
 ## Jenkins CI: Starting with a solid Open Source core
 
@@ -18,38 +18,41 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
     * [script block](https://www.jenkins.io/doc/book/pipeline/syntax/#script) takes a block of Scripted Pipeline and executes that in the Declarative Pipeline.
   * Learn by examples in [ssbostan/jenkins-tutorial](https://github.com/ssbostan/jenkins-tutorial)
   * 🍬 For the migration of existing Freestyles projects to Declarative Pipelines the [Declarative Pipeline Migration Assistant](https://plugins.jenkins.io/declarative-pipeline-migration-assistant/) can be useful as an initial step.
-* [Multibranch Pipelines](https://www.jenkins.io/doc/book/pipeline/multibranch/) build on the `Jenkinsfile` foundation checked into source control and they enable the implementation of different `Jenkinsfile`s for different branches of the same project.
-* Reduce building times
-  * Add cache for your project dependencies (examples for [gradle](https://www.cloudbees.com/videos/speeding-up-jenkins-and-maven-build-cache) or [maven](https://sneha-wadhwa.medium.com/speeding-up-ci-pipelines-on-jenkins-63efff817d1d)) to speed up the build times.
-  * Use [Parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel)
+* Branch Source plugins like The GitHub Branch Source plugin allow you to create a new project based on the repository structure from one or more GitHub users or organizations. You can either:
+  * Use a [Multibranch Pipelines](https://www.jenkins.io/doc/book/pipeline/multibranch/) to import a single repository’s branches, pull requests, and tags as Pipeline projects.
+  * Use a GitHub Organization project to import all or a subset of repositories belonging to a GitHub user or organization as "Multibranch Pipeline" projects.
+* Reduce building times by
+  * Adding cache for your project dependencies (examples for [gradle](https://www.cloudbees.com/videos/speeding-up-jenkins-and-maven-build-cache) or [maven](https://sneha-wadhwa.medium.com/speeding-up-ci-pipelines-on-jenkins-63efff817d1d)) to speed up the build times.
+  * Using [Parallel](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel) stages when it is possible
+* Docker Agents
+  * Traditional Platform
+    * [Using Docker with Pipeline](https://www.jenkins.io/doc/book/pipeline/docker/)
+  * Modern Platform (Kubernetes)
+    * Orchestrate docker images via [Kubernetes | Jenkins plugin](https://plugins.jenkins.io/kubernetes/)
+    * Use tools like [Kaniko for building docker images](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/using-kaniko)
 * Pipeline Development
-    * [Built-in Documentation](https://www.jenkins.io/doc/book/pipeline/getting-started/#built-in-documentation): Snippet Generator, Global Variable Reference, Declarative Directive Generator
+  * The best source of truth [Built-in Documentation](https://www.jenkins.io/doc/book/pipeline/getting-started/#built-in-documentation): Snippet Generator, Global Variable Reference, Declarative Directive Generator
+  * Linters and Validations
     * API REST
     * IDEs plugins
       * VisualStudio Code
         * [Jenkins Jack - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=tabeyti.jenkins-jack)
         * [Jenkins Extension Pack - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=DontShaveTheYak.jenkins-extension-pack)
         * [Jenkins Pipeline Linter Connector - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=janjoerke.jenkins-pipeline-linter-connector)
-      * Eclipse: [Jenkins Editor | Eclipse Plugins, Bundles and Products - Eclipse Marketplace](https://marketplace.eclipse.org/content/jenkins-editor)
-      * IntellJ
-        * [Jenkins Pipeline Linter - IntelliJ IDEs Plugin | Marketplace](https://plugins.jetbrains.com/plugin/15699-jenkins-pipeline-linter)
+      * Eclipse: [Jenkins Editor | - Eclipse Marketplace](https://marketplace.eclipse.org/content/jenkins-editor)
+      * IntelliJ: [Jenkins Pipeline Linter - IntelliJ IDEs Plugin](https://plugins.jetbrains.com/plugin/15699-jenkins-pipeline-linter)
         * [Working with Jenkinsfile in Intellij IDEA](http://vgaidarji.me/blog/2018/07/30/working-with-jenkinsfile-in-intellij-idea/)
-* In Kubernetes, use [Kaniko for building docker images]
-* 
 * [Shared Library](https://www.jenkins.io/doc/book/pipeline/shared-libraries/)
   * [Prototype steps and pipelines using Global vars](https://github.com/aimtheory/jenkins-pipeline-best-practices)
-  * [Resource folder](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources) to load agent configuration and script
-    * Do not use groovy
-    * sh and bat are executed on the agent
-      * 
-
-
+  * [Resource folder](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources) to load agent configuration and script ([🎥 Using Resource Files From a Jenkins Shared Library](https://www.youtube.com/watch?v=eV7roTXrEqg))
 * Review [Pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices)
+
 ## CloudBees CI: Make Jenkins Pipelines more scalable and reliable
 
-* Checkpoints
-* Detects restore scenario and attempts to bring your instance back up quickly after loss of environment
-* Pipelines Policies
-* Pipeline Template Catalogs
-* https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#_organization_folders ==> Validate only CI
-* [Markerfile](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts): To support administrators wanting to restrict how Pipelines are defined, CloudBees CI includes an additional option for multibranch projects and organization folders. With this option, the configuration in Jenkins consists of both the name of a marker file, and the Pipeline script to run when it is encountered. ==> Validate it is only in Jenkins. ==> Validate only CI
+* Make pipelines more resilient with:
+  * [Checkpoints](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/inserting-checkpoints)
+  * [Aborted builds](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/controlling-builds#aborted-builds) detect restore scenario and attempts to bring your instance back up quickly after loss of environment
+* Align [pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices) within your organization
+  * [Pipelines Policies](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-policies) ([🎥 Demo video](https://www.youtube.com/watch?v=Js4d35kv19I))
+  * [Pipeline Template Catalogs](https://docs.cloudbees.com/docs/admin-resources/latest/pipeline-templates-user-guide/setting-up-a-pipeline-template-catalog)([🎥 Demo video](https://www.youtube.com/watch?v=pPwI_kTSCmA))
+* [Markerfile](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts): To support administrators wanting to restrict how Pipelines are defined, CloudBees CI includes an additional option for [Multibranch Pipelines](https://www.jenkins.io/doc/book/pipeline/multibranch/) and organization folders. With this option, the configuration in Jenkins consists of both the name of a marker file, and the Pipeline script to run when it is encountered. (Validate only CI)
