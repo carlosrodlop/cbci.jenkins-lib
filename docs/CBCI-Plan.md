@@ -63,7 +63,7 @@
     * User Activity Monitoring plugin
 * Pipelines
   * Demonstrate Pipeline, Multibranch, and Organization Folder project types
-  * Demonstrate how to use Shared Libraries
+  * Demonstrate how to use Shared Libraries (including resource folder)
   * Demonstrate configuration and usage of Pipeline Policies
   * Demonstrate configuration and usage of Cross Team Collaboration
   * Demonstrate configuration and usage of Pipeline Template Catalog
