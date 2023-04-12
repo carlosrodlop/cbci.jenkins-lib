@@ -1,4 +1,4 @@
-# CI Discovery
+# CI Plan
 
 ## Analysis
 
@@ -79,7 +79,7 @@
 * Are you using Configuration as Code?
 * Disaster Recovery
   * Fault Tolerant Design: Primary and Secondary Zones/Regions ==> Guarantees the CI service resistance from full Zones/Regions outage but also a particular failure with a Network, Load Balancer, Machines/Nodes
-  * Number of [Stateful vs Stateless applications](https://www.unixarena.com/2021/08/kubernetes-stateful-vs-stateless-applications.html/) ==> Stateful apps requires to be restore from Backup in the Disaster Recovery Regions vs
+  * Number of [Stateful vs Stateless applications](https://www.unixarena.com/2021/08/kubernetes-stateful-vs-stateless-applications.html/) ==> Stateful apps require to be restored from Backup in the Disaster Recovery Regions vs Stateless apps can be running in both regions simultaneously.
   * How is addressed the Active/Passive Failover
     * Mapping DNA A record to the Primary/Secondary Load Balancer
     * Restore Process of the States
