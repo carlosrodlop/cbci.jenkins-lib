@@ -1,4 +1,4 @@
-name: .md links check
+name: linksCheck admin
 # runs every monday at 9 am
 on:
   schedule:
