@@ -7,6 +7,8 @@
 
 ---
 
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome) [![md2pdf](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/md2pdf.yml/badge.svg)](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/md2pdf.yml) [![mdLinkChecker](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/mdLinkChecker.yaml/badge.svg)](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/mdLinkChecker.yaml)
+
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition) and completed with my experience in the field and awesome content (from awesome people) public on the Internet.
 Technology integration choices here cover the most common use cases based on the [Jenkins Stats](https://stats.jenkins.io/) but more integrations are available via plugins.
 
