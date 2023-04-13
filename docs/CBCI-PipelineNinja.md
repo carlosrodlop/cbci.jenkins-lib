@@ -18,7 +18,11 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * [Declarative steps](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-steps) may use all the available steps documented in the [Pipeline Steps reference](https://www.jenkins.io/doc/pipeline/steps/)
     * ⚠️ [Any processing within a Pipeline should occur within an agent](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices#_do_all_the_work_within_an_agent) inside the [sh](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script) (linux) or [bat](https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#bat-windows-batch-script) (windows) (🍬 See this [🎥 How to Run a Shell Script in Jenkins Pipeline](https://www.youtube.com/watch?v=mbeQWBNaNKQ))
     * [script block](https://www.jenkins.io/doc/book/pipeline/syntax/#script) takes a block of Scripted Pipeline and executes that in the Declarative Pipeline.
-  * Learn by examples in [ssbostan/jenkins-tutorial](https://github.com/ssbostan/jenkins-tutorial)
+  * Learn by examples with:
+    * [cloudbees/intro-to-declarative-pipeline: A gentle introduction to developing Declarative Pipelines for Jenkins.](https://github.com/cloudbees/intro-to-declarative-pipeline)
+    * [ssbostan/jenkins-tutorial](https://github.com/ssbostan/jenkins-tutorial)
+    * [darinpope/jenkinsfile-library](https://github.com/darinpope/jenkinsfile-library)
+    * [darinpope/jenkins-example-*](https://github.com/darinpope?language=&page=2&q=jenkins-example&sort=&tab=repositories)
   * 🍬 For the migration of existing Freestyles projects to Declarative Pipelines the [Declarative Pipeline Migration Assistant](https://plugins.jenkins.io/declarative-pipeline-migration-assistant/) can be useful as an initial step.
 * Branch Source plugins like The GitHub Branch Source plugin allow you to create a new project based on the repository structure from one or more GitHub users or organizations. You can either:
   * Use a [Multibranch Pipelines](https://www.jenkins.io/doc/book/pipeline/multibranch/) to import a single repository’s branches, pull requests, and tags as Pipeline projects.
@@ -37,16 +41,16 @@ Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cl
   * Linters and Validations
     * API REST
     * IDEs plugins
-      * VisualStudio Code
-        * [Jenkins Jack - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=tabeyti.jenkins-jack)
-        * [Jenkins Extension Pack - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=DontShaveTheYak.jenkins-extension-pack)
-        * [Jenkins Pipeline Linter Connector - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=janjoerke.jenkins-pipeline-linter-connector)
+      * VisualStudio Code: [Jenkins Jack](https://marketplace.visualstudio.com/items?itemName=tabeyti.jenkins-jack), [Jenkins Extension Pack](https://marketplace.visualstudio.com/items?itemName=DontShaveTheYak.jenkins-extension-pack), [Jenkins Pipeline Linter Connector](https://marketplace.visualstudio.com/items?itemName=janjoerke.jenkins-pipeline-linter-connector)
       * Eclipse: [Jenkins Editor | - Eclipse Marketplace](https://marketplace.eclipse.org/content/jenkins-editor)
       * IntelliJ: [Jenkins Pipeline Linter - IntelliJ IDEs Plugin](https://plugins.jetbrains.com/plugin/15699-jenkins-pipeline-linter)
         * [Working with Jenkinsfile in Intellij IDEA](http://vgaidarji.me/blog/2018/07/30/working-with-jenkinsfile-in-intellij-idea/)
 * [Shared Library](https://www.jenkins.io/doc/book/pipeline/shared-libraries/)
   * [Prototype steps and pipelines using Global vars](https://github.com/aimtheory/jenkins-pipeline-best-practices)
   * [Resource folder](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#loading-resources) to load agent configuration and script ([🎥 Using Resource Files From a Jenkins Shared Library](https://www.youtube.com/watch?v=eV7roTXrEqg))
+  * Learn by examples with:
+    * [jenkins-infra/pipeline-library](https://github.com/jenkins-infra/pipeline-library)
+    * [vfarcic/jenkins-shared-libraries](https://github.com/vfarcic/jenkins-shared-libraries)
 * Review [Pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices)
 
 ## CloudBees CI: Make Jenkins Pipelines more scalable and reliable
