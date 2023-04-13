@@ -37,8 +37,9 @@ Technology integration choices here cover the most common use cases based on the
     * Jenkins supports different types of OS (Windows, Linux and MacOS) and deployments [Static Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#static-agents) vs Cloud [Kubernetes Plugin](https://plugins.jenkins.io/kubernetes/)), including support for [Windows containers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_setting_up_a_kubernetes_cluster_with_linux_and_windows_node_pools).
   * Integrate with an Artifact Registry like [Artifactory](https://plugins.jenkins.io/artifactory/) to store artifacts (build outcome) for Continuos Delivery or Release Orchestration
     * ⚠️ For intermediate artifacts to be used by others Jenkins builds (e.g. [archiveArtifacts](https://www.jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts)), do not use `$JENKINS_HOME` but S3 compatible storage like [Artifact Manager on S3](https://plugins.jenkins.io/artifact-manager-s3/)
-* Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution) ([🎥 How to Clean up Old Jenkins Builds](https://www.youtube.com/watch?v=_Z7BlaTTGlo))
+* Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution) helps to reduce the **disk space** consumption on build data for jobs ([🎥 How to Clean up Old Jenkins Builds](https://www.youtube.com/watch?v=_Z7BlaTTGlo))
   * 🍬 Build data consume more Disk space and has higher IO rates that the rest of the elements outside the `$JENKINS_HOME`. Why do not place it a more appropiate disk according to its requirements outside the `$JENKINS_HOME` thanks to [jenkins.model.Jenkins.buildsDir](https://www.jenkins.io/doc/book/managing/system-properties/#jenkins-model-jenkins-buildsdir)?
+  * 🍬 Jenkins outcomes that can be storage outside of Filesystem see [Pluggable Storage](https://www.jenkins.io/sigs/cloud-native/pluggable-storage/)
 
 ### Jenkins CI: Administration
 
@@ -125,8 +126,8 @@ Technology integration choices here cover the most common use cases based on the
   * [Service Now](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/servicenow) Create and manage ServiceNow change requests and incident tickets from your Pipeline
   * New UI replacement for [Blue Ocean](https://www.jenkins.io/doc/book/blueocean/getting-started/): [CloudBees Pipeline Explorer Plugin](https://docs.cloudbees.com/docs/release-notes/latest/plugins/cloudbees-pipeline-explorer-plugin/).
 * Housekeeping
-  * [CloudBees Inactive Items plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/inactive-items): Identify unused items which are good candidate to be removed from the instance.
-  * [CloudBees Usage plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/plugin-usage): Curated list of plugins usage at instance level. It is recommeded to only install plugin the instance required.
+  * [CloudBees Inactive Items plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/inactive-items): Identify **unused items** which are good candidate to be removed from the instance.
+  * [CloudBees Usage plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/plugin-usage): Curated list of **plugins usage** at instance level. It is recommeded to only install plugin the instance required.
 
 ### CloudBees CI: Administration
 
