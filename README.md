@@ -7,7 +7,7 @@
 
 ---
 
-![GitHub Latest Release)](https://img.shields.io/github/v/release/carlosrodlop/cbci.jenkins-lib?logo=github) ![GitHub Issues](https://img.shields.io/github/issues/carlosrodlop/cbci.jenkins-lib?logo=github) [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets) [![md2pdf](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/md2pdf.yml/badge.svg)](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/md2pdf.yml) [![mdLinkChecker](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/mdLinkChecker.yml/badge.svg)](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/mdLinkChecker.yml)
+![GitHub Latest Release)](https://img.shields.io/github/v/release/carlosrodlop/cbci.jenkins-lib?logo=github) ![GitHub Issues](https://img.shields.io/github/issues/carlosrodlop/cbci.jenkins-lib?logo=github) [![gitleaks badge](https://img.shields.io/badge/protected%20by-gitleaks-blue)](https://github.com/zricethezav/gitleaks#pre-commit) [![gitsecrets](https://img.shields.io/badge/protected%20by-gitsecrets-blue)](https://github.com/awslabs/git-secrets) [![md2pdf](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/md2pdf.yml/badge.svg)](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/md2pdf.yml) [![mdLinkCheckerAll](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/mdLinkCheckerAll.yml/badge.svg)](https://github.com/carlosrodlop/cbci.jenkins-lib/actions/workflows/mdLinkCheckerAll.yml)
 
 CloudBees CI admin library is separated into 2 branches:
 
