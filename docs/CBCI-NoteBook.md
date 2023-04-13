@@ -1,4 +1,4 @@
-# Trobleshooting
+# Notebook
 
 ## Index
 
