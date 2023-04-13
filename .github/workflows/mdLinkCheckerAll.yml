@@ -1,0 +1,21 @@
+name: .md links check all
+# runs every monday at 9 am
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:    
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+        # checks all markdown files from /docs including all subfolders
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'yes'
+          config-file: '.github/workflows/markdown.links.config.json'
+          folder-path: './README.md, docs/'
