@@ -454,7 +454,7 @@ In the case, you need to connect to the support bundle.
 
 To debug changes
 
-1) Easy/short changes uses Watch under variables: <https://www.jetbrains.com/help/idea/adding-editing-and-removing-watches.html>
+1) Easy/short changes uses Watch under variables
 2) Long changes
 2.1) Create a snapshot version pom.xml
 2.2) Compile de plugin (`mvn clean package -Dmaven.test.skip=true`)
