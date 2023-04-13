@@ -328,7 +328,7 @@ java.nio.channels.ClosedChannelException
 
 ##### Share Agents Provisioning
 
-```ah
+```sh
 2017-10-19 13:25:02.040+0000 [id=82]    INFO    hudson.slaves.NodeProvisioner$2#run: Jenkins-Shared-Agent-Example1 provisioning successfully completed. We have now 25 computer(s)
 ...
 2017-10-19 14:35:02.054+0000 [id=61]    INFO    hudson.slaves.NodeProvisioner$2#run: Jenkins-Shared-Agent-Example2 provisioning successfully completed. We have now 27 computer(s)
