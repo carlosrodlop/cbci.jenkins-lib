@@ -27,7 +27,9 @@ jobs:
         with:
           input_dir: docs
           output_dir: docs/pdf
-          #images_dir: img
+          images_dir: img
+          image_import: ./img
+          build_html: false
       - uses: actions/upload-artifact@v3
         with:
           name: docs
