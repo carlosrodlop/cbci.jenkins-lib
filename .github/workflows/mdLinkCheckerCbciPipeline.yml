@@ -18,4 +18,4 @@ jobs:
           use-quiet-mode: 'yes'
           use-verbose-mode: 'yes'
           config-file: '.github/workflows/markdown.links.config.json'
-          folder-path: 'docs/CBCI-PipelineNinja.md'
+          folder-path: './docs/CBCI-Pipelines.md'
