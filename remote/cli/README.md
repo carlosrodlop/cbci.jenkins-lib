@@ -56,11 +56,11 @@ jenkins-cli import-credentials-as-xml folder::item::${targetFolder} < credential
 
 ## CasC
 
-```
+```sh
 jenkins-cli casc-bundle-set-controller -b test-casc-master -c carlosrodlop_mm
 ```
 
-```
+```sh
 jenkins-cli -webSocket casc-bundle-set-controller -b "crodriguezlopez-carlosrodlop-1" -c "Teams/dse-team-na"
 ```
 
