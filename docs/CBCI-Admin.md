@@ -146,6 +146,7 @@ Technology integration choices here cover the most common use cases based on the
 
 ### CloudBees CI: Support 🏥
 
+* [Get the best support in Jenkins](https://www.cloudbees.com/jenkins/what-is-jenkins): CloudBees is an active participant in the Jenkins community and plays a significant role in supporting the project. A number of key contributors to the Jenkins project are employed by CloudBees.Engineers from the CloudBees support and product teams regularly contribute code to the Jenkins project.
 * From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Global Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) willing to answer your questions and help your processes including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
   * [CloudBees plugin support policies](https://docs.cloudbees.com/docs/cloudbees-common/latest/plugin-support-policies) will cover Tier 1 and Tier 2 plugins.
   * Additionally, we include:
