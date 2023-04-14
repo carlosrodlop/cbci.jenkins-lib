@@ -19,4 +19,4 @@ jobs:
           use-verbose-mode: 'yes'
           config-file: '.github/workflows/markdown.links.config.json'
           folder-path: 'docs/'
-          file-path: './README.md'
+          file-path: 'README.md'
