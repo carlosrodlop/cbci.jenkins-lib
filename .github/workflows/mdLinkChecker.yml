@@ -3,9 +3,15 @@ name: linksCheck all
 on:
   schedule:
     - cron: "0 9 * * 1"
-
+  push:
+    branches:
+      - main
+    # Paths can be used to only trigger actions when you have edited certain files, such as a file within the /docs directory
+    paths:
+      - docs/**
+      - README.md
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:    
+  workflow_dispatch:
 
 jobs:
   check-links:
