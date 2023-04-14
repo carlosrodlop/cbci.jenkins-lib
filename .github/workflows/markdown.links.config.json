@@ -1,7 +1,7 @@
 {
-    "ignorePatterns": [
-      {
-        "pattern": "^https://support.cloudbees.com/hc/en-us"
-      }
-    ]
-  }
+  "ignorePatterns": [
+    {
+      "pattern": "^https://support.cloudbees.com/hc/en-us"
+    }
+  ]
+}
