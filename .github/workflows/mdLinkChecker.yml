@@ -1,4 +1,4 @@
-name: linksCheck all
+name: linksCheck
 # runs every monday at 9 am
 on:
   schedule:
