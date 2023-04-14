@@ -1,21 +1,20 @@
-name: linksCheck pipeline
-# runs every monday at 9 am
-on:
-  schedule:
-    - cron: "0 9 * * 1"
+name: markdown-link-check
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:    
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  check-links:
+  markdown-link-check:
+    name: Check markdown files for broken links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
-        # checks all markdown files from /docs including all subfolders
+      - uses: actions/checkout@v2
+      - name: Markdown links check
+        uses: ruzickap/action-my-markdown-link-checker@v1
         with:
-          use-quiet-mode: 'yes'
-          use-verbose-mode: 'yes'
-          config-file: '.github/workflows/markdown.links.config.json'
-          folder-path: './docs/CBCI-Pipelines.md'
+          config_file: '.github/workflows/markdown.links.config.json'
+          debug: true
+          search_paths: |
+            docs/CBCI-Pipeline.md
