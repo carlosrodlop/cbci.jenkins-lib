@@ -11,6 +11,8 @@
 
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition) and completed with my experience in the field and awesome content (from awesome people) public on the Internet.
 
+Checkout my GitHub start repositories for [CI Pipeline Developer](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-developer).
+
 ## Jenkins CI: Starting with a solid Open Source core
 
 * [Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/) stores the pipeline as code definition and it can be [created via UI](https://www.jenkins.io/doc/book/pipeline/getting-started/#through-the-classic-ui) or [imported from SCM](https://www.jenkins.io/doc/book/pipeline/getting-started/#defining-a-pipeline-in-scm) ( 🍬 The second option is [the recommendation](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices#_store_pipeline_definitions_in_a_source_code_management_scm_tool), although the first one might be interesting to deploy "Hello World" examples via the assistant ).
