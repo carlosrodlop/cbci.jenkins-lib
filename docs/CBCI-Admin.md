@@ -12,7 +12,7 @@
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition) and completed with my experience in the field and awesome content (from awesome people) public on the Internet.
 Technology integration choices here cover the most common use cases based on the [Jenkins Stats](https://stats.jenkins.io/) but more integrations are available via plugins.
 
-Checkout my GitHub start repositories for [CloudBees CI Admin Hero](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-admin).
+Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-admin).
 
 ## Jenkins CI: Starting with a solid Open Source core
 
