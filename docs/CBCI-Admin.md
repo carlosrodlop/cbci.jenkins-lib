@@ -32,6 +32,10 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
   * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Modern use [allowVolumeExpansion: true](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci)).
 * Firewall: [Required URLs to allowlist](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/url-list) (Note some of the URL are only required for CloudBees)
 
+### Jenkins CI: Data Persistence
+
+Jenkins depends on a Fyle System to store its configuration and build data: [$JENKINS_HOME](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/jenkins-home)
+
 ### Jenkins CI: Configuration
 
 * Jenkins comes with a series of bundle plugins (required) but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/). There are more than 1800+ community-contributed plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/)).
@@ -106,7 +110,7 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
 * Extend your Declarative configuration from JCasc to Casc.
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
   * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
-* Operation Center: Central governance of connected CI Controllers by a Shared Context which eases the scaling of your CI platform.
+* Operation Center: Central governance of connected CI Controllers by a Shared Context which eases the scaling of your CI platform (It mitigates the pain of managing isolated Jenkins instances).
   * Controllers types:
     * Traditional: [Client Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-setup-guide/connecting-cms)
     * Modern: [Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers).
