@@ -106,7 +106,7 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
 * Extend your Declarative configuration from JCasc to Casc.
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
   * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
-* Operation Center: Central governance for your CloudBees CI Controllers with a Shared Context. It eases the scaling of your CI platform.
+* Operation Center: Central governance of connected CI Controllers by a Shared Context which eases the scaling of your CI platform.
   * Controllers types:
     * Traditional: [Client Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-setup-guide/connecting-cms)
     * Modern: [Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers).
