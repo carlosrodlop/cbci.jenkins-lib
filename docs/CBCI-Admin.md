@@ -107,10 +107,10 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
   * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
 * Operation Center: Central governance for your CloudBees CI Controllers with a Shared Context. It eases the scaling of your CI platform.
-  * Controllers:
+  * Controllers types:
     * Traditional: [Client Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-setup-guide/connecting-cms)
     * Modern: [Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers).
-      * Note, it also support Client Controllers.
+      * Note, Modern also supports Client Controllers.
   * Use [Move/Copy/Promote](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/move-copy-promote) to disribute items across your Plataform.
   * [Cluster Operations](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cluster-operations) perform maintenance operations on various items in operations center, such as Client/Managed Controllers.
   * Shared Agent Configuration
