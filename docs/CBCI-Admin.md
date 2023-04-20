@@ -77,8 +77,8 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
 ### Jenkins CI: Support 🏥
 
 * Find your answers within the [community](https://community.jenkins.io/) in different channels like [Stack Overflow](https://stackoverflow.com/questions/tagged/jenkins)
+* Use [Support Core plugin](https://plugins.jenkins.io/support-core/) to export a snaphot of the configuration of your instance.
 * If you are stuck, report your request or bug in the [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
-* [Support Core plugin](https://plugins.jenkins.io/support-core/) exports the configuration of your instance to be evaluated [Export Jenkins Configuration](https://www.jenkins.io/doc/book/managing/exporting/)
 
 ## CloudBees CI: Make Jenkins administration more scalable and reliable 🚀
 
