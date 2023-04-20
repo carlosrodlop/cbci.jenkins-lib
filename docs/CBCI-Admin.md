@@ -16,7 +16,7 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
 
 ## Jenkins CI: Starting with a solid Open Source core
 
-* What is Jenkins CI? [Jenkins (software) - Wikipedia](https://en.wikipedia.org/wiki/Jenkins_(software))
+* Jenkins is an open source automation server. It helps automate the parts of SDLF, facilitating CI and CD [check in Wikipedia](https://en.wikipedia.org/wiki/Jenkins_(software)).
 * Spot Jenkins inside the [CD Landscape Map](https://landscape.cd.foundation/)
 * Get a first look at the Jenkins UI accessing the instance [jenkins.io](https://ci.jenkins.io/) as a Guest. Jenkins uses Jenkins for the CI of their plugins and core ("Dogfooding")
 
