@@ -20,11 +20,18 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
 * Spot Jenkins inside the [CD Landscape Map](https://landscape.cd.foundation/)
 * Get a first look at the Jenkins UI accessing the instance [jenkins.io](https://ci.jenkins.io/) as a Guest. Jenkins uses Jenkins for the CI of their plugins and core ("Dogfooding")
 
-### Jenkins CI: Installation
+### Jenkins CI: Installation and Architecture
 
+* High level overview of the [Jenkins architecture](https://www.jenkins.io/doc/developer/architecture/)
 * [Install Jenkins](https://www.jenkins.io/doc/book/installing/) in your desired platform following the recommendations explained in [Prepare Jenkins for Support](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/prepare-jenkins-for-support)
 * Always install the latest available version. It is a good practice to review [LTS Changelog](https://www.jenkins.io/changelog-stable/) to understand the new features and bug fixes (specifically for upgrades)
 * Additional [Jenkins Features are controlled with System Properties](https://www.jenkins.io/doc/book/managing/system-properties/).
+* Capacity planning: How many Jenkins instances does my Organization needs to perform efficiently their CI pipelines?
+  * Number of Controllers: Generally speaking, **one per Development Team**. Additionally. there are references to **estimate controllers** based on the [number of jobs and developer](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#Calculating-how-many-jobs)
+    * [Performance issues related to Monolithic Jenkins Controllers](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance)
+      * [Guide to Slipt Jenkins Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/)
+  * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Modern use [allowVolumeExpansion: true](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci)).
+* Firewall: [Required URLs to allowlist](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/url-list) (Note some of the URL are only required for CloudBees)
 
 ### Jenkins CI: Configuration
 
@@ -75,7 +82,7 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
 
 ## CloudBees CI: Make Jenkins administration more scalable and reliable 🚀
 
-### CloudBees CI: Installation and Platforms
+### CloudBees CI: Installation and Architecture
 
 * [Traditional platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-trad) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/cloudbees-ci-traditional-arch.574b6fc.svg))
   * Make your CI builds **more resilient** by adding [High Availability](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/high-availability) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/_images/ha-network-diagram.e8469d2.png)).
@@ -92,12 +99,6 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
   * [Signed Docker images](https://docs.cloudbees.com/docs/cloudbees-ci/latest/kubernetes-install-guide/verifying-cloud-docker-images)
   * [Signed Helm Charts](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/helm-verification)
 * Always install the latest version and review [CloudBees CI Release Notes](https://docs.cloudbees.com/docs/release-notes/latest/cloudbees-ci/) to understand the new features and bug fixes.
-* Capacity planning:
-  * Number of Controllers: Generally speaking, **one per Development Team**. Additionally. there are references to **estimate controllers** based on the [number of jobs and developer](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#Calculating-how-many-jobs)
-    * [Performance issues related to Monolithic Jenkins Controllers](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance)
-      * [Guide to Slipt Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/)
-  * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Modern use [allowVolumeExpansion: true](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci)).
-* Firewall: [Required URLs to allowlist](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/url-list)
 
 ### CloudBees CI: Configuration
 
