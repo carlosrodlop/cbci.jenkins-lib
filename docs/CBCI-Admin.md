@@ -47,11 +47,11 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
 
 ### Jenkins CI: Administration
 
-* 📈 Integrate Jenkins with an external Monitoring solution like [🎥 Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (⚠️ Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored inside Jenkins).
+* 📈 Monitoring: Integrate Jenkins with an external solution like [🎥 Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (⚠️ Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored inside Jenkins).
   * By default, the [Metrics](https://plugins.jenkins.io/metrics/) plugin exposes a set of metrics including  System and Java Virtual Machine metrics, Web UI metrics and Jenkins-specific metrics. Other plugins might add additional metrics like the [CloudBees Disk Usage Simple](https://plugins.jenkins.io/cloudbees-disk-usage-simple/)
   * Recommended resources to watch for performance: memory usage percentage, CPU usage percentage, JENKINS_HOME disk usage percentage, JENKINS_HOME IOPS, operations center and managed controller response time, Remaining build nodes capacity, Remaining master nodes capacity and Build/master nodes instances usage.
   * 🍬 Grafana offers series of ready-built [dashboards for Jenkins](https://grafana.com/grafana/dashboards/?search=jenkins)
-* 🔬 Audit Jenkins
+* 🔬 Auditing:
   * [Audit Trail Plugin](https://plugins.jenkins.io/audit-trail/) adds an “Audit Trail” section in your Jenkins main configuration page, where it is possible to define where to save logs on who performed particular operations on Jenkins. (more info at [How does Audit Trail plugin work](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-does-audit-trail-plugin-work).
   * [Job Config History Plugin](https://plugins.jenkins.io/jobConfigHistory/) stores all the changes made to jobs (history), saving the config.xml of each job. For each change, it is possible to see the record of the change, compare the difference between the new and the old version and restore a previous version. It is also possible to keep track of the changes made to the system configuration. (⚠️ This plugin can become a performance killer if you do not follow the recommendations provided in [JobConfigHistory Plugin Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/jobconfighistory-best-practices))
 * 💾 [Backup/Restore](https://www.jenkins.io/doc/book/system-administration/backing-up/)
@@ -71,6 +71,7 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
 
 * Find your answers within the [community](https://community.jenkins.io/) in different channels like [Stack Overflow](https://stackoverflow.com/questions/tagged/jenkins)
 * If you are stuck, report your request or bug in the [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
+* [Support Core plugin](https://plugins.jenkins.io/support-core/) exports the configuration of your instance to be evaluated [Export Jenkins Configuration](https://www.jenkins.io/doc/book/managing/exporting/)
 
 ## CloudBees CI: Make Jenkins administration more scalable and reliable 🚀
 
@@ -91,6 +92,12 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
   * [Signed Docker images](https://docs.cloudbees.com/docs/cloudbees-ci/latest/kubernetes-install-guide/verifying-cloud-docker-images)
   * [Signed Helm Charts](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/helm-verification)
 * Always install the latest version and review [CloudBees CI Release Notes](https://docs.cloudbees.com/docs/release-notes/latest/cloudbees-ci/) to understand the new features and bug fixes.
+* Capacity planning:
+  * Number of Controllers: Generally speaking, **one per Development Team**. Additionally. there are references to **estimate controllers** based on the [number of jobs and developer](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#Calculating-how-many-jobs)
+    * [Performance issues related to Monolithic Jenkins Controllers](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance)
+      * [Guide to Slipt Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/)
+  * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Modern use [allowVolumeExpansion: true](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci)).
+* Firewall: [Required URLs to allowlist](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/url-list)
 
 ### CloudBees CI: Configuration
 
@@ -100,8 +107,10 @@ Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.co
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
   * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
 * Operation Center: Central governance for your CloudBees CI Controllers with a Shared Context. It eases the scaling of your CI platform.
-  * [Client Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-setup-guide/connecting-cms) / [Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers).
-    * [Slipt Monolithic Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/) to a group of connected Controllers per Development Teams ( 🍬 check this video [From Big and Slow to Small and Agile: Splitting Monolithic Jenkins Controllers for Increased Performance](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance))
+  * Controllers:
+    * Traditional: [Client Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-setup-guide/connecting-cms)
+    * Modern: [Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers).
+      * Note, it also support Client Controllers.
   * Use [Move/Copy/Promote](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/move-copy-promote) to disribute items across your Plataform.
   * [Cluster Operations](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cluster-operations) perform maintenance operations on various items in operations center, such as Client/Managed Controllers.
   * Shared Agent Configuration
