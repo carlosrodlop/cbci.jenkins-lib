@@ -10,8 +10,8 @@
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
 
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition) and completed with my experience in the field and awesome content (from awesome people) public on the Internet.
-
-Checkout my GitHub start repositories for [CI Pipeline Developer](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-developer).
+This guide needs to be read from the top to the bottom: CloudBees CI is built on top of Jenkins.
+Check out my GitHub start repositories for [CI Pipeline Developer](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-developer).
 
 ## Jenkins CI: Starting with a solid Open Source core
 
