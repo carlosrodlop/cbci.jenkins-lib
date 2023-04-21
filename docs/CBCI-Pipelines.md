@@ -34,7 +34,7 @@ Checkout my GitHub start repositories for [CI Pipeline Developer](https://github
 - Branch Source plugins like The [GitHub Branch Source plugin](https://plugins.jenkins.io/github-branch-source/) allow you to create a new project based on the repository structure of one or more GitHub users or organizations. You can either:
   - Use [Multibranch Pipelines](https://www.jenkins.io/doc/book/pipeline/multibranch/) to import a single repository’s branches, pull requests, and tags as Pipeline projects.
   - :octocat: Use a GitHub Organization project to import all or a subset of repositories belonging to a GitHub user or organization as "Multibranch Pipeline" projects.
-- 🏃 Make Build Faster by:
+- 🏃 Make Jenkins Builds Faster by:
   - Use the [Performance optimized](https://www.jenkins.io/doc/book/pipeline/scaling-pipeline/#suggested-best-practices-and-tips-for-durability-settings) mode for most pipelines and especially basic build-test Pipelines or anything that can simply be run again if needed.
   - Identifying where are the bottlenecks by [🎥 Tracing Your Jenkins Pipelines With OpenTelemetry and Jaeger](https://www.youtube.com/watch?v=3XzVOxvNpGM) (Additionally [Troubleshooting Slow Builds](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/how-to-identify-cause-for-building-times-increase)).
   - Adding cache for your project dependencies (examples for [gradle](https://www.cloudbees.com/videos/speeding-up-jenkins-and-maven-build-cache) or [maven](https://sneha-wadhwa.medium.com/speeding-up-ci-pipelines-on-jenkins-63efff817d1d)) to speed up the build times.
