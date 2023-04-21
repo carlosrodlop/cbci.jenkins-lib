@@ -56,7 +56,7 @@ Checkout my GitHub start repositories for [CI Pipeline Developer](https://github
   - Learn by examples with:
     - [jenkins-infra/pipeline-library](https://github.com/jenkins-infra/pipeline-library)
     - [vfarcic/jenkins-shared-libraries](https://github.com/vfarcic/jenkins-shared-libraries)
-- 🍬 Review [Pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices) docs, and also this post [Best Practices for Scalable Pipeline Code](https://www.jenkins.io/blog/2017/02/01/pipeline-scalability-best-practice/)
+- 🍬 Review [Pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices) docs, and also this post [Best Practices for Scalable Pipeline Code](https://www.jenkins.io/blog/2017/02/01/pipeline-scalability-best-practice/).
 
 ## CloudBees CI: Make Jenkins Pipelines more scalable and reliable
 
