@@ -11,8 +11,8 @@
 
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition) and completed with my experience in the field and awesome content (from awesome people) public on the Internet.
 Technology integration choices here cover the most common use cases based on the [Jenkins Stats](https://stats.jenkins.io/) but more integrations are available via plugins.
-
-Checkout my GitHub start repositories for [CloudBees CI Admin](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-admin).
+This guide needs to be read from the top to the bottom: CloudBees CI is built on top of Jenkins.
+Check out my GitHub start repositories for [CloudBees CI Admin](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-admin).
 
 ## Jenkins CI: Starting with a solid Open Source core
 
@@ -38,9 +38,10 @@ Jenkins depends on a Fyle System to store its configuration and build data: [$JE
 
 ### Jenkins CI: Configuration
 
-* Jenkins comes with a series of bundle plugins (required) but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/). There are more than 1800+ community-contributed plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/)).
+* Configuration as Code: Explore [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
+* Plugins Management: Jenkins comes with a series of bundle plugins (required) but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/). There are more than 1800+ community-contributed plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/)).
   * ⚠️ Note that [Advanced installation](https://www.jenkins.io/doc/book/managing/plugins/#advanced-installation) does manage transitive dependencies requirements.
-* Explore configure as code using [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
+  * Air-gapped environments: The [plugin manager tools](https://github.com/jenkinsci/plugin-installation-manager-tool) downloads plugins and their dependencies into a folder so that they can be easily imported into an instance of Jenkins.
 * Prepare the instance to onboard developers:
   * 🔑 Add [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/) to the Jenkins Internal Store to connect to your third-party systems (Security Realm, SCM, Artifactory Registry). Check out that you [understand different scopes](https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-scopes).
   * 🔒 Define Jenkins [Access Control](https://www.jenkins.io/doc/book/security/managing-security/#access-control). Among the different options, the most common setup would be:  
@@ -107,7 +108,7 @@ Jenkins depends on a Fyle System to store its configuration and build data: [$JE
 
 * If you come from Jenkins Open source, [Migrate](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/migrating-jenkins-instances) your configuration and transit data (builds) to CloudBees CI.
   * For this types of scenarios or any type of service maintenance, [CloudBees Quiet Start](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/quiet-start) can help to not run all your builds immediately after restart.
-* Extend your Declarative configuration from JCasc to Casc.
+* Configuration as Code: Extend JCasc with more enriched features thanks to Casc.
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
   * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
 * Operation Center: Central governance of connected CI Controllers by a Shared Context which eases the scaling of your CI platform (It mitigates the pain of managing isolated Jenkins instances).
@@ -121,7 +122,7 @@ Jenkins depends on a Fyle System to store its configuration and build data: [$JE
     * [Shared Agent](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/shared-agents) for static agents.
     * [Shared Cloud](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/pushed-clouds), including Kubernetes ([Globally editing pod templates in operations center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_globally_editing_pod_templates_in_operations_center))
   * [Centrally managing security for controllers SSO](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/using-sso).
-* Enterprise Grade Plugin Management, enable [Beekeeper Upgrade Assistant](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-upgrade-assistant) to guarantee plugin compatibility with the Jenkins core version thanks to the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/)
+* Plugins Management: Enable [Beekeeper Upgrade Assistant](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-upgrade-assistant) to guarantee plugin compatibility with the Jenkins core version thanks to the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/)
   * [Plugins in the CAP are categorized into three tiers](https://docs.cloudbees.com/search?type=ci-plugins&search=show), adding to Jenkins comunity plugin a set of Propietary plugins, when you are trying to determine if you should install a particular plugin, [choosing plugins that are part of CAP](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/find-support-tier) (Tier 1 and Tier 2) provides the assurance of greater stability and security.
   * Have flexibility to override CAP on a plugin-by-plugin basis with [Beekeeper plugin exceptions](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-exceptions)
   * Extend Beekeeper with plugins outside CAP (e.g. custom plugins) with the [Plugin Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs)
