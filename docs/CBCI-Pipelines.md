@@ -7,7 +7,7 @@
 
 ---
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
+![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
 
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition) and completed with my experience in the field and awesome content (from awesome people) public on the Internet.
 
@@ -15,7 +15,7 @@ This guide needs to be read from the top to the bottom: CloudBees CI is built on
 
 Check out my GitHub start repositories for [CI Pipeline Developer](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-developer).
 
-## Jenkins CI: Starting with a solid Open Source core
+## Jenkins: Starting with a solid Open Source core
 
 - [Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/) stores the definition of a pipeline as code. It can be [created via UI](https://www.jenkins.io/doc/book/pipeline/getting-started/#through-the-classic-ui) or [imported from SCM](https://www.jenkins.io/doc/book/pipeline/getting-started/#defining-a-pipeline-in-scm) ( 🍬 The second option is [the recommendation](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices#_store_pipeline_definitions_in_a_source_code_management_scm_tool), although the first one might be interesting to deploy "Hello World" examples via the assistant.
   - 🍬 [Declarative Pipeline Migration Assistant](https://plugins.jenkins.io/declarative-pipeline-migration-assistant/) can automate the migration process of existing Freestyles projects to Pipelines.
@@ -60,7 +60,7 @@ Check out my GitHub start repositories for [CI Pipeline Developer](https://githu
     - [vfarcic/jenkins-shared-libraries](https://github.com/vfarcic/jenkins-shared-libraries)
 - 🍬 Review [Pipeline Best Practices](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-best-practices) docs, and also this post [Best Practices for Scalable Pipeline Code](https://www.jenkins.io/blog/2017/02/01/pipeline-scalability-best-practice/).
 
-## CloudBees CI: Make Jenkins Pipelines more scalable and reliable
+## CloudBees: Make Jenkins Pipelines more scalable and reliable
 
 - Make pipelines more resilient with:
   - ↪️ [Checkpoints](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/inserting-checkpoints)

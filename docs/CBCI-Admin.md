@@ -7,7 +7,7 @@
 
 ---
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](#awesome)
+![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
 
 Inspired by [CloudBees CI feature comparison](https://docs.cloudbees.com/docs/cloudbees-ci/latest/feature-definition) and completed with my experience in the field and awesome content (from awesome people) public on the Internet.
 
@@ -17,13 +17,13 @@ This guide needs to be read from the top to the bottom: CloudBees CI is built on
 
 Check out my GitHub start repositories for [CloudBees CI Admin](https://github.com/stars/carlosrodlop/lists/jenkins-cbci-admin).
 
-## Jenkins CI: Starting with a solid Open Source core
+## Jenkins: Starting with a solid Open Source core
 
 * Jenkins is an open source automation server. It helps automate the parts of SDLF, facilitating CI and CD [check in Wikipedia](https://en.wikipedia.org/wiki/Jenkins_(software)).
 * Spot Jenkins inside the [CD Landscape Map](https://landscape.cd.foundation/)
 * Get a first look at the Jenkins UI accessing the instance [jenkins.io](https://ci.jenkins.io/) as a Guest. Jenkins uses Jenkins for the CI of their plugins and core ("Dogfooding")
 
-### Jenkins CI: Installation and Architecture
+### Jenkins: Installation and Architecture
 
 * High level overview of the [Jenkins architecture](https://www.jenkins.io/doc/developer/architecture/)
 * [Install Jenkins](https://www.jenkins.io/doc/book/installing/) in your desired platform following the recommendations explained in [Prepare Jenkins for Support](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/prepare-jenkins-for-support)
@@ -35,11 +35,11 @@ Check out my GitHub start repositories for [CloudBees CI Admin](https://github.c
   * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Kubernetes add [`allowVolumeExpansion: true`](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci) to the Storage Classes).
 * Firewall: [Required URLs to allowlist](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/url-list) (Note some of the URL are only required for CloudBees)
 
-### Jenkins CI: Data Persistence
+### Jenkins: Data Persistence
 
 Jenkins depends on a Fyle System to store its configuration and build data: [$JENKINS_HOME](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/jenkins-home)
 
-### Jenkins CI: Configuration
+### Jenkins: Configuration
 
 * Configuration as Code: Explore [JCasc](https://github.com/jenkinsci/configuration-as-code-plugin), and pay special attention to the [Handling secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) and the [Exporting configuration tool](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md) sections.
 * Plugins Management: Jenkins comes with a series of bundle plugins (required) but its capabilities can be extended via [Manage Plugins](https://www.jenkins.io/doc/book/managing/plugins/). There are more than 1800+ community-contributed plugins (see [Jenkins Plugins Index](https://plugins.jenkins.io/)).
@@ -59,7 +59,7 @@ Jenkins depends on a Fyle System to store its configuration and build data: [$JE
   * 🍬 Build data consume more Disk space and has higher IO rates that the rest of the elements outside the `$JENKINS_HOME`. Why do not place it a more appropiate disk according to its requirements outside the `$JENKINS_HOME` thanks to [jenkins.model.Jenkins.buildsDir](https://www.jenkins.io/doc/book/managing/system-properties/#jenkins-model-jenkins-buildsdir)?
   * 🍬 Jenkins outcomes that can be storage outside of Filesystem see [Pluggable Storage](https://www.jenkins.io/sigs/cloud-native/pluggable-storage/)
 
-### Jenkins CI: Administration
+### Jenkins: Administration
 
 * 📈 Monitoring: Integrate Jenkins with an external solution like [🎥 Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (⚠️ Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored inside Jenkins).
   * By default, the [Metrics](https://plugins.jenkins.io/metrics/) plugin exposes a set of metrics including  System and Java Virtual Machine metrics, Web UI metrics and Jenkins-specific metrics. Other plugins might add additional metrics like the [CloudBees Disk Usage Simple](https://plugins.jenkins.io/cloudbees-disk-usage-simple/)
@@ -81,7 +81,7 @@ Jenkins depends on a Fyle System to store its configuration and build data: [$JE
   * Check API on [Jenkins Core and Plugins Javadoc](https://javadoc.jenkins.io/)
   * [Learn by examples](https://www.jenkins.io/doc/book/managing/script-console/#example-groovy-scripts)
 
-### Jenkins CI: Support 🏥
+### Jenkins: Support 🏥
 
 * Find your answers within the [community](https://community.jenkins.io/) in different channels like [Stack Overflow](https://stackoverflow.com/questions/tagged/jenkins)
 * Use [Support Core plugin](https://plugins.jenkins.io/support-core/) to export a snaphot of the configuration of your instance.
@@ -125,10 +125,12 @@ Jenkins depends on a Fyle System to store its configuration and build data: [$JE
     * [Shared Agent](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/shared-agents) for static agents.
     * [Shared Cloud](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/pushed-clouds), including Kubernetes ([Globally editing pod templates in operations center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_globally_editing_pod_templates_in_operations_center))
   * [Centrally managing security for controllers SSO](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/using-sso).
-* Plugins Management: Enable [Beekeeper Upgrade Assistant](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-upgrade-assistant) to guarantee plugin compatibility with the Jenkins core version thanks to the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/)
-  * [Plugins in the CAP are categorized into three tiers](https://docs.cloudbees.com/search?type=ci-plugins&search=show), adding to Jenkins comunity plugin a set of Propietary plugins, when you are trying to determine if you should install a particular plugin, [choosing plugins that are part of CAP](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/find-support-tier) (Tier 1 and Tier 2) provides the assurance of greater stability and security.
-  * Have flexibility to override CAP on a plugin-by-plugin basis with [Beekeeper plugin exceptions](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-exceptions)
-  * Extend Beekeeper with plugins outside CAP (e.g. custom plugins) with the [Plugin Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs)
+* Plugins Management:
+  * Enable [Beekeeper Upgrade Assistant](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-upgrade-assistant) to guarantee plugin compatibility with the Jenkins core version thanks to the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/)
+    * [Plugins in the CAP are categorized into three tiers](https://docs.cloudbees.com/search?type=ci-plugins&search=show), adding to Jenkins comunity plugin a set of Propietary plugins, when you are trying to determine if you should install a particular plugin, [choosing plugins that are part of CAP](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/find-support-tier) (Tier 1 and Tier 2) provides the assurance of greater stability and security.
+    * Have flexibility to override CAP on a plugin-by-plugin basis with [Beekeeper plugin exceptions](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/beekeeper-exceptions)
+    * Extend Beekeeper with plugins outside CAP (e.g. custom plugins) with the [Plugin Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs)
+  * Air-gapped Environment: Use [kyounger/casc-plugin-dependency-calculation:](https://github.com/kyounger/casc-plugin-dependency-calculation) to calculate target plugin.yaml and plugin-catalog.yaml
 * 🔒 Increase your Security
   * Adding roles to your authorization strategy using [RBAC](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/rbac) ([setup example](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/rbac-multiple-configurations-in-a-cjoc-cje-architecture))
   * Support for [Self-signed certificates in Kubernetes](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/kubernetes-self-signed-certificates)
