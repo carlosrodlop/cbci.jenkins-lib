@@ -38,6 +38,7 @@ Check out my GitHub start repositories for [CloudBees CI Admin](https://github.c
 ### Jenkins: Data Persistence
 
 Jenkins depends on a Fyle System to store its configuration and build data: [$JENKINS_HOME](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/jenkins-home)
+Nevertheless, some of it outcomes can be storage outside of the Filesystem see [Pluggable Storage](https://www.jenkins.io/sigs/cloud-native/pluggable-storage/)
 
 ### Jenkins: Configuration
 
@@ -57,7 +58,6 @@ Jenkins depends on a Fyle System to store its configuration and build data: [$JE
     * ⚠️ For intermediate artifacts to be used by others Jenkins builds (e.g. [archiveArtifacts](https://www.jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts)), do not use `$JENKINS_HOME` but S3 compatible storage like [Artifact Manager on S3](https://plugins.jenkins.io/artifact-manager-s3/)
 * Housekeeping: [Configure Global Build Discarders](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/deleting-old-builds-best-strategy-for-cleanup-and-disk-space-management#_resolution) helps to reduce the **disk space** consumption on build data for jobs ([🎥 How to Clean up Old Jenkins Builds](https://www.youtube.com/watch?v=_Z7BlaTTGlo))
   * 🍬 Build data consume more Disk space and has higher IO rates that the rest of the elements outside the `$JENKINS_HOME`. Why do not place it a more appropiate disk according to its requirements outside the `$JENKINS_HOME` thanks to [jenkins.model.Jenkins.buildsDir](https://www.jenkins.io/doc/book/managing/system-properties/#jenkins-model-jenkins-buildsdir)?
-  * 🍬 Jenkins outcomes that can be storage outside of Filesystem see [Pluggable Storage](https://www.jenkins.io/sigs/cloud-native/pluggable-storage/)
 
 ### Jenkins: Administration
 
