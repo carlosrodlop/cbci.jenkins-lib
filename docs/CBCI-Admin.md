@@ -93,6 +93,12 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
 * Use [Support Core plugin](https://plugins.jenkins.io/support-core/) to export a snaphot of the configuration of your instance.
 * If you are stuck, report your request or bug in the [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
 
+### Jenkins: Inspiring Talks
+
+* [🎥 MANGO: Orchestrating a Terraform pipeline with Jenkins](https://www.youtube.com/watch?v=61C6wD_y1HA)
+* [🎥 DevOps Toolkit: Running Jenkins In Kubernetes](https://www.youtube.com/watch?v=2Kc3fUJANAc)
+* [🎥 FreeCodecamp.org: How to Deploy a Test Server with Docker + Linux](https://www.youtube.com/watch?v=f4idgaq2VqA)
+
 ## CloudBees CI: Make Jenkins administration more scalable and reliable 🚀
 
 ### CloudBees CI: Installation and Architecture
@@ -181,3 +187,8 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
   * Additionally, we include:
     * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/)  to make sure your instance is not impacted by Known issues and meets with Best Practices
     * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to help you with data collection per topic.
+  
+### CloudBees CI: Inspiring Talks
+
+* [🎥 CloudBees TV: CloudBees CI Tutorials](https://www.youtube.com/watch?v=61C6wD_y1HA)
+* [🎥 CloudBees TV: CloudBees Customers](https://www.youtube.com/playlist?list=PLvBBnHmZuNQLeQFZcDOQxFAHYk96_c7sp)
