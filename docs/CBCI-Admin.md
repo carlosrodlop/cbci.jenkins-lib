@@ -64,10 +64,13 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
 
 ### Jenkins: Administration
 
-* 📈 Monitoring: Integrate Jenkins with an external solution like [🎥 Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (⚠️ Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored inside Jenkins).
+* 📈 Observability:
   * By default, the [Metrics](https://plugins.jenkins.io/metrics/) plugin exposes a set of metrics including  System and Java Virtual Machine metrics, Web UI metrics and Jenkins-specific metrics. Other plugins might add additional metrics like the [CloudBees Disk Usage Simple](https://plugins.jenkins.io/cloudbees-disk-usage-simple/)
-  * Recommended resources to watch for performance: memory usage percentage, CPU usage percentage, JENKINS_HOME disk usage percentage, JENKINS_HOME IOPS, operations center and managed controller response time, Remaining build nodes capacity, Remaining master nodes capacity and Build/master nodes instances usage.
-  * 🍬 Grafana offers series of ready-built [dashboards for Jenkins](https://grafana.com/grafana/dashboards/?search=jenkins)
+    * Recommended resources to watch for performance: memory usage percentage, CPU usage percentage, JENKINS_HOME disk usage percentage, JENKINS_HOME IOPS, operations center and managed controller response time, Remaining build nodes capacity, Remaining master nodes capacity and Build/master nodes instances usage.
+    * Integrate Jenkins with an external solution like [🎥 Prometheus and Graphana](https://www.youtube.com/watch?v=3H9eNIf9KZs). (⚠️ Using [Monitoring plugin](https://plugins.jenkins.io/monitoring/) for production environment is not a good approach because Jenkins is being monitored inside Jenkins).
+      * 🍬 Grafana offers series of ready-built [dashboards for Jenkins](https://grafana.com/grafana/dashboards/?search=jenkins)
+      * 🍬 Must-have alerts for Jenkins can be found at [Awesome Prometheus alerts](https://samber.github.io/awesome-prometheus-alerts/rules#jenkins)
+  * Identifying where are the pipeline bottlenecks by [🎥 Tracing Your Jenkins Pipelines With OpenTelemetry and Jaeger](https://www.youtube.com/watch?v=3XzVOxvNpGM) (Additionally [Troubleshooting Slow Builds](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/how-to-identify-cause-for-building-times-increase)).
 * 🔬 Auditing:
   * [Audit Trail Plugin](https://plugins.jenkins.io/audit-trail/) adds an “Audit Trail” section in your Jenkins main configuration page, where it is possible to define where to save logs on who performed particular operations on Jenkins. More info at [How does Audit Trail plugin work](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-does-audit-trail-plugin-work).
   * [Job Config History Plugin](https://plugins.jenkins.io/jobConfigHistory/) stores all the changes made to jobs (history), saving the config.xml of each job. For each change, it is possible to see the record of the change, compare the difference between the new and the old version and restore a previous version. It is also possible to keep track of the changes made to the system configuration. (⚠️ This plugin can become a performance killer if you do not follow the recommendations provided in [JobConfigHistory Plugin Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/jobconfighistory-best-practices))
@@ -159,7 +162,7 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
 
 ### CloudBees CI: Administration
 
-* 📈 Monitoring, adding the [CloudBees Prometheus Metrics plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/monitoring/prometheus-plugin) which exposes metrics securely for Operation Center. (Additionally, it can be used also with controllers)
+* 📈 Observability, adding the [CloudBees Prometheus Metrics plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/monitoring/prometheus-plugin) which exposes metrics securely for Operation Center. (it can be used also with Controllers)
 * 🔬 Auditing, adding the [User Activity Monitoring plugin](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/user-activity-monitoring) which provides you with a summary of user activity.
 * 💾 [Backup/Restore](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/)
   * [CloudBees Backup plugin](https://docs.cloudbees.com/docs/admin-resources/latest/backup-restore/cloudbees-backup-plugin) to automate the backup process.
