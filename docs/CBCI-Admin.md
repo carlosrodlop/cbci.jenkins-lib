@@ -147,6 +147,7 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
   * Air-gapped Environment: Use [kyounger/casc-plugin-dependency-calculation:](https://github.com/kyounger/casc-plugin-dependency-calculation) to calculate target plugin.yaml and plugin-catalog.yaml
 * 🔒 Increase your Security
   * Adding roles to your authorization strategy using [RBAC](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/rbac) ([setup example](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/rbac-multiple-configurations-in-a-cjoc-cje-architecture))
+    * ⚠️ Remember to map your AD/LDAP Groups with CloudBees RBAC Groups as membership. Mapping to AD/LDAP individual users increase the complexity to mantein your security.
   * Support for [Self-signed certificates in Kubernetes](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/kubernetes-self-signed-certificates)
   * 🔑 Credentials:
     * Restrictions with:
