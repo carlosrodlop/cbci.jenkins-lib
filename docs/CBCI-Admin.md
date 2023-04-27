@@ -32,9 +32,11 @@ Check out my GitHub start repositories for [CloudBees CI Admin](https://github.c
 * Capacity planning: How many Jenkins instances does my Organization needs to perform efficiently their CI pipelines?
   * Number of Controllers: Generally speaking, **one per Development Team**. Additionally. there are references to **estimate number of controllers** based on the [number of jobs and developers](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#Calculating-how-many-jobs)
     * [🎥 Big Monolithic Controllers are performance killers](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance). Check this [Guide to Slipt Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/)
-  * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Kubernetes add [`allowVolumeExpansion: true`](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci) to the Storage Classes).
-* Firewall: [Required URLs to allowlist](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/url-list) (Note some of the URL are only required for CloudBees)
-* For your [Agents Nodes design](https://www.jenkins.io/doc/book/managing/nodes/), use [Websockets](https://www.jenkins.io/blog/2020/02/02/web-socket/) for in-bound agents type to connect via via HTTPS.
+  * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Kubernetes add [`allowVolumeExpansion: true`](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci) and `` (for Nodes using multi AZs - recommended) to the Storage Classes).
+* Network Requirements
+  * [Ports and Proxy configuration](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/configuring-network-requirements)
+  * Firewall: [Required URLs to allowlist](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/url-list) (Note some of the URL are only required for CloudBees)
+  * For your [Agents Nodes design](https://www.jenkins.io/doc/book/managing/nodes/), use [Websockets](https://www.jenkins.io/blog/2020/02/02/web-socket/) for the in-bound types to connect via via HTTPS.
 
 ### Jenkins: Data Persistence
 
@@ -107,7 +109,8 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
   * [Signed Docker images](https://docs.cloudbees.com/docs/cloudbees-ci/latest/kubernetes-install-guide/verifying-cloud-docker-images)
   * [Signed Helm Charts](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/helm-verification)
 * Always install the latest version and review [CloudBees CI Release Notes](https://docs.cloudbees.com/docs/release-notes/latest/cloudbees-ci/) to understand the new features and bug fixes.
-* For inbound agents but also for [Controllers use Wesockets](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-setup-guide/websockets) to make connections simpler, more straightforward, and easier to establish via HTTPS.
+* Network Requirements
+  * For inbound agents but also for [Controllers use Wesockets](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-setup-guide/websockets) to make connections simpler, more straightforward, and easier to establish via HTTPS.
 
 ### CloudBees CI: Configuration
 
