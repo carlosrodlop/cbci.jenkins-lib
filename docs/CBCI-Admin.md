@@ -32,7 +32,7 @@ Check out my GitHub start repositories for [CloudBees CI Admin](https://github.c
 * Capacity planning: How many Jenkins instances does my Organization needs to perform efficiently their CI pipelines?
   * Number of Controllers: Generally speaking, **one per Development Team**. Additionally. there are references to **estimate number of controllers** based on the [number of jobs and developers](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#Calculating-how-many-jobs)
     * [🎥 Big Monolithic Controllers are performance killers](https://www.cloudbees.com/videos/splitting-monolithic-jenkins-controllers-for-increased-performance). Check this [Guide to Slipt Controllers](https://docs.cloudbees.com/docs/cloudbees-ci-migration/latest/splitting-controllers/)
-  * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Kubernetes add [`allowVolumeExpansion: true`](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci) and `` (for Nodes using multi AZs - recommended) to the Storage Classes).
+  * Compute resources per Controller Node: [Memory max up to 16GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size), [4 CPU unit is a good number for production](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-reference-architecture/ra-for-eks/#_controller_sizing_guidelines) and [Scalable Storage](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/#scalable-storage-for-master) strating by 50 GB ( 🍬 For Kubernetes add [`allowVolumeExpansion: true`](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/cloudbees-ci-on-modern-cloud-platforms/how-to-expand-a-pvc-on-cloudbees-ci) and `volumeBindingMode: WaitForFirstConsumer` (for Nodes using multi AZs - recommended) to the Storage Classes).
 * Network Requirements
   * [Ports and Proxy configuration](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/configuring-network-requirements)
   * Firewall: [Required URLs to allowlist](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-secure-guide/url-list) (Note some of the URL are only required for CloudBees)
@@ -103,23 +103,25 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
 
 ### CloudBees CI: Installation and Architecture
 
-* [Traditional platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-trad) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/cloudbees-ci-traditional-arch.574b6fc.svg))
-  * Make your CI builds **more resilient** by adding [High Availability](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/high-availability) (see [architecture diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/_images/ha-network-diagram.e8469d2.png)).
-    * ⚠️ Ensure to meet the requirements from [NFS Guide](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/nfs-guide)
-* [Modern platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-cloud) (see [architecture diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/k8s-ci-architecture.31527cd.svg))
-  * CloudBees CI on Kubernetes additionally benefits from the robust container management of the Kubernetes control plane. Aside from the operations center and managed controllers running as `StatefulSets`, controllers use the Jenkins Kubernetes plugin to schedule builds on disposable agent pods, eliminating the need to explicitly manage worker infrastructure.
-  * Make your CI build **more elastic** thanks to:
-    * Configure autoscaling (for [example in EKS](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/eks-auto-scaling-nodes))
-    * Configure [Hibernation on Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers#_hibernation_in_managed_masters) to save computing cost
-    * Enable Hybrid Cloud workload (among different public clouds and on-premises)
-      * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/provisioning-in-multiple-clusters)
-      * [Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/deploying-agents-separate-cluster)
-* 🔒 Installations more secure with:
-  * [Signed Docker images](https://docs.cloudbees.com/docs/cloudbees-ci/latest/kubernetes-install-guide/verifying-cloud-docker-images)
-  * [Signed Helm Charts](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/helm-verification)
+* There are two plataform types to install CloudBees CI:
+  * [Traditional platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-trad) (see [diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/cloudbees-ci-traditional-arch.574b6fc.svg))
+    * Make your CI builds **more resilient** by adding [High Availability](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/high-availability) (see [architecture diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/traditional-install-guide/_images/ha-network-diagram.e8469d2.png)).
+      * ⚠️ Ensure to meet the requirements from [NFS Guide](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/nfs-guide)
+  * [Modern platform](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/ci-cloud) (see [architecture diagram](https://docs.cloudbees.com/docs/cloudbees-ci/latest/architecture/_images/k8s-ci-architecture.31527cd.svg))
+    * CloudBees CI on Kubernetes additionally benefits from the robust container management of the Kubernetes control plane. Aside from the operations center and managed controllers running as `StatefulSets`, controllers use the Jenkins Kubernetes plugin to schedule builds on disposable agent pods, eliminating the need to explicitly manage worker infrastructure.
+    * Make your CI build **more elastic** thanks to:
+      * Configure autoscaling (for [example in EKS](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/eks-auto-scaling-nodes))
+      * Configure [Hibernation on Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-controllers#_hibernation_in_managed_masters) to save computing cost
+      * Enable Hybrid Cloud workload (among different public clouds and on-premises)
+        * [Controllers](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/provisioning-in-multiple-clusters)
+        * [Agents](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/deploying-agents-separate-cluster)
+* License: Get a Trial or [Import your Key and Certificate pair](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/what-is-a-cloudbees-jenkins-enterprise-instance-id-and-how-do-i-find-it)
 * Always install the latest version and review [CloudBees CI Release Notes](https://docs.cloudbees.com/docs/release-notes/latest/cloudbees-ci/) to understand the new features and bug fixes.
 * Network Requirements
   * For inbound agents but also for [Controllers use Wesockets](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-setup-guide/websockets) to make connections simpler, more straightforward, and easier to establish via HTTPS.
+* 🔒 Installations more secure with:
+  * [Signed Docker images](https://docs.cloudbees.com/docs/cloudbees-ci/latest/kubernetes-install-guide/verifying-cloud-docker-images)
+  * [Signed Helm Charts](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/helm-verification)
 
 ### CloudBees CI: Configuration
 
