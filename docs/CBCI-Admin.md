@@ -151,7 +151,7 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
     * ⚠️ Remember to map your AD/LDAP Groups with CloudBees RBAC Groups as membership. Mapping to AD/LDAP individual users increase the complexity to mantein your security.
   * Support for [Self-signed certificates in Kubernetes](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/kubernetes-self-signed-certificates)
   * 🔑 Credentials:
-    * CloudBees HashiCorp Vault plugin (coming soon)
+    * CloudBees HashiCorp Vault plugin (coming soon) - Note: The [OSS plugin](https://plugins.jenkins.io/hashicorp-vault-plugin/) only works in jobs.
     * Restrictions with:
       * [Folders and RBAC](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/ssh-credentials-management-with-jenkins#_architecture_with_credential_management_in_folders)
       * [Restricted Credentials](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/restricted-credentials) lets you define restricted credentials with built-in access control using the full item names define in allowlists and denylists.
