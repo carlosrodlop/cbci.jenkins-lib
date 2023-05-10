@@ -91,6 +91,7 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
 
 * Find your answers within the [community](https://community.jenkins.io/) in different channels like [Stack Overflow](https://stackoverflow.com/questions/tagged/jenkins)
 * Use [Support Core plugin](https://plugins.jenkins.io/support-core/) to export a snaphot of the configuration of your instance.
+* Create a [Custom log Recorder](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-do-i-create-a-logger-in-jenkins-for-troubleshooting-and-diagnostic-information) to increase visibility on the failure components.
 * If you are stuck, report your request or bug in the [Jenkins Jira](https://issues.jenkins.io/secure/Dashboard.jspa)
 
 ### Jenkins: Inspiring Talks
@@ -187,7 +188,7 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
 * [Get the best support in Jenkins](https://www.cloudbees.com/jenkins/what-is-jenkins): CloudBees is an active participant in the Jenkins community and plays a significant role in supporting the project. A number of key contributors to the Jenkins project are employed by CloudBees.Engineers from the CloudBees support and product teams regularly contribute code to the Jenkins project.
 * From day zero you are not alone in this journey, [CloudBees Support](https://support.cloudbees.com/hc/en-us) counts on a Global Team of [Certified CloudBees CI/Jenkins experts](https://www.cloudbees.com/cloudbees-university/training-certifications) willing to answer your questions and help your processes including [Assisted updates](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/required-data/required-data-upgrade-a-jenkins-instance)
   * [CloudBees plugin support policies](https://docs.cloudbees.com/docs/cloudbees-common/latest/plugin-support-policies) will cover Tier 1 and Tier 2 plugins.
-  * Additionally, we include:
+  * Additionally, CloudBees includes:
     * [Jenkins Health Advisor](https://plugins.jenkins.io/cloudbees-jenkins-advisor/)  to make sure your instance is not impacted by Known issues and meets with Best Practices
     * [Support CLI](https://docs.cloudbees.com/docs/cbsupport/latest/) to help you with data collection per topic.
   
