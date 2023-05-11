@@ -11,6 +11,9 @@ parameters:
 - name: gh_cred
   displayName: GitHub Credential
   type: credentials
+- name: gh_owner
+  displayName: GitHub Owner Name
+  type: string  
 - name: gh_repo
   displayName: GitHub Repository Name
   type: string
@@ -32,7 +35,7 @@ parameters:
 multibranch:
   branchSource:
     github:
-      repoOwner: carlosrodlop
+      repoOwner: ${gh_owner}
       repository: ${gh_repo}
       credentialsId: ${gh_cred}
       traits:
