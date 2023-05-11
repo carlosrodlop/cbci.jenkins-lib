@@ -11,7 +11,6 @@ strNoSpacesValidator("Docker Registry", "${d_registry}")
 def configYaml = """---
 k8_agent_yaml : '${k8_agent_yaml}'
 gh_cred : '${gh_cred}'
-gh_repo : '${gh_owner}'
 gh_repo : '${gh_repo}'
 gh_watched_branches : '${gh_watched_branches}'
 d_path : '${d_path}'
