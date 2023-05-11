@@ -4,9 +4,6 @@ type: pipeline-template
 name: Java Maven App Pipeline Job
 description: Simple Java App With Maven
 parameters:
-- name: emailRecipient
-  type: string
-  displayName: Email address to be used for sending build notifications
 - name: github_repo
   type: string
   displayName: GitHub HTTPS repo endpoint
