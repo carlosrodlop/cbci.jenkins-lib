@@ -1,7 +1,7 @@
 version: 1
 type: pipeline-template
 templateType: MULTIBRANCH
-name: Multibranch after 3.6 with traits - GitHub
+name: Multibranch - GitHub - Kaniko - Maven - Docker
 description: CI pipeline multibranch to model Maven Docker Apps projects using a Kaniko agent Filter. GitHub SCM.
 parameters:
 - name: k8_agent_yaml
@@ -47,4 +47,6 @@ multibranch:
       $class: DefaultBranchPropertyStrategy # All branches get the same properties
       props:
       - $class: NoTriggerBranchProperty   # Suppress automatic SCM triggering
+  #Check Markerfile Options: https://docs.cloudbees.com/docs/cloudbees-ci/latest/pipeline-templates-user-guide/managing-multibranch-pipeline-options#_examples
+  markerFile: pom.xml  
   scanRepositoryInterval: 2 hours
