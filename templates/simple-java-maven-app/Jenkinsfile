@@ -1,6 +1,8 @@
 pipeline {
-    agent any
-
+    agent {
+      // Manage Jenkins > Kubernetes Pod Template 
+      label 'maven'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -8,14 +10,14 @@ pipeline {
             }
         }
         stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
+            container('maven') {
+                steps {
+                    sh 'mvn -B -DskipTests clean package'
+                }
             }
         }
     }
-
     post {
-
       // TODO: Add Slack Notification
       success {
         echo 'SUCCESS'
@@ -23,5 +25,5 @@ pipeline {
       failure {
         echo 'FAILURE'
       }
-  }
+    }
 }
