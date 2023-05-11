@@ -18,6 +18,9 @@ parameters:
 - name: gh_repo
   displayName: GitHub Repository Name
   type: string
+- name: k8_agentNs
+  displayName: Kubernetes Agent Namespace
+  type: string  
 - name: d_path
   type: string
   displayName: Dockerfile build path

@@ -1,4 +1,4 @@
-It validates a Git repository URL
+Function to validate a Git repository URL
 
 Parameters:
 - paramName: Name of the parameter to validate
@@ -8,7 +8,7 @@ Parameters:
 
 Example:
 
-gitUrlValidator("GitHub Repository Name",
+fgitUrlValidator("GitHub Repository Name",
     "repo-example",
     "team-example",
     "https://github.company-example.com")

@@ -1,4 +1,4 @@
-It validates that there are no spaces between strings inside a String Buffer
+Function to validate that there are no spaces between strings inside a String Buffer
 
 Parameters:
 - paramName: Name of the parameter to validate</dd>
@@ -6,4 +6,4 @@ Parameters:
 
 Example:
 
-	strNoSpacesValidator("GitHub Repository Name", "My Repo Example ")
+	fstrNoSpacesValidator("GitHub Repository Name", "My Repo Example ")

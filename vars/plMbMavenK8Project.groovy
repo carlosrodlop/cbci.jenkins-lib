@@ -6,7 +6,6 @@ def call(configYaml) {
     K8_AGENT_YAML = "${config.k8_agent_yaml}"
     git_commit = ""
     git_currentBranch = ""
-    git_repo = ""
 
     pipeline {
         agent none
@@ -32,7 +31,7 @@ def call(configYaml) {
                 }
                 agent {
                     kubernetes {
-                        namespace "cje-support-agents"
+                        namespace "${config.k8_agentNs.trim()}"
                         defaultContainer "maven"
                         yaml libraryResource("k8s/agents/java/${K8_AGENT_YAML}.yaml")
                     }

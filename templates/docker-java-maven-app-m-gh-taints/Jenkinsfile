@@ -4,19 +4,19 @@ library identifier: 'my-shared-library@pipelines', retriever: modernSCM(
    remote: 'https://github.com/carlosrodlop/cbci.jenkins-lib.git'])
 
 // Template Form Validation
-strNoSpacesValidator("GitHub Repository Name", "${gh_repo}")
-strNoSpacesValidator("Docker Registry", "${d_registry}")
+fstrNoSpacesValidator("GitHub Repository Name", "${gh_repo}")
+fstrNoSpacesValidator("Docker Registry", "${d_registry}")
 
 // Building the data object
 def configYaml = """---
 k8_agent_yaml : '${k8_agent_yaml}'
 gh_cred : '${gh_cred}'
 gh_repo : '${gh_repo}'
-gh_watched_branches : '${gh_watched_branches}'
+k8_agentNs : '${k8_agentNs}'
 d_path : '${d_path}'
 d_latest : ${d_latest}
 d_registry : '${d_registry}'
 """
 
 // Calling the CI Pipeline
-mavenK8Project(configYaml)
+plMavenK8Project(configYaml)
