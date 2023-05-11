@@ -18,10 +18,6 @@ parameters:
 - name: gh_repo
   displayName: GitHub Repository Name
   type: string
-- name: gh_watched_branches
-  type: string
-  displayName: Watched Branch selection pattern (Space-separated list)
-  defaultValue: master develop
 - name: d_path
   type: string
   displayName: Dockerfile build path
@@ -40,8 +36,6 @@ multibranch:
       repository: ${gh_repo}
       credentialsId: ${gh_cred}
       traits:
-      - headWildcardFilter:
-          includes: ${gh_watched_branches}
       - gitHubBranchDiscovery:
           strategyId: '1'
       - gitHubPullRequestDiscovery:
@@ -52,5 +46,5 @@ multibranch:
       props:
       - $class: NoTriggerBranchProperty   # Suppress automatic SCM triggering
   #Check Markerfile Options: https://docs.cloudbees.com/docs/cloudbees-ci/latest/pipeline-templates-user-guide/managing-multibranch-pipeline-options#_examples
-  markerFile: pom.xml  
+  markerFile: pom.xml
   scanRepositoryInterval: 2 hours
