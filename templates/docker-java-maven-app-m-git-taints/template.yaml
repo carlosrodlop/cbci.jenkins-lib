@@ -31,7 +31,7 @@ parameters:
   defaultValue: supportbeescloud
 multibranch:
   branchSource:
-    git:
+    github:
       repoOwner: carlosrodlop
       repository: ${gh_repo}
       credentialsId: ${gh_cred}
