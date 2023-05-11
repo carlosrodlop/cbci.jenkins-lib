@@ -1,7 +1,5 @@
 // Loading Shared Libraries
-library identifier: 'my-shared-libraries@demo', retriever: modernSCM(
-  [$class: 'GitSCMSource',
-   remote: 'https://github.com/carlosrodlop/my-jenkins-demos.git'])
+@Library('my-shared-library') _
 
 // Template Form Validation
 strNoSpacesValidator("GitHub Repository Name", "${gh_repo}")
