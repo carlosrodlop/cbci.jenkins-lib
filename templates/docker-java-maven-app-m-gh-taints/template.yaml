@@ -13,7 +13,8 @@ parameters:
   type: credentials
 - name: gh_owner
   displayName: GitHub Owner Name
-  type: string  
+  type: string
+  defaultValue: carlosrodlop
 - name: gh_repo
   displayName: GitHub Repository Name
   type: string
