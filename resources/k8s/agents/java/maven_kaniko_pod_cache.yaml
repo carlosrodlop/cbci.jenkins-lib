@@ -25,11 +25,11 @@ spec:
     projected:
       sources:
       - secret:
-          name: supportbeescloud   # existing kubernetes secret for login into the Docker Registry
+          name: registrykey # pre-requisite
           items:
           - key: .dockerconfigjson
             path: config.json
   - name: maven-pv-storage
     persistentVolumeClaim:
-      claimName: maven-pv-claim   # this pvc (pvc/maven_cache_pvc.yaml) needs to be created before running the agent
+      claimName: maven-cache # pre-requisite 
       readOnly: false

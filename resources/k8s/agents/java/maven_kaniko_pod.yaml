@@ -22,7 +22,7 @@ spec:
     projected:
       sources:
       - secret:
-          name: supportbeescloud   # existing kubernetes secret for login into the Docker Registry
+          name: registrykey  # pre-requisite
           items:
           - key: .dockerconfigjson
             path: config.json
