@@ -2,6 +2,11 @@ kind: Pod
 metadata:
   name: git, maven and kaniko
 spec:
+  tolerations:
+    - key: "dedicated"
+      operator: "Equal"
+      value: "build-linux"
+      effect: "NoSchedule"
   containers:
   - name: maven
     image: maven:3.6.3-jdk-8
