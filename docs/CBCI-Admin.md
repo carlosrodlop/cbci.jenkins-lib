@@ -72,8 +72,8 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
       * 🍬 Must-have alerts for Jenkins can be found at [Awesome Prometheus alerts](https://samber.github.io/awesome-prometheus-alerts/rules#jenkins)
   * Identifying where are the pipeline bottlenecks by [🎥 Tracing Your Jenkins Pipelines With OpenTelemetry and Jaeger](https://www.youtube.com/watch?v=3XzVOxvNpGM) (Additionally [Troubleshooting Slow Builds](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/troubleshooting-guides/how-to-identify-cause-for-building-times-increase)).
 * 🔬 Auditing:
-  * [Audit Trail Plugin](https://plugins.jenkins.io/audit-trail/) adds an “Audit Trail” section in your Jenkins main configuration page, where it is possible to define where to save logs on who performed particular operations on Jenkins. More info at [How does Audit Trail plugin work](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-does-audit-trail-plugin-work).
-  * [Job Config History Plugin](https://plugins.jenkins.io/jobConfigHistory/) stores all the changes made to jobs (history), saving the config.xml of each job. For each change, it is possible to see the record of the change, compare the difference between the new and the old version and restore a previous version. It is also possible to keep track of the changes made to the system configuration. (⚠️ This plugin can become a performance killer if you do not follow the recommendations provided in [JobConfigHistory Plugin Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/jobconfighistory-best-practices))
+  * [Audit Trail Plugin](https://plugins.jenkins.io/audit-trail/). More info at [How does Audit Trail plugin work](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-does-audit-trail-plugin-work).
+  * [Job Config History Plugin](https://plugins.jenkins.io/jobConfigHistory/) (⚠️ This plugin can become a performance killer if you do not follow the recommendations provided in [JobConfigHistory Plugin Best Practices](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/best-practices/jobconfighistory-best-practices)). GitOps using JCasc is a better approach.
 * 💾 [Backup/Restore](https://www.jenkins.io/doc/book/system-administration/backing-up/)
   * [Thinbackup plugin](https://plugins.jenkins.io/thinBackup/) for process automation.
     * Backup storage: Directory/Mount point accessible from `$JENKINS_HOME`
@@ -125,7 +125,7 @@ Nevertheless, some of it outcomes can be storage outside of the Filesystem see [
 
 ### CloudBees CI: Configuration
 
-* If you come from Jenkins Open source, [Migrate](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/migrating-jenkins-instances) your configuration and transit data (builds) to CloudBees CI.
+* If you come from Jenkins Open source, [Migrate](https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/migrating-jenkins-instances) your configuration and transit data (builds) to CloudBees CI. See [🎥 Migrating from Jenkins LTS to CloudBees CI](https://cloudbees.wistia.com/medias/x5ixxnvhy4)
   * For this types of scenarios or any type of service maintenance, [CloudBees Quiet Start](https://docs.cloudbees.com/docs/admin-resources/latest/plugins/quiet-start) can help to not run all your builds immediately after restart.
 * Configuration as Code: Extend JCasc with more enriched features thanks to Casc.
   * [Operation Center](https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-oc/)
