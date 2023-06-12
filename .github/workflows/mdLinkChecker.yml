@@ -8,7 +8,6 @@ on:
       - main
     # Paths can be used to only trigger actions when you have edited certain files, such as a file within the /docs directory
     paths:
-      - docs/**
       - README.md
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,5 +23,4 @@ jobs:
           use-quiet-mode: 'yes'
           use-verbose-mode: 'yes'
           config-file: '.github/workflows/markdown.links.config.json'
-          folder-path: 'docs/'
           file-path: 'README.md'
