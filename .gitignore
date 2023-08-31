@@ -3,3 +3,6 @@
 .env
 !.env.example
 target
+# log files
+*.log
+*.logs
