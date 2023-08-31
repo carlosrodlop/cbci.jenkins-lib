@@ -1,6 +1,6 @@
 # REST
 
-## Alias (incluying auth)
+## Alias (including auth)
 
 Ref: https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/config-alias
 
@@ -76,7 +76,6 @@ $ jenkins-rest-post "casc-bundle/regenerate-token?bundleId=zd190212"
 ```
 
 ### Availability pattern
-
 
 ```sh
 $ jenkins-rest-post "casc-bundle/set-availability-pattern?bundleId=Apps-1p&regex=seco-1252"
