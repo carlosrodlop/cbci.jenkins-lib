@@ -24,7 +24,7 @@ usage() {
         -h, --help          Show usage.
 
     Example:
-      $(basename "$0") --type -XDELETE --operation projects/projectExample
+      $(basename "$0") --type -XGET --operation "api/json?pretty=true&depth=1"
 EOM
     exit 1
 }
