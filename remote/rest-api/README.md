@@ -5,8 +5,7 @@
 Ref: https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/config-alias
 
 ```sh
-alias jenkins-rest-get='/path/to/jenkins-rest-get.sh'
-alias jenkins-rest-post='/path/to/jenkins-rest-post.sh'
+alias jenkins-rest='/path/to/jenkins-rest.sh'
 ```
 
 ## Depth control
@@ -26,7 +25,7 @@ curl --user $USER:$APITOKEN -H $(curl --user $USER:$APITOKEN [-H "CRUB"] $SERVER
 ## Jobs
 
 ```sh
-jenkins-rest-get "api/json?pretty=true&depth=1"
+jenkins-rest --type -XGET --operation "api/json?pretty=true&depth=1"
 ```
 
 ## RBAC
@@ -34,7 +33,7 @@ jenkins-rest-get "api/json?pretty=true&depth=1"
 ### List groups
 
 ```sh
-$ jenkins-rest-get groups/api/json?depth=1&tree=groups[name]
+$ jenkins-rest --type -XGET --operation "groups/api/json?depth=1&tree=groups[name]"
 {
 _class: "nectar.plugins.rbac.groups.RootProxyGroupContainer",
 groups: [
@@ -58,7 +57,7 @@ name: "fbelzunc-viewer"
 ### Create groups
 
 ```sh
-$ jenkins-rest-post "groups/createGroup/api/json?name=developers
+jenkins-rest --type -XPOST --operation "groups/createGroup/api/json?name=developers"
 ```
 
 ## CasC
@@ -66,17 +65,17 @@ $ jenkins-rest-post "groups/createGroup/api/json?name=developers
 ### List bundles
 
 ```sh
-$ jenkins-rest-get "casc-bundle/list"
+jenkins-rest --type -XGET --operation "casc-bundle/list"
 ```
 
 ### Regenerate token
 
 ```sh
-$ jenkins-rest-post "casc-bundle/regenerate-token?bundleId=zd190212"
+jenkins-rest --type -XPOST --operation "casc-bundle/regenerate-token?bundleId=zd190212"
 ```
 
 ### Availability pattern
 
 ```sh
-$ jenkins-rest-post "casc-bundle/set-availability-pattern?bundleId=Apps-1p&regex=seco-1252"
+jenkins-rest --type -XPOST --operation "casc-bundle/set-availability-pattern?bundleId=Apps-1p&regex=seco-1252"
 ```
