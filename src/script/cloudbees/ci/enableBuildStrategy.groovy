@@ -24,7 +24,7 @@ def enableBuildStrategy(dryRun) {
                     }
                     emptyCount++
                 } else {
-                    println "${multibranchProject.fullName} has enabled Build Strategy ${buildStrategies}"
+                    println "${multibranchProject.fullName} has already enabled Build Strategy ${buildStrategies}."
                     nonEmptyCount++
                 }
             }
