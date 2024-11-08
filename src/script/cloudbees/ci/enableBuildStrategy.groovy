@@ -1,3 +1,5 @@
+package script.cloudbees.ci
+
 import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
 import com.cloudbees.jenkins.plugins.buildstrategies.SkipInitialBuildOnFirstIndexingResetRevision
 
