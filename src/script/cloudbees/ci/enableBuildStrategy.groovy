@@ -33,7 +33,7 @@ def enableBuildStrategy(dryRun) {
     println "===================================================================================="
     println "Non-empty build strategies count: ${nonEmptyCount}"
     println "Empty build strategies count: ${emptyCount}"
-  	println "Added build strategies SkipInitialBuildOnFirstIndexingResetRevision: ${modifiedCount}"
+    println "Added build strategies SkipInitialBuildOnFirstIndexingResetRevision: ${modifiedCount}"
     println "===================================================================================="
 }
 
