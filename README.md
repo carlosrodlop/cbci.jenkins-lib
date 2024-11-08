@@ -22,5 +22,3 @@
 - For Configuration as Code there are separate repositories:
   - [carlosrodlop/cb-casc-oc](https://github.com/carlosrodlop/cb-casc-oc)
   - [carlosrodlop/cb-casc-controllers](https://github.com/carlosrodlop/cb-casc-controllers)
-
-
