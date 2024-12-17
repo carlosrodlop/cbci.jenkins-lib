@@ -1,5 +1,5 @@
 /* groovylint-disable CompileStatic */
-package script.jenkins.jobs
+package script.jenkins.system
 
 xml = new XmlSlurper().parse('/tmp/configToTest.xml')
 xml.depthFirst().findAll { v ->

@@ -1,5 +1,5 @@
 /* groovylint-disable CompileStatic, NoWildcardImports */
-package script.jenkins.jobs
+package script.jenkins.system
 
 import javax.xml.transform.stream.*
 import java.nio.charset.StandardCharsets
