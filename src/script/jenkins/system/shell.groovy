@@ -1,6 +1,6 @@
 /* groovylint-disable CompileStatic, DuplicateNumberLiteral */
 //https://stackoverflow.com/questions/159148/groovy-executing-shell-commands
-package script.jenkins
+package script.jenkins.system
 
 //input
 shCommand = 'ls var/jenkins_home'
