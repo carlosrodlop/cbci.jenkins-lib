@@ -35,7 +35,8 @@ Unique Users: ${uniqueUsers}
 }
 
 // Example usage
-generateAuthAndScmAccessReport()
-generateUserActivitySummaryReport("100", "m")
+//generateAuthAndScmAccessReport()
+// 12 months
+generateUserActivitySummaryReport("12", "M")
 
 null
