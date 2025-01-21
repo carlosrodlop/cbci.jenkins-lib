@@ -14,6 +14,7 @@ def convert_date_to_timestamp(date_str):
     return dt.timestamp()
 
 def convert_json_to_csv(input_file, output_file, start_date, end_date):
+    """Read JSON file known formatand convert to CSV file."""
     try:
         # Convert date strings to Unix timestamps
         start_timestamp = convert_date_to_timestamp(start_date)
