@@ -1,5 +1,5 @@
 ﻿/* groovylint-disable CompileStatic, CouldBeElvis, DuplicateNumberLiteral, ExplicitCallToEqualsMethod, ExplicitTreeSetInstantiation, LineLength, SpaceAroundClosureArrow, UnnecessaryGetter, UnnecessarySetter */
-package script.cloudbees.ci
+package script.cloudbees
 
 import jenkins.model.*
 import hudson.model.*

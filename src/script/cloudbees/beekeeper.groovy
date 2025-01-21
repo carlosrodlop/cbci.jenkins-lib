@@ -1,5 +1,5 @@
 /* groovylint-disable CompileStatic, UnnecessaryGetter, UnnecessaryPublicModifier */
-package script.cloudbees.ci
+package script.cloudbees
 
 import com.cloudbees.jenkins.plugins.assurance.CloudBeesAssurance
 import com.cloudbees.jenkins.plugins.assurance.model.Beekeeper

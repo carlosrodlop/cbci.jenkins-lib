@@ -1,5 +1,5 @@
 ﻿/* groovylint-disable CompileStatic, UnnecessarySetter */
-package script.cloudbees.ci
+package script.cloudbees
 
 import com.cloudbees.masterprovisioning.kubernetes.KubernetesImagePullSecret
 import com.cloudbees.masterprovisioning.kubernetes.KubernetesMasterProvisioning

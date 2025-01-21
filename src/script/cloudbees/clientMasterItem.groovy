@@ -1,5 +1,5 @@
 ﻿/* groovylint-disable CompileStatic, UnnecessarySetter */
-package script.cloudbees.ci
+package script.cloudbees
 
 // Imports
 import com.cloudbees.opscenter.server.model.ClientMaster

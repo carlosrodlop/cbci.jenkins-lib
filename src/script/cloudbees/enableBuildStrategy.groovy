@@ -17,7 +17,7 @@ def enableBuildStrategy(dryRun) {
     def jenkins = Jenkins.instance
 
     jenkins.allItems(WorkflowMultiBranchProject).each { multibranchProject ->
-		
+        
         multibranchProject.getSourcesList().each { branchSource ->
             if (branchSource !=null) { 
                 def buildStrategies = branchSource.getBuildStrategies()
@@ -61,13 +61,13 @@ def enableBuildStrategy(dryRun) {
 ====================================================================================
 TOTALS
     Multibranch:
-    	Non-empty build strategies count: ${mPNonEmptyCount}
-    	Empty build strategies count: ${mPEmptyCount}
-    	Added build strategies SkipInitialBuildOnFirstIndexingResetRevision: ${mPModifiedCount}
+        Non-empty build strategies count: ${mPNonEmptyCount}
+        Empty build strategies count: ${mPEmptyCount}
+        Added build strategies SkipInitialBuildOnFirstIndexingResetRevision: ${mPModifiedCount}
     Organization Folder:
-    	Non-empty build strategies count: ${oFNonEmptyCount}
-    	Empty build strategies count: ${oFEmptyCount}
-    	Added build strategies SkipInitialBuildOnFirstIndexingResetRevision: ${oFModifiedCount}
+        Non-empty build strategies count: ${oFNonEmptyCount}
+        Empty build strategies count: ${oFEmptyCount}
+        Added build strategies SkipInitialBuildOnFirstIndexingResetRevision: ${oFModifiedCount}
 ===================================================================================="""
 }
 
