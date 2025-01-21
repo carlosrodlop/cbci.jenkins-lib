@@ -6,3 +6,4 @@ target
 # log files
 *.log
 *.logs
+output.*
