@@ -6,7 +6,7 @@ import datetime
 def convert_timestamp_to_date(timestamp):
     """Convert Unix timestamp to human-readable date."""
     dt = datetime.datetime.fromtimestamp(timestamp)
-    return dt.strftime('%Y-%m-%d %H:%M:%S.%f')
+    return dt.strftime('%Y-%m-%d')
 
 def convert_date_to_timestamp(date_str):
     """Convert date string to Unix timestamp."""
@@ -14,7 +14,7 @@ def convert_date_to_timestamp(date_str):
     return dt.timestamp()
 
 def convert_json_to_csv(input_file, output_file, start_date, end_date):
-    """Read JSON file known formatand convert to CSV file."""
+    """Read JSON file known format and convert to CSV file."""
     try:
         # Convert date strings to Unix timestamps
         start_timestamp = convert_date_to_timestamp(start_date)
@@ -29,7 +29,7 @@ def convert_json_to_csv(input_file, output_file, start_date, end_date):
             csv_writer = csv.writer(csv_file)
             
             # Write the header
-            csv_writer.writerow(['ID', 'Action', 'Email', 'Timestamp', 'Human-readable Date'])
+            csv_writer.writerow(['Last active', 'User', 'Email', 'Access Type'])
             
             # Initialize counters and sets for tracking IDs
             total_entries = 0
@@ -51,8 +51,8 @@ def convert_json_to_csv(input_file, output_file, start_date, end_date):
                     # Convert the timestamp to a human-readable date
                     human_readable_date = convert_timestamp_to_date(timestamp)
                     
-                    # Add the timestamp and human-readable date to the row data
-                    row_data.extend([timestamp, human_readable_date])
+                    # Reorder the row data to match the new header positions
+                    row_data = [human_readable_date, row_data[0], row_data[2], row_data[1]]
                     
                     csv_writer.writerow(row_data)
                     total_entries += 1
@@ -70,14 +70,14 @@ Duplicate IDs: {len(duplicate_ids)}
     except Exception as e:
         print(f"An error occurred: {e}")
 
-
 # Filter: 12 months data
 start_date = '2024-01'
 end_date = '2025-01'
 # Define the relative path to the mock user activity JSON file
 script_dir = os.path.dirname(__file__)
-input_file = os.path.join(script_dir, '../../resources/cloudbees/mock-user-activity.json')
-#input_file = '/tmp/user-activity-monitoring-v2.json' 
+#input_file = os.path.join(script_dir, '../../resources/cloudbees/mock-user-activity-2.json')
+input_file =  '/tmp/input.json'
 output_file = os.path.join(script_dir, f'output_{start_date}_to_{end_date}.csv')
+
 
 convert_json_to_csv(input_file, output_file, start_date, end_date)
